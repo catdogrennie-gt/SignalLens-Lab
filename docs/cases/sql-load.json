@@ -1,0 +1,510 @@
+{
+  "source_mode": "live_lab",
+  "scenario": "sql_load",
+  "started_at": "2026-11-08T10:49:12.845647+00:00",
+  "ended_at": "2026-11-08T10:50:03.110064+00:00",
+  "injected_action": "two bounded SELECT BENCHMARK SQL workload connections",
+  "status": "verified",
+  "cleanup": {
+    "workers_stopped": true,
+    "transactions_rolled_back_and_connections_closed": true,
+    "remaining_scenario_sessions": 0,
+    "remaining_lock_waits": 0,
+    "dataset_unchanged": true
+  },
+  "dataset_before": {
+    "row_count": "10000",
+    "amount_sum": "492385000",
+    "checksum": "959392002"
+  },
+  "dataset_after": {
+    "row_count": "10000",
+    "amount_sum": "492385000",
+    "checksum": "959392002"
+  },
+  "worker_outcomes": [],
+  "errors": [],
+  "artifact_type": "archived_real_lab_measurements",
+  "not_production": true,
+  "limitations": [
+    "Recorded live Lab observations, not live values at the time this file is read.",
+    "VM CPU/disk aggregate the guest, including other services.",
+    "Probe latency includes authentication and SELECT 1, not pure network RTT.",
+    "QPS includes collector traffic. Original runs sampled initial recovery immediately after negative control; its very short delta exaggerates sampling overhead. Raw values preserved; do not interpret this as fault throughput.",
+    "Synthetic deterministic orders business data; real telemetry and fault symptoms.",
+    "No network fault or production use claimed."
+  ],
+  "observations": [
+    {
+      "timestamp": "2026-11-08T10:49:12.851253+00:00",
+      "clock": 1794134952,
+      "phase": "baseline",
+      "values": {
+        "sl.mysql.threads_running": 2,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:12.851253+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:12.851253+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 75, \"SUM_TIMER_WAIT\": 53773118000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 150}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 74, \"SUM_TIMER_WAIT\": 40962522000, \"MAX_TIMER_WAIT\": 1503377000, \"SUM_ROWS_EXAMINED\": 1495}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 75, \"SUM_TIMER_WAIT\": 24932898000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 75, \"SUM_TIMER_WAIT\": 21005004000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 164, \"SUM_TIMER_WAIT\": 15249342000, \"MAX_TIMER_WAIT\": 331042000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}, {\"DIGEST\": \"d1b44b0c19af710b5a679907e284acd2ddc285201794bc69a2389d77baedddae\", \"DIGEST_TEXT\": \"SELECT ?\", \"COUNT_STAR\": 74, \"SUM_TIMER_WAIT\": 5688629000, \"MAX_TIMER_WAIT\": 744156000, \"SUM_ROWS_EXAMINED\": 74}]}",
+        "sl.net.mysql_latency_ms": 0.9031870001763309,
+        "sl.net.mysql_available": 1
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 9; failed: 0; total: 9; seconds spent: 0.000137"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:15.855909+00:00",
+      "clock": 1794134955,
+      "phase": "baseline",
+      "values": {
+        "sl.mysql.threads_running": 2,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:15.855909+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:15.855909+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 77, \"SUM_TIMER_WAIT\": 54682768000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 154}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 76, \"SUM_TIMER_WAIT\": 41697840000, \"MAX_TIMER_WAIT\": 1503377000, \"SUM_ROWS_EXAMINED\": 1539}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 77, \"SUM_TIMER_WAIT\": 25501791000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 77, \"SUM_TIMER_WAIT\": 21491027000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 168, \"SUM_TIMER_WAIT\": 15454019000, \"MAX_TIMER_WAIT\": 331042000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}, {\"DIGEST\": \"d1b44b0c19af710b5a679907e284acd2ddc285201794bc69a2389d77baedddae\", \"DIGEST_TEXT\": \"SELECT ?\", \"COUNT_STAR\": 76, \"SUM_TIMER_WAIT\": 5760993000, \"MAX_TIMER_WAIT\": 744156000, \"SUM_ROWS_EXAMINED\": 76}]}",
+        "sl.net.mysql_latency_ms": 1.747249999880296,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 6.656345129343488,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 308087.60304263746,
+        "sl.host.cpu_pct": 1.682085786375105
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000187"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:18.863557+00:00",
+      "clock": 1794134958,
+      "phase": "baseline",
+      "values": {
+        "sl.mysql.threads_running": 2,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:18.863557+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:18.863557+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 79, \"SUM_TIMER_WAIT\": 56089122000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 158}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 78, \"SUM_TIMER_WAIT\": 43229927000, \"MAX_TIMER_WAIT\": 1503377000, \"SUM_ROWS_EXAMINED\": 1583}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 79, \"SUM_TIMER_WAIT\": 26184814000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 79, \"SUM_TIMER_WAIT\": 22107929000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 172, \"SUM_TIMER_WAIT\": 15879209000, \"MAX_TIMER_WAIT\": 331042000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}, {\"DIGEST\": \"d1b44b0c19af710b5a679907e284acd2ddc285201794bc69a2389d77baedddae\", \"DIGEST_TEXT\": \"SELECT ?\", \"COUNT_STAR\": 78, \"SUM_TIMER_WAIT\": 5895600000, \"MAX_TIMER_WAIT\": 744156000, \"SUM_ROWS_EXAMINED\": 78}]}",
+        "sl.net.mysql_latency_ms": 3.289381000058711,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 5.984761299546446,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 285991.7933009928,
+        "sl.host.cpu_pct": 0.8389261744966443
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000236"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:21.878201+00:00",
+      "clock": 1794134961,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 3,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:21.878201+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:21.878201+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 81, \"SUM_TIMER_WAIT\": 56986118000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 162}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 80, \"SUM_TIMER_WAIT\": 44502358000, \"MAX_TIMER_WAIT\": 1503377000, \"SUM_ROWS_EXAMINED\": 1627}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 81, \"SUM_TIMER_WAIT\": 26566272000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 81, \"SUM_TIMER_WAIT\": 22563435000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 178, \"SUM_TIMER_WAIT\": 16527322000, \"MAX_TIMER_WAIT\": 331042000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}, {\"DIGEST\": \"d1b44b0c19af710b5a679907e284acd2ddc285201794bc69a2389d77baedddae\", \"DIGEST_TEXT\": \"SELECT ?\", \"COUNT_STAR\": 80, \"SUM_TIMER_WAIT\": 6123645000, \"MAX_TIMER_WAIT\": 744156000, \"SUM_ROWS_EXAMINED\": 80}]}",
+        "sl.net.mysql_latency_ms": 2.321728999959305,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 7.629393751773614,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 78804.33977484149,
+        "sl.host.cpu_pct": 1.4261744966442953
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000160"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:23.885654+00:00",
+      "clock": 1794134963,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:23.885654+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:23.885654+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 26, \"SUM_TIMER_WAIT\": 3876604328000, \"MAX_TIMER_WAIT\": 178283805000, \"SUM_ROWS_EXAMINED\": 26}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 82, \"SUM_TIMER_WAIT\": 57382737000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 164}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 81, \"SUM_TIMER_WAIT\": 45547145000, \"MAX_TIMER_WAIT\": 1503377000, \"SUM_ROWS_EXAMINED\": 1649}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 82, \"SUM_TIMER_WAIT\": 26748518000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 82, \"SUM_TIMER_WAIT\": 22811753000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 180, \"SUM_TIMER_WAIT\": 16682403000, \"MAX_TIMER_WAIT\": 331042000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.8959760000143433,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 17.933193251016654,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 526422.9101525102,
+        "sl.host.cpu_pct": 39.55223880597015
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000150"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:25.893491+00:00",
+      "clock": 1794134965,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:25.893491+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:25.893491+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 52, \"SUM_TIMER_WAIT\": 7758458160000, \"MAX_TIMER_WAIT\": 183607497000, \"SUM_ROWS_EXAMINED\": 52}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 84, \"SUM_TIMER_WAIT\": 58246147000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 168}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 83, \"SUM_TIMER_WAIT\": 47067129000, \"MAX_TIMER_WAIT\": 1503377000, \"SUM_ROWS_EXAMINED\": 1695}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 84, \"SUM_TIMER_WAIT\": 27235626000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 84, \"SUM_TIMER_WAIT\": 23213181000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 184, \"SUM_TIMER_WAIT\": 16899742000, \"MAX_TIMER_WAIT\": 331042000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.1299730001610442,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 22.910214069203448,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 232560.58692022032,
+        "sl.host.cpu_pct": 39.10336239103363
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000134"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:27.899060+00:00",
+      "clock": 1794134967,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:27.899060+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:27.899060+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 78, \"SUM_TIMER_WAIT\": 11662997173000, \"MAX_TIMER_WAIT\": 183607497000, \"SUM_ROWS_EXAMINED\": 78}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 86, \"SUM_TIMER_WAIT\": 59732542000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 172}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 85, \"SUM_TIMER_WAIT\": 48040684000, \"MAX_TIMER_WAIT\": 1503377000, \"SUM_ROWS_EXAMINED\": 1741}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 86, \"SUM_TIMER_WAIT\": 28271936000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 86, \"SUM_TIMER_WAIT\": 23787625000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 188, \"SUM_TIMER_WAIT\": 17481567000, \"MAX_TIMER_WAIT\": 335835000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.9640860000436078,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 21.9389437221723,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 334939.85935697524,
+        "sl.host.cpu_pct": 39.02743142144639
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000197"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:29.909820+00:00",
+      "clock": 1794134969,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:29.909820+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:29.909820+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 102, \"SUM_TIMER_WAIT\": 15867638668000, \"MAX_TIMER_WAIT\": 208583875000, \"SUM_ROWS_EXAMINED\": 102}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 87, \"SUM_TIMER_WAIT\": 60197255000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 174}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 86, \"SUM_TIMER_WAIT\": 51047914000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 1764}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 87, \"SUM_TIMER_WAIT\": 28561386000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 87, \"SUM_TIMER_WAIT\": 23990575000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 190, \"SUM_TIMER_WAIT\": 18197722000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 0.762587999815878,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 16.411682263332725,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 662037.316028743,
+        "sl.host.cpu_pct": 57.389162561576356
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000171"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:31.916362+00:00",
+      "clock": 1794134971,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:31.916362+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:31.916362+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 126, \"SUM_TIMER_WAIT\": 19801145141000, \"MAX_TIMER_WAIT\": 208583875000, \"SUM_ROWS_EXAMINED\": 126}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 89, \"SUM_TIMER_WAIT\": 61246541000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 178}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 88, \"SUM_TIMER_WAIT\": 51880930000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 1810}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 89, \"SUM_TIMER_WAIT\": 29032747000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 89, \"SUM_TIMER_WAIT\": 24380726000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 194, \"SUM_TIMER_WAIT\": 18402209000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.4943439998660324,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 21.92827203012401,
+        "sl.host.disk_read_bps": 365396.7772757828,
+        "sl.host.disk_write_bps": 330694.2900484738,
+        "sl.host.cpu_pct": 51.05590062111801
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000162"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:33.925597+00:00",
+      "clock": 1794134973,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:33.925597+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:33.925597+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 153, \"SUM_TIMER_WAIT\": 23877924129000, \"MAX_TIMER_WAIT\": 208583875000, \"SUM_ROWS_EXAMINED\": 153}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 91, \"SUM_TIMER_WAIT\": 62194151000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 182}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 90, \"SUM_TIMER_WAIT\": 52868093000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 1856}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 91, \"SUM_TIMER_WAIT\": 29539464000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 91, \"SUM_TIMER_WAIT\": 24776785000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 198, \"SUM_TIMER_WAIT\": 18689925000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.1493909998989693,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 22.396792656657887,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 195706.1604728975,
+        "sl.host.cpu_pct": 40.49689440993789
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000166"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:35.932477+00:00",
+      "clock": 1794134975,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:35.932477+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:35.932477+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 180, \"SUM_TIMER_WAIT\": 27941346120000, \"MAX_TIMER_WAIT\": 208583875000, \"SUM_ROWS_EXAMINED\": 180}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 92, \"SUM_TIMER_WAIT\": 62886132000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 184}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 91, \"SUM_TIMER_WAIT\": 53284352000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 1879}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 92, \"SUM_TIMER_WAIT\": 29777489000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 92, \"SUM_TIMER_WAIT\": 24981734000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 200, \"SUM_TIMER_WAIT\": 18783679000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.9013809999250952,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 18.934702325199762,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 120416.73428202831,
+        "sl.host.cpu_pct": 39.22789539227895
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000168"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:37.939689+00:00",
+      "clock": 1794134977,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:37.939689+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:37.939689+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 206, \"SUM_TIMER_WAIT\": 31833030351000, \"MAX_TIMER_WAIT\": 208583875000, \"SUM_ROWS_EXAMINED\": 206}, {\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 94, \"SUM_TIMER_WAIT\": 64419001000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 188}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 93, \"SUM_TIMER_WAIT\": 55198325000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 1925}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 94, \"SUM_TIMER_WAIT\": 30637096000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 94, \"SUM_TIMER_WAIT\": 25654677000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 204, \"SUM_TIMER_WAIT\": 19144525000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 2.35505299997385,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 21.9209570622894,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 1493749.8130241947,
+        "sl.host.cpu_pct": 38.65336658354115
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000162"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:39.950114+00:00",
+      "clock": 1794134979,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:39.950114+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:39.950114+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 233, \"SUM_TIMER_WAIT\": 35832527296000, \"MAX_TIMER_WAIT\": 208583875000, \"SUM_ROWS_EXAMINED\": 233}, {\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 96, \"SUM_TIMER_WAIT\": 65390277000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 192}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 95, \"SUM_TIMER_WAIT\": 57990178000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 1971}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 96, \"SUM_TIMER_WAIT\": 31030743000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 96, \"SUM_TIMER_WAIT\": 26167439000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 208, \"SUM_TIMER_WAIT\": 19463086000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 28.81267799989473,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 22.383347060377062,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 185401.76110881567,
+        "sl.host.cpu_pct": 38.95781637717121
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000169"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:41.984793+00:00",
+      "clock": 1794134981,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:41.984793+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:41.984793+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 253, \"SUM_TIMER_WAIT\": 39922723426000, \"MAX_TIMER_WAIT\": 416963104000, \"SUM_ROWS_EXAMINED\": 253}, {\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 97, \"SUM_TIMER_WAIT\": 66222179000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 194}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 96, \"SUM_TIMER_WAIT\": 59078360000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 1994}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 97, \"SUM_TIMER_WAIT\": 31304588000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 97, \"SUM_TIMER_WAIT\": 26417543000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 210, \"SUM_TIMER_WAIT\": 19883437000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.2050010000166367,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 15.236004313459302,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 116760.8733141903,
+        "sl.host.cpu_pct": 39.55223880597015
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000326"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:43.993277+00:00",
+      "clock": 1794134983,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:43.993277+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:43.993277+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 278, \"SUM_TIMER_WAIT\": 43869832914000, \"MAX_TIMER_WAIT\": 416963104000, \"SUM_ROWS_EXAMINED\": 278}, {\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 99, \"SUM_TIMER_WAIT\": 67621229000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 198}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 98, \"SUM_TIMER_WAIT\": 60759929000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 2040}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 99, \"SUM_TIMER_WAIT\": 31902287000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 99, \"SUM_TIMER_WAIT\": 26986341000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 214, \"SUM_TIMER_WAIT\": 20121439000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.5407529999720282,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 21.40890078116776,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 599560.7473093248,
+        "sl.host.cpu_pct": 39.95006242197253
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000167"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:45.999802+00:00",
+      "clock": 1794134986,
+      "phase": "fault",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:45.999802+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:45.999802+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 304, \"SUM_TIMER_WAIT\": 47936806163000, \"MAX_TIMER_WAIT\": 416963104000, \"SUM_ROWS_EXAMINED\": 304}, {\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 101, \"SUM_TIMER_WAIT\": 69002480000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 202}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 100, \"SUM_TIMER_WAIT\": 62271739000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 2086}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 101, \"SUM_TIMER_WAIT\": 32495962000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 101, \"SUM_TIMER_WAIT\": 27631437000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 218, \"SUM_TIMER_WAIT\": 20557060000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.2484040000799723,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 21.928496578034657,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 253126.61649932078,
+        "sl.host.cpu_pct": 38.978829389788295
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000184"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:48.007032+00:00",
+      "clock": 1794134988,
+      "phase": "negative_control",
+      "values": {
+        "sl.mysql.threads_running": 4,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:48.007032+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:48.007032+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 329, \"SUM_TIMER_WAIT\": 51851120968000, \"MAX_TIMER_WAIT\": 416963104000, \"SUM_ROWS_EXAMINED\": 329}, {\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 102, \"SUM_TIMER_WAIT\": 69745769000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 204}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 101, \"SUM_TIMER_WAIT\": 63521087000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 2109}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 102, \"SUM_TIMER_WAIT\": 32744024000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 102, \"SUM_TIMER_WAIT\": 27823233000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 220, \"SUM_TIMER_WAIT\": 20679288000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.0876139999709267,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 17.935075001590675,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 273442.139046474,
+        "sl.host.cpu_pct": 39.15211970074813
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000201"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:48.065086+00:00",
+      "clock": 1794134988,
+      "phase": "recovery",
+      "values": {
+        "sl.mysql.threads_running": 2,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:48.065086+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:48.065086+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 331, \"SUM_TIMER_WAIT\": 52135188010000, \"MAX_TIMER_WAIT\": 416963104000, \"SUM_ROWS_EXAMINED\": 331}, {\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 103, \"SUM_TIMER_WAIT\": 70257187000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 206}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 102, \"SUM_TIMER_WAIT\": 64749623000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 2132}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 103, \"SUM_TIMER_WAIT\": 33075293000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 103, \"SUM_TIMER_WAIT\": 28150669000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 222, \"SUM_TIMER_WAIT\": 20786880000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.5157000000272092,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 189.48924191215139,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 0.0,
+        "sl.host.cpu_pct": 37.5
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000223"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:51.072417+00:00",
+      "clock": 1794134991,
+      "phase": "recovery",
+      "values": {
+        "sl.mysql.threads_running": 2,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:51.072417+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:51.072417+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 331, \"SUM_TIMER_WAIT\": 52135188010000, \"MAX_TIMER_WAIT\": 416963104000, \"SUM_ROWS_EXAMINED\": 331}, {\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 105, \"SUM_TIMER_WAIT\": 71841499000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 210}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 104, \"SUM_TIMER_WAIT\": 66040282000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 2178}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 105, \"SUM_TIMER_WAIT\": 33731942000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 105, \"SUM_TIMER_WAIT\": 28751093000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 226, \"SUM_TIMER_WAIT\": 21227501000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.050810000151614,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 5.985381004171319,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 170250.83745198417,
+        "sl.host.cpu_pct": 0.8403361344537815
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000153"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:54.078990+00:00",
+      "clock": 1794134994,
+      "phase": "recovery",
+      "values": {
+        "sl.mysql.threads_running": 2,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:54.078990+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:54.078990+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 331, \"SUM_TIMER_WAIT\": 52135188010000, \"MAX_TIMER_WAIT\": 416963104000, \"SUM_ROWS_EXAMINED\": 331}, {\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 107, \"SUM_TIMER_WAIT\": 73506128000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 214}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 106, \"SUM_TIMER_WAIT\": 67243751000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 2224}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 107, \"SUM_TIMER_WAIT\": 34243244000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 107, \"SUM_TIMER_WAIT\": 29210052000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 230, \"SUM_TIMER_WAIT\": 21483337000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.0333400000490656,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 6.652091238510919,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 227512.16370305503,
+        "sl.host.cpu_pct": 2.0168067226890756
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000145"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:49:57.084997+00:00",
+      "clock": 1794134997,
+      "phase": "recovery",
+      "values": {
+        "sl.mysql.threads_running": 2,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:57.084997+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:49:57.084997+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 331, \"SUM_TIMER_WAIT\": 52135188010000, \"MAX_TIMER_WAIT\": 416963104000, \"SUM_ROWS_EXAMINED\": 331}, {\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 109, \"SUM_TIMER_WAIT\": 74683575000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 218}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 108, \"SUM_TIMER_WAIT\": 68162636000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 2270}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 109, \"SUM_TIMER_WAIT\": 34952740000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 109, \"SUM_TIMER_WAIT\": 29640724000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 234, \"SUM_TIMER_WAIT\": 21748281000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.0417050000341987,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 6.653344572810422,
+        "sl.host.disk_read_bps": 0.0,
+        "sl.host.disk_write_bps": 160787.38628436578,
+        "sl.host.cpu_pct": 1.8502943650126156
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000142"
+      }
+    },
+    {
+      "timestamp": "2026-11-08T10:50:00.090989+00:00",
+      "clock": 1794135000,
+      "phase": "recovery",
+      "values": {
+        "sl.mysql.threads_running": 2,
+        "sl.mysql.lock_waits": 0,
+        "sl.mysql.lock_snapshot": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:50:00.090989+00:00\", \"rows\": []}",
+        "sl.mysql.sql_summary": "{\"source_mode\": \"live_lab\", \"collected_at\": \"2026-11-08T10:50:00.090989+00:00\", \"timer_unit\": \"picoseconds\", \"cumulative_since_server_start\": true, \"rows\": [{\"DIGEST\": \"e88617233c1f6bb59f73b2c3c05736d85b385fd60e695f15a8c561089f4301a3\", \"DIGEST_TEXT\": \"SELECT /*+ MAX_EXECUTION_TIME (?) */ `BENCHMARK` ( ? , `SHA2` (...) )\", \"COUNT_STAR\": 331, \"SUM_TIMER_WAIT\": 52135188010000, \"MAX_TIMER_WAIT\": 416963104000, \"SUM_ROWS_EXAMINED\": 331}, {\"DIGEST\": \"e9e9f738b6b44e39710838eeb6f18db092c7418a2eda7c41931a57ef1aaed478\", \"DIGEST_TEXT\": \"UPDATE `orders` SET `amount_cents` = `amount_cents` + ? WHERE `id` = ?\", \"COUNT_STAR\": 6, \"SUM_TIMER_WAIT\": 30007327634000, \"MAX_TIMER_WAIT\": 6001931921000, \"SUM_ROWS_EXAMINED\": 1}, {\"DIGEST\": \"b0a2105f85f781a2af3593f66431f1528f14f14566499839ea27e23911fb9a5a\", \"DIGEST_TEXT\": \"SHOW GLOBAL STATUS WHERE `Variable_name` IN (...)\", \"COUNT_STAR\": 111, \"SUM_TIMER_WAIT\": 76477245000, \"MAX_TIMER_WAIT\": 1824172000, \"SUM_ROWS_EXAMINED\": 222}, {\"DIGEST\": \"e3f5d108fa297a106e644a37589b842899509be120b52a829cd9441ed3458a79\", \"DIGEST_TEXT\": \"SELECT `DIGEST` , `DIGEST_TEXT` , `COUNT_STAR` , `SUM_TIMER_WAIT` , `MAX_TIMER_WAIT` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?\", \"COUNT_STAR\": 110, \"SUM_TIMER_WAIT\": 69076828000, \"MAX_TIMER_WAIT\": 3007230000, \"SUM_ROWS_EXAMINED\": 2316}, {\"DIGEST\": \"7a2869bffa25534ff0e37c1b8fc2b7a45ec80e9229cc3fdaedfcc89eab5c9029\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS `n` FROM `performance_schema` . `data_lock_waits`\", \"COUNT_STAR\": 111, \"SUM_TIMER_WAIT\": 35829844000, \"MAX_TIMER_WAIT\": 1119826000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"f6a29180c2abf3bcbb011b7503795499cd16ae631d05dc792219c6f6bcafc0fb\", \"DIGEST_TEXT\": \"SELECT ENGINE , `REQUESTING_ENGINE_TRANSACTION_ID` , `BLOCKING_ENGINE_TRANSACTION_ID` , `REQUESTING_THREAD_ID` , `BLOCKING_THREAD_ID` FROM `performance_schema` . `data_lock_waits` LIMIT ?\", \"COUNT_STAR\": 111, \"SUM_TIMER_WAIT\": 30298522000, \"MAX_TIMER_WAIT\": 738374000, \"SUM_ROWS_EXAMINED\": 23}, {\"DIGEST\": \"6d631211d940af327fe3f82a008b908dc6cba3912cae61881353006e73354eee\", \"DIGEST_TEXT\": \"SET NAMES `utf8mb4`\", \"COUNT_STAR\": 238, \"SUM_TIMER_WAIT\": 22378819000, \"MAX_TIMER_WAIT\": 591814000, \"SUM_ROWS_EXAMINED\": 0}, {\"DIGEST\": \"9d6fefa7979c925ef7ef76532b11a246ef09c2662cf88f5537d16d8e61d5250e\", \"DIGEST_TEXT\": \"SELECT COUNT ( * ) AS ROW_COUNT , SUM ( `amount_cents` ) AS `amount_sum` , BIT_XOR ( `CRC32` ( `CONCAT_WS` ( ? , `id` , `customer_id` , `amount_cents` , STATUS ) ) ) AS CHECKSUM FROM `orders`\", \"COUNT_STAR\": 3, \"SUM_TIMER_WAIT\": 14461426000, \"MAX_TIMER_WAIT\": 6043491000, \"SUM_ROWS_EXAMINED\": 30000}]}",
+        "sl.net.mysql_latency_ms": 1.781237999921359,
+        "sl.net.mysql_available": 1,
+        "sl.mysql.qps": 5.988114815662422,
+        "sl.host.disk_read_bps": 4087.886380825547,
+        "sl.host.disk_write_bps": 714017.4878508622,
+        "sl.host.cpu_pct": 0.8403361344537815
+      },
+      "sender": {
+        "response": "success",
+        "info": "processed: 13; failed: 0; total: 13; seconds spent: 0.000233"
+      }
+    }
+  ],
+  "provenance": {
+    "database": "MySQL performance_schema/status on isolated lab_orders target",
+    "host": "Linux VM /proc/stat and /proc/diskstats",
+    "network": "probe container -> dedicated MySQL target",
+    "zabbix": "trapper sender; numeric history and actual text snapshots",
+    "units": {
+      "cpu": "percent",
+      "probe_latency": "milliseconds",
+      "query_rate": "queries/second",
+      "disk_rate": "bytes/second",
+      "sql_digest_timers": "picoseconds, cumulative"
+    }
+  }
+}

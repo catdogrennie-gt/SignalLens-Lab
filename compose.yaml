@@ -1,0 +1,54 @@
+name: signallens-lab
+services:
+  target:
+    image: mysql:8.4.13
+    container_name: signallens-lab-target
+    labels:
+      sl.owner: signallens-lab
+      sl.role: target
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/root_password
+    secrets: [root_password]
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks: [lab]
+    healthcheck:
+      test: [CMD-SHELL, 'MYSQL_PWD=$$(cat /run/secrets/root_password) mysqladmin ping -h127.0.0.1 -uroot --silent']
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    mem_limit: 1g
+    cpus: 1.5
+    restart: unless-stopped
+  probe:
+    build: .
+    user: "1000:1000"
+    container_name: signallens-lab-probe
+    labels:
+      sl.owner: signallens-lab
+      sl.role: probe
+    command: [python, -m, lab.cli, collect]
+    depends_on:
+      target: {condition: service_healthy}
+    volumes:
+      - ./.runtime/private/target.json:/work/.runtime/private/target.json
+      - ./.runtime/samples:/work/.runtime/samples
+      - ./.runtime/runs:/work/.runtime/runs
+      - /proc:/host/proc:ro
+    networks: [lab, monitoring]
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    restart: unless-stopped
+secrets:
+  root_password:
+    file: .runtime/private/root_password
+volumes:
+  mysql-data:
+networks:
+  lab:
+    internal: true
+  monitoring:
+    external: true
+    name: signallens-internal

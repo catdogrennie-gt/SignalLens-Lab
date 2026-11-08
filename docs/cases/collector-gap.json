@@ -1,0 +1,106 @@
+{
+  "source_mode": "live_lab",
+  "artifact_type": "archived_real_lab_measurements",
+  "action": "docker compose pause probe; sleep15; docker compose unpause probe; target remained running",
+  "gap_start_utc": "2026-11-08T10:51:33Z",
+  "gap_end_utc": "2026-11-08T10:51:48Z",
+  "actual_zabbix_history": {
+    "sl.host.cpu_pct": [
+      {
+        "clock": 1794135087,
+        "value": "1.0075566750629723"
+      },
+      {
+        "clock": 1794135090,
+        "value": "1.341156747694887"
+      },
+      {
+        "clock": 1794135093,
+        "value": "9.144295302013424"
+      },
+      {
+        "clock": 1794135108,
+        "value": "2.3659827928524155"
+      },
+      {
+        "clock": 1794135111,
+        "value": "2.6160337552742616"
+      },
+      {
+        "clock": 1794135114,
+        "value": "1.7647058823529411"
+      },
+      {
+        "clock": 1794135117,
+        "value": "4.545454545454546"
+      }
+    ],
+    "sl.mysql.lock_waits": [
+      {
+        "clock": 1794135087,
+        "value": "0"
+      },
+      {
+        "clock": 1794135090,
+        "value": "0"
+      },
+      {
+        "clock": 1794135093,
+        "value": "0"
+      },
+      {
+        "clock": 1794135108,
+        "value": "0"
+      },
+      {
+        "clock": 1794135111,
+        "value": "0"
+      },
+      {
+        "clock": 1794135114,
+        "value": "0"
+      },
+      {
+        "clock": 1794135117,
+        "value": "0"
+      }
+    ],
+    "sl.net.mysql_latency_ms": [
+      {
+        "clock": 1794135087,
+        "value": "1.4692329998524656"
+      },
+      {
+        "clock": 1794135090,
+        "value": "1.2173320001238608"
+      },
+      {
+        "clock": 1794135093,
+        "value": "0.9440540000014153"
+      },
+      {
+        "clock": 1794135108,
+        "value": "8.29033500008336"
+      },
+      {
+        "clock": 1794135111,
+        "value": "1.2265469999874767"
+      },
+      {
+        "clock": 1794135114,
+        "value": "1.9796259998656751"
+      },
+      {
+        "clock": 1794135117,
+        "value": "1.2644790001559159"
+      }
+    ]
+  },
+  "strictly_inside_gap_counts": {
+    "sl.host.cpu_pct": 0,
+    "sl.mysql.lock_waits": 0,
+    "sl.net.mysql_latency_ms": 0
+  },
+  "expected_cadence_seconds": 3,
+  "zero_fill": false
+}
