@@ -75,6 +75,14 @@ Run one scenario at a time. Lock case holds a single-row update, retries blocked
 
 The collector writes `.runtime/samples/observations.jsonl` every3s and requires Zabbix sender `failed: 0`; errors remain recorded. Initial/reset/gap rate data is missing, never zero-filled. CPU/disk/query rates use monotonic-time deltas. SQL digest counters are cumulative since server startup, not interval summaries.
 
+### SQL snapshot field-unit contract
+
+The text item `sl.mysql.sql_summary` carries trusted Zabbix item tags `sl.field_unit.SUM_TIMER_WAIT=ps`, `sl.field_unit.MAX_TIMER_WAIT=ps`, and `sl.snapshot_scope=server_lifetime`. These describe nested Performance Schema fields; the text item's own units remain empty. The collector currently selects those two timer fields, and both are explicitly tagged. `ps` means picoseconds: divide by **1,000,000,000,000** to obtain seconds. `MAX_TIMER_WAIT` is the longest recorded statement duration; `SUM_TIMER_WAIT` is accumulated duration over `COUNT_STAR` statements. Neither is milliseconds, seconds, or a duration confined to the selected dashboard window.
+
+The JSON payload also says `timer_unit: picoseconds` and `cumulative_since_server_start: true`. The scope describes cumulative server instrumentation, which can reset on server restart or deliberate Performance Schema reset; a snapshot timestamp marks collection, not the start time of every summarized SQL statement. Consumers should use the trusted item field metadata when interpreting raw numbers and disclose the cumulative scope. Historical JSON case files remain unchanged.
+
+The real Lab UPDATE digest provided a useful unit check: `MAX_TIMER_WAIT=6001931921000 ps` converts to **6.001931921 seconds**. Its `SUM_TIMER_WAIT=36008702663000 ps` converts to 36.008702663 accumulated seconds over 8 statements; that sum is not the duration of one execution. This caught an actual model interpretation error and motivated explicit field metadata in addition to the raw JSON's unit label.
+
 ## Verification and operations
 
 ```sh

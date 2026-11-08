@@ -1,5 +1,16 @@
 """Explicit Zabbix binding definitions. No display-name inference."""
 HOSTS = {'db': 'sl-lab-db', 'host': 'sl-lab-host', 'net': 'sl-lab-net'}
+# Trusted item metadata applies to fields inside the text snapshot, not item units.
+SQL_SUMMARY_FIELDS = ('DIGEST', 'DIGEST_TEXT', 'COUNT_STAR', 'SUM_TIMER_WAIT',
+                      'MAX_TIMER_WAIT', 'SUM_ROWS_EXAMINED')
+SQL_SUMMARY_FIELD_UNITS = {'SUM_TIMER_WAIT': 'ps', 'MAX_TIMER_WAIT': 'ps'}
+ITEM_METADATA_TAGS = {
+    'sl.mysql.sql_summary': [
+        *({'tag': 'sl.field_unit.' + field, 'value': unit}
+          for field, unit in SQL_SUMMARY_FIELD_UNITS.items()),
+        {'tag': 'sl.snapshot_scope', 'value': 'server_lifetime'},
+    ],
+}
 # key, semantic, kind, Zabbix value_type, units
 ITEMS = {
  'db': [('sl.mysql.lock_waits','lock_waits','metric',3,''),

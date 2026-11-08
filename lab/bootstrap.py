@@ -2,7 +2,7 @@
 import json
 import urllib.request
 from pathlib import Path
-from lab.metrics import HOSTS, ITEMS
+from lab.metrics import HOSTS, ITEMS, ITEM_METADATA_TAGS
 
 def bootstrap(url,password_file,groupid='22'):
     token=None
@@ -30,6 +30,7 @@ def bootstrap(url,password_file,groupid='22'):
             for key,semantic,kind,vtype,units in ITEMS[layer]+[('sl.provenance','provenance','log',4,'')]:
                 existing_items=api('item.get',{'hostids':[hostid],'filter':{'key_':key},'output':['itemid']})
                 data={'hostid':hostid,'name':semantic+' (live Lab measurement)','key_':key,'type':2,'value_type':vtype,'units':units,'history':'7d','trends':'0','tags':[{'tag':'sl.metric','value':semantic},{'tag':'sl.kind','value':kind},{'tag':'sl.source_mode','value':'live_lab'},{'tag':'sl.sample_period','value':'3s'}]}
+                data['tags'].extend(ITEM_METADATA_TAGS.get(key, []))
                 if existing_items:
                     itemid=existing_items[0]['itemid']
                     api('item.update',{'itemid':itemid,'tags':data['tags']})

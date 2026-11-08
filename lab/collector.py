@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from lab.db import connect, config, identity
 from lab.core import delta, send
-from lab.metrics import HOSTS
+from lab.metrics import HOSTS, SQL_SUMMARY_FIELDS
 
 def utc(): return datetime.now(timezone.utc).isoformat()
 
@@ -39,7 +39,7 @@ class Collector:
                 values['sl.mysql.lock_waits']=cur.fetchone()['n']
                 cur.execute('SELECT ENGINE, REQUESTING_ENGINE_TRANSACTION_ID, BLOCKING_ENGINE_TRANSACTION_ID, REQUESTING_THREAD_ID, BLOCKING_THREAD_ID FROM performance_schema.data_lock_waits LIMIT 20')
                 values['sl.mysql.lock_snapshot']=json.dumps({'source_mode':'live_lab','collected_at':timestamp,'rows':cur.fetchall()},default=str)
-                cur.execute("SELECT DIGEST, DIGEST_TEXT, COUNT_STAR, SUM_TIMER_WAIT, MAX_TIMER_WAIT, SUM_ROWS_EXAMINED FROM performance_schema.events_statements_summary_by_digest WHERE SCHEMA_NAME='lab_orders' ORDER BY SUM_TIMER_WAIT DESC LIMIT 8")
+                cur.execute('SELECT ' + ', '.join(SQL_SUMMARY_FIELDS) + " FROM performance_schema.events_statements_summary_by_digest WHERE SCHEMA_NAME='lab_orders' ORDER BY SUM_TIMER_WAIT DESC LIMIT 8")
                 values['sl.mysql.sql_summary']=json.dumps({'source_mode':'live_lab','collected_at':timestamp,'timer_unit':'picoseconds','cumulative_since_server_start':True,'rows':cur.fetchall()},default=str)
         except Exception as exc: errors.append('mysql:'+type(exc).__name__)
         try: counters.update(linux_counters())
