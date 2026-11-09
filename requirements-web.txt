@@ -1,0 +1,7 @@
+# Independent optional web runtime. Existing CLI requirements are unchanged.
+fastapi==0.162.2
+uvicorn==0.54.0
+httpx==0.28.1
+paramiko==5.1.0
+PyMySQL==1.1.2
+cryptography==50.0.2
