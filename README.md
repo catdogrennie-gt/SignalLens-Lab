@@ -4,8 +4,8 @@
 
 | 入口 | 直接访问 | 账号 |
 | --- | --- | --- |
-| **A · 快速功能演示（本仓库）** | **[打开固定锁等待演示](https://miles-what-eleven-ent.trycloudflare.com)** | **无需登录** |
-| **B · 完整运维平台** | **[打开完整只读平台](https://byte-texts-allergy-examples.trycloudflare.com)** | **`demo` / `EvidenceDemo-2026!`** |
+| **A · 快速功能演示（本仓库）** | **[打开固定锁等待演示](https://rural-surrounding-obviously-wellness.trycloudflare.com)** | **无需登录** |
+| **B · 完整运维平台** | **[打开完整只读平台](https://deliver-doubt-epson-document.trycloudflare.com)** | **`demo` / `EvidenceDemo-2026!`** |
 
 A 是一个轻量独立网站：固定锁等待开关、真实故障状态，以及 B 的实际采样、信号检查、AI 任务、报告三问摘要和最多三条冻结曲线。B 的源码见 [DB Evidence Platform](https://github.com/catdogrennie-gt/db-evidence-platform)，保留原有完整系统；公开账号只有固定对象的 `data.read`、`event.read`、`knowledge.read` 权限。
 
