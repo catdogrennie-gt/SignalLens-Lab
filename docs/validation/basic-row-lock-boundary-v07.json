@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "case_id": "LOCK-02",
+  "scenario": "basic-row-lock",
+  "iteration": "release07-prompt-v4.3",
+  "record_type": "real_single_run_with_actual_input_and_output_review",
+  "status": "instantaneous_lock_diagnosis_and_recovery_verified_with_later_summary_scope_limit",
+  "workflow_verified": true,
+  "instantaneous_diagnosis_verified": true,
+  "lock_relationship_verified": true,
+  "requested_lock_role_verified": true,
+  "selected_input_boundary_verified": true,
+  "recovery_verified": true,
+  "latest_recovery_report_all_counts_verified": false,
+  "overall_verified": false,
+  "full_root_cause_verified": false,
+  "scope": "A current lock wait and its waiting-to-blocking transaction relationship. Connection health, exact SQL, business impact, continuous holding duration and complete root cause are not inferred.",
+  "prerequisites": {
+    "selected_items": [
+      "dbops.mysql.lock_snapshot",
+      "dbops.mysql.lock_waits"
+    ],
+    "mapping_version": 2,
+    "config_revision": 2,
+    "producer_contract": "db-evidence-lock-snapshot-v2",
+    "snapshot_scope": "current_observation",
+    "upstream_sampling_seconds": 5,
+    "platform_collection_seconds": 10,
+    "signal_check_seconds": 5,
+    "fresh_complete_zero_snapshots_before_ON": 2,
+    "no_previous_active_lock_episode": true,
+    "no_pending_related_AI_task": true,
+    "owner_permissions_and_external_use_consent_checked": true,
+    "daily_dispatch_budget_available": true,
+    "server_captured_scope_task_rehearsal_passed": true,
+    "missing_automatic_scope_rejected_HTTP_status": 409,
+    "one_hour_rehearsal_removed_thread_item_records_excluded": 9,
+    "rehearsal_created_tasks_or_manifest": false
+  },
+  "timing": {
+    "timezone": "UTC",
+    "on_at": "2026-11-12T18:03:14.180557Z",
+    "urgent_report_nonempty_snapshot_at": "2026-11-12T18:03:17.595360Z",
+    "urgent_report_created_at": "2026-11-12T18:03:29.234712Z",
+    "off_at": "2026-11-12T18:03:48.226528Z",
+    "control_acceptance_interval_seconds": 34.045971,
+    "interval_is_not_proven_continuous_lock_duration": true,
+    "fresh_complete_zero_after_off": [
+      "2026-11-12T18:03:52.582786Z",
+      "2026-11-12T18:04:17.588610Z"
+    ]
+  },
+  "urgent_report": {
+    "id": "04ed3da0-e940-4025-9b9b-8ca7f1863c92",
+    "event_id": "5d52a1d9-8b3e-4c66-9776-c8f7d95d5314",
+    "trigger": "urgent",
+    "status": "completed",
+    "window_start": "2026-11-12T17:03:22.876684Z",
+    "window_end": "2026-11-12T18:03:22.876684Z",
+    "model": "deepseek-v4-pro",
+    "prompt_version": "evidence-investigation-v4.3",
+    "succeeded_model_calls": 1,
+    "observed_waiting_transaction": 3854,
+    "observed_blocking_transaction": 3852,
+    "requested_lock_mode": "X,REC_NOT_GAP",
+    "requested_lock_type": "RECORD",
+    "blocking_lock_mode": "not_supplied",
+    "exact_SQL_and_holding_duration": "unknown",
+    "unsupported_connection_health_claim": false,
+    "original_report_rewritten": false
+  },
+  "freeze": {
+    "contract": "selected-monitoring-evidence-v1",
+    "selected_item_count": 2,
+    "raw_evidence_records": 576,
+    "raw_records_are_not_distinct_upstream_sample_count": true,
+    "lock_snapshot_item_records_including_generic_text_and_snapshot_projection": 384,
+    "lock_count_item_records": 192,
+    "numeric_window_count": 1,
+    "numeric_window_points": 720,
+    "removed_thread_item_records": 0,
+    "aggregate_metric_frames": 0,
+    "raw_payload_hashes_and_manifest_references_verified": true,
+    "old_frozen_reports_rewritten": false
+  },
+  "actual_request": {
+    "compact_UTF8_request_bytes": 23037,
+    "context_UTF8_bytes": 7905,
+    "provider_prompt_tokens": 6239,
+    "provider_completion_tokens": 1364,
+    "provider_total_tokens": 7603,
+    "budgets_or_permissions_increased": false,
+    "scenario_answer_injected": false,
+    "manual_collection_or_AI_dispatch": false
+  },
+  "recovery_report": {
+    "id": "7e90b967-9ac3-42d5-8095-079848b257ca",
+    "trigger": "periodic",
+    "created_at": "2026-11-12T18:05:54.928688Z",
+    "window_start": "2026-11-12T17:05:48.023663Z",
+    "window_end": "2026-11-12T18:05:48.023663Z",
+    "current_issue_uses_this_later_assessment": true,
+    "later_selection_alone_is_not_a_product_defect": true,
+    "same_blocking_transaction_and_monitored_scope": true,
+    "actual_frozen_lock_snapshots": 193,
+    "actual_frozen_nonempty_snapshots": 2,
+    "retained_model_lock_samples": 6,
+    "retained_model_nonempty_samples": 1,
+    "retained_model_empty_after_samples": 4,
+    "same_time_window_numeric_points": 720,
+    "numeric_last_value": 0,
+    "remaining_gap": "The report describes only one occurrence in the whole window, although only one nonempty snapshot was retained for the model and two exist in the frozen manifest. Counts must state whether they cover retained input or the complete frozen window."
+  },
+  "read_only_access": {
+    "urgent_report_HTTP_status": 200,
+    "urgent_report_own_numeric_window_HTTP_status": 200,
+    "urgent_report_own_numeric_points": 720,
+    "urgent_report_internal_projection_nodes": 12,
+    "urgent_report_internal_projection_edges": 9,
+    "urgent_graph_measurement_is_readonly_internal_projection_not_public_override": true,
+    "current_issue_HTTP_status": 200,
+    "current_issue_nodes": 12,
+    "current_issue_edges": 11,
+    "current_issue_numeric_points": 720
+  },
+  "remaining_limits": [
+    {
+      "issue_id": "SAMPLE-SCOPE-01",
+      "status": "open",
+      "detail": "The later recovery report overstates a retained-sample count as a whole-window count. No further fault is required to reproduce this gap: actual requests and frozen evidence are preserved."
+    },
+    {
+      "severity": "P2",
+      "detail": "Both reports describe four retained empty samples but cite three sample IDs; input chronology explicitly records refs_omitted=1. Quantified claims need complete traceability or an explicit reference-coverage qualification."
+    },
+    {
+      "detail": "Current snapshot completeness, historical coverage gaps and model projection omissions are separate. Neither isolated empty samples nor absent business metrics prove continuous health or no business impact."
+    }
+  ],
+  "cleanup": {
+    "ON_runs": 1,
+    "independent_hard_OFF_guard_seconds": 290,
+    "guard_result": "already_OFF_no_further_control",
+    "single_existing_SQL_owner": true,
+    "maximum_scenario_sessions": 2,
+    "fixed_row_rollback_only": true,
+    "distinct_fresh_complete_zero_snapshots": 2,
+    "faults_left_ON": false,
+    "public_fault_switch_available": false
+  },
+  "Zabbix_alert_contrast": "not_evaluated_in_this_run; no claim that Zabbix could not alert",
+  "follow_up": {
+    "issue_id": "SAMPLE-SCOPE-01",
+    "record": "basic-row-lock-sample-scope-v44.json",
+    "record_type": "controlled_historical_reanalysis_not_new_autonomous_detection",
+    "input_anchor_and_source_preservation_verified": true,
+    "window_only_once_claim_not_repeated": true,
+    "complete_output_semantics_verified": false,
+    "remaining_limits": [
+      "Unsupported self-recovery and duration wording.",
+      "Numeric sample count and retained snapshot count are not clearly attributed and cited."
+    ],
+    "original_report_and_frozen_data_unchanged": true
+  }
+}
