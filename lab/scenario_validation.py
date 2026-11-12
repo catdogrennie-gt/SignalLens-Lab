@@ -353,7 +353,17 @@ def save_private_result(path,result):
     path.parent.mkdir(parents=True,exist_ok=True)
     temporary=path.with_name(path.name+'.tmp')
     temporary.write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
-    temporary.chmod(0o600);temporary.replace(path)
+    temporary.chmod(0o600)
+    # Windows readers can briefly deny replacing the last complete checkpoint.
+    # Retry only that operation, retaining the previous record until success;
+    # persistent denial still reaches the validator's normal safety cleanup.
+    for delay in (0,.025,.05,.1,.2):
+        if delay:time.sleep(delay)
+        try:
+            temporary.replace(path)
+            break
+        except PermissionError:
+            if delay==.2:raise
 
 
 def main(argv=None):

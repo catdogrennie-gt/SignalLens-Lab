@@ -1,0 +1,141 @@
+{
+  "schema": 1,
+  "scenario": "pool-pressure",
+  "iteration": "context-v3.8",
+  "record_type": "real_workflow_observation",
+  "status": "incomplete",
+  "workflow_verified": false,
+  "discovery_observed": true,
+  "cleanup_observed": true,
+  "monitoring_return_observed": true,
+  "diagnosis_verified": false,
+  "diagnosis_quality": "rejected_invalid_references",
+  "meaning": "Autonomous discovery and independent recovery were observed. No valid report matching this episode was obtained within 300 seconds. This is not a diagnostic pass.",
+  "timing": {
+    "on_at": "2026-11-12T11:16:29.528057Z",
+    "first_new_signal_episode_at": "2026-11-12T11:16:41.507542Z",
+    "off_at": "2026-11-12T11:21:29.697950Z",
+    "direct_cleanup_observed_at": "2026-11-12T11:21:33.473377Z",
+    "ended_at": "2026-11-12T11:22:18.906533Z"
+  },
+  "data": {
+    "source": "real selected Zabbix histories",
+    "new_signal_count": 8,
+    "valid_current_episode_report_id": null,
+    "rejected_investigation_id": "cf194784-086d-4568-8473-a2671009e917",
+    "rejection_code": "unverified_evidence_citation",
+    "raw_model_response_intentionally_omitted": true
+  },
+  "measurements": [
+    {
+      "name": "Request error ratio",
+      "unit": "",
+      "before": 0.0,
+      "during_largest_absolute_difference": 1.0,
+      "during_observed_at": "2026-11-12T11:17:01.507666Z",
+      "after": 0.0,
+      "after_observed_at": "2026-11-12T11:22:16.506980Z"
+    },
+    {
+      "name": "Connection pool waiters",
+      "unit": "",
+      "before": 0.0,
+      "during_largest_absolute_difference": 2.0,
+      "during_observed_at": "2026-11-12T11:16:31.507066Z",
+      "after": 0.0,
+      "after_observed_at": "2026-11-12T11:22:16.506980Z"
+    },
+    {
+      "name": "Request queue depth",
+      "unit": "",
+      "before": 0.0,
+      "during_largest_absolute_difference": 24.0,
+      "during_observed_at": "2026-11-12T11:17:06.506135Z",
+      "after": 0.0,
+      "after_observed_at": "2026-11-12T11:22:16.506980Z"
+    },
+    {
+      "name": "Connection pool in use",
+      "unit": "",
+      "before": 0.0,
+      "during_largest_absolute_difference": 6.0,
+      "during_observed_at": "2026-11-12T11:16:31.507066Z",
+      "after": 0.0,
+      "after_observed_at": "2026-11-12T11:22:16.506980Z"
+    },
+    {
+      "name": "Request duration p95",
+      "unit": "ms",
+      "before": 1.7178350026370026,
+      "during_largest_absolute_difference": 7797.012039001856,
+      "during_observed_at": "2026-11-12T11:18:56.506796Z",
+      "after": 1.66959100170061,
+      "after_observed_at": "2026-11-12T11:22:16.506980Z"
+    },
+    {
+      "name": "Pool acquisition wait p95",
+      "unit": "ms",
+      "before": 0.009822000720305368,
+      "during_largest_absolute_difference": 600.0,
+      "during_observed_at": "2026-11-12T11:16:36.505810Z",
+      "after": 0.011594998795771971,
+      "after_observed_at": "2026-11-12T11:22:16.506980Z"
+    }
+  ],
+  "measurement_scope": "Before/whole-run largest absolute difference/last recovery observations from the harness; distinct from the model frozen subwindow.",
+  "counterevidence": {
+    "database_threads_connected_observed_range": [
+      8,
+      8
+    ],
+    "database_connection_capacity_observed_range": [
+      40.0,
+      40.0
+    ],
+    "scope_note": "Only these counters and this window. Missing database-call samples during acquisition failure are not evidence of fast database execution."
+  },
+  "cleanup": {
+    "normal": true,
+    "held_connections": 0,
+    "held_read_view": false
+  },
+  "monitoring_return": {
+    "status": "observed_return_near_pre_switch_values",
+    "distinct_observations": 2,
+    "scope": "This run newly signaled metric dimensions, not a database health guarantee.",
+    "final_current_signal_count": 0
+  },
+  "input_audit": {
+    "prompt_version": "evidence-investigation-v3.8",
+    "input_bound_bytes": 23749,
+    "distinct_retained_metric_dimensions": 26,
+    "retained_signal_count": 6,
+    "exact_checked_scenario_key_hits": [],
+    "actual_audit_file_sha256": "681ea1c6dbf6ec6a713f43a7886112916733677c02f94df0569b856bb8246058",
+    "scope_note": "Input coverage improved; model interpretation and complete citation support are not certified."
+  },
+  "analysis_limitations": [
+    "The model proposed application-pool saturation with queue and latency evidence, but rewrote two supplied reference identifiers and the platform rejected the draft.",
+    "A previously completed report used a window ending before this anomaly and was not counted as current.",
+    "No confirmed root cause or production outcome is claimed. Failed drafts and earlier records are retained privately."
+  ],
+  "zabbix_observation": {
+    "window": {
+      "from": "2026-11-12T11:16:29.528057Z",
+      "to": "2026-11-12T11:22:18.906533Z"
+    },
+    "new_trigger_event_count": 0,
+    "configured_enabled_trigger_count": 11,
+    "event_query_limit_reached": false,
+    "definitions_changed_count": 0,
+    "comparison_scope": "Only the configured hosts, actual trigger configuration and measured window. Zabbix can be extended with application-pool rules."
+  },
+  "reproduce": {
+    "entrypoint": "python -m lab.scenario_validation",
+    "scenario": "pool-pressure",
+    "max_wait_seconds": 300,
+    "recovery_wait_seconds": 150,
+    "requests": "A allowlisted GET projections and conditional bounded switch only; no manual B task or model request"
+  },
+  "errors": []
+}

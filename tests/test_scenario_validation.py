@@ -1,7 +1,9 @@
 from datetime import datetime,timedelta,timezone
 import json
+from pathlib import Path
 import httpx
 import pytest
+import lab.scenario_validation as validation_module
 from lab.scenario_validation import ScenarioValidator,ValidationOptions,save_private_result
 
 
@@ -157,6 +159,66 @@ def test_output_must_be_absolute_outside_source_repository(tmp_path):
     with pytest.raises(ValueError):save_private_result('local.json',{})
     p=tmp_path/'proof.private.json';save_private_result(p,{'status':'incomplete'})
     assert json.loads(p.read_text())['status']=='incomplete'
+
+
+def test_checkpoint_retries_transient_reader_lock_without_losing_previous_record(tmp_path,monkeypatch):
+    path=tmp_path/'proof.private.json';save_private_result(path,{'version':1})
+    replace=Path.replace;attempts=[];delays=[]
+    def locked_then_released(temporary,target):
+        attempts.append(target)
+        assert json.loads(path.read_text())=={'version':1}
+        if len(attempts)<3:raise PermissionError('reader temporarily holds previous checkpoint')
+        return replace(temporary,target)
+    monkeypatch.setattr(Path,'replace',locked_then_released)
+    monkeypatch.setattr(validation_module.time,'sleep',delays.append)
+    save_private_result(path,{'version':2})
+    assert len(attempts)==3 and len(delays)==2
+    assert json.loads(path.read_text())=={'version':2}
+    assert not path.with_name(path.name+'.tmp').exists()
+
+
+def test_checkpoint_permanent_permission_failure_is_bounded_and_keeps_previous_record(tmp_path,monkeypatch):
+    path=tmp_path/'proof.private.json';save_private_result(path,{'version':1})
+    attempts=[];delays=[]
+    def locked(temporary,target):
+        attempts.append(target);raise PermissionError('persistent denial')
+    monkeypatch.setattr(Path,'replace',locked)
+    monkeypatch.setattr(validation_module.time,'sleep',delays.append)
+    with pytest.raises(PermissionError):save_private_result(path,{'version':2})
+    assert len(attempts)==5 and len(delays)==4 and sum(delays)<1
+    assert json.loads(path.read_text())=={'version':1}
+    assert json.loads(path.with_name(path.name+'.tmp').read_text())=={'version':2}
+
+
+def test_checkpoint_other_os_error_is_not_retried(tmp_path,monkeypatch):
+    path=tmp_path/'proof.private.json';save_private_result(path,{'version':1})
+    attempts=[];delays=[]
+    def disk_failure(temporary,target):
+        attempts.append(target);raise OSError('unrelated storage failure')
+    monkeypatch.setattr(Path,'replace',disk_failure)
+    monkeypatch.setattr(validation_module.time,'sleep',delays.append)
+    with pytest.raises(OSError):save_private_result(path,{'version':2})
+    assert len(attempts)==1 and delays==[]
+    assert json.loads(path.read_text())=={'version':1}
+
+
+def test_checkpoint_exhaustion_after_on_still_conditionally_cleans_owned_fault(tmp_path,monkeypatch):
+    validator,calls,data=fixture();path=tmp_path/'proof.private.json'
+    replace=Path.replace;failed=[]
+    def fail_only_first_active_checkpoint(temporary,target):
+        if data['on'] and len(failed)<5:
+            failed.append(target);raise PermissionError('persistent active-checkpoint reader lock')
+        return replace(temporary,target)
+    monkeypatch.setattr(Path,'replace',fail_only_first_active_checkpoint)
+    monkeypatch.setattr(validation_module.time,'sleep',lambda seconds:None)
+    validator.on_update=lambda result:save_private_result(path,result)
+    result=validator.run()
+    assert len(failed)==5 and not data['on']
+    assert result['status']=='error' and result['phases']['direct_cleanup']['confirmed']
+    writes=[body for method,route,body in calls if method=='PUT']
+    assert [body['on'] for body in writes]==[True,False]
+    assert writes[-1]['expected_validation_id']==validator.validation_id
+    assert json.loads(path.read_text())['phases']['direct_cleanup']['confirmed']
 
 
 @pytest.mark.parametrize('origin',['http://user:password@a.test','https://a.test/?token=secret','http://a.test/other'])
