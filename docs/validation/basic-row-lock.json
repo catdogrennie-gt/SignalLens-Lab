@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "scenario": "basic-row-lock",
+  "record_type": "real_workflow_observation",
+  "status": "workflow_verified_with_limitations",
+  "diagnosis_quality": "basic_lock_relationship_reviewed_with_limitations",
+  "meaning": "Real bounded two-session row lock, normal Zabbix collection, autonomous platform detection and live-model report, OFF and two fresh complete empty snapshots. Basic lock observation and blocker/waiter relationship are verified; specific SQL/root cause and complete diagnosis accuracy are not established.",
+  "timing": {
+    "on_at": "2026-11-12T15:07:49.337188Z",
+    "first_positive_snapshot_at": "2026-11-12T15:07:57.633863Z",
+    "snapshot_delay_seconds": 8.3,
+    "investigation_window_to": "2026-11-12T15:08:03.560547Z",
+    "window_freeze_after_on_seconds": 14.22,
+    "report_task_finished_at": "2026-11-12T15:08:24.933764Z",
+    "report_completed_after_on_seconds": 35.6,
+    "off_at": "2026-11-12T15:12:30.426871Z",
+    "monitoring_empty_snapshots_after_off": [
+      "2026-11-12T15:12:47.627579Z",
+      "2026-11-12T15:13:02.621458Z"
+    ]
+  },
+  "collection": {
+    "source": "Existing Zabbix read-only API, separate narrowly scoped laboratory source",
+    "host_count": 1,
+    "selected_item_count": 3,
+    "selected_items": [
+      {
+        "key": "dbops.mysql.lock_snapshot",
+        "role": "Complete current lock-wait snapshot",
+        "origin": "Read-only performance_schema extension",
+        "contract": "db-evidence-lock-snapshot-v2",
+        "sampling_seconds": 5
+      },
+      {
+        "key": "dbops.mysql.lock_waits",
+        "role": "Current lock-wait count",
+        "origin": "Read-only performance_schema extension",
+        "sampling_seconds": 5
+      },
+      {
+        "key": "mysql.threads_running",
+        "role": "Running threads",
+        "origin": "Official MySQL template"
+      }
+    ],
+    "collection_interval_seconds": 10,
+    "signal_interval_seconds": 5,
+    "manual_collection_or_AI_dispatch": false
+  },
+  "data": {
+    "event_id": "5d52a1d9-8b3e-4c66-9776-c8f7d95d5314",
+    "report_id": "f182cb84-b852-41e5-8fe1-01727615a461",
+    "report_mode": "live_redacted",
+    "report_status": "completed",
+    "model": "deepseek-v4-pro",
+    "prompt_version": "evidence-investigation-v4.1",
+    "succeeded_model_calls": 1,
+    "full_report_text_intentionally_omitted": true
+  },
+  "measurements": [
+    {
+      "name": "Complete current lock-wait snapshot rows",
+      "unit": "rows",
+      "before": 0,
+      "during_max_observed": 1,
+      "after": 0
+    }
+  ],
+  "safety": {
+    "existing_isolated_target": true,
+    "single_existing_SQL_owner": true,
+    "maximum_scenario_sessions": 2,
+    "fixed_row": true,
+    "rollback_only": true,
+    "independent_deadline_guard_seconds": 290,
+    "arbitrary_SQL_or_target_input": false,
+    "observation_wait_seconds": 280,
+    "actual_on_seconds": 281.09
+  },
+  "cleanup": {
+    "existing_owner_desired_on": false,
+    "existing_owner_actual_state": "off",
+    "distinct_fresh_complete_zero_snapshots": 2,
+    "platform_observation_state": "recovered",
+    "platform_presentation_kind": "history",
+    "read_only_visitor_issue_HTTP_status": 200,
+    "historical_report_retained": true
+  },
+  "workflow_verified": true,
+  "basic_lock_relationship_verified": true,
+  "diagnosis_verified": false,
+  "diagnosis_limitations": [
+    "The report does not identify the exact SQL, held-lock duration, transaction intent, or complete root cause.",
+    "One hypothesis attributes the requested X,REC_NOT_GAP mode to the blocking transaction; the cited snapshot establishes that mode on the requesting side only. The phenomenon and surface-cause sections correctly describe the requesting side.",
+    "The frozen report has one positive lock snapshot and cannot establish subsequent persistence or recovery; recovery is separately supported by two later complete snapshots.",
+    "Zabbix trigger events were not reviewed for this basic case; no alert-gap claim is made."
+  ],
+  "evidence_integrity": {
+    "private_raw_record_sha256": "6be6565f0baf634532595900fa26bd92aecd7076925154c59daf99d91b93be0b",
+    "raw_SQL_credentials_logs_and_private_addresses_omitted": true
+  },
+  "presentation": {
+    "business_symptom": "隔离 MySQL 出现真实行锁等待：完整等待链快照由0变1，关闭后连续两次新采样为0。",
+    "platform_clues": "平台自动发现锁等待并生成真实AI报告，正确解释请求方和阻塞方的基本关系；具体SQL和完整根因仍未知。",
+    "current_status": "故障已关闭，当前展示为历史已恢复观测；原冻结报告保留。"
+  }
+}

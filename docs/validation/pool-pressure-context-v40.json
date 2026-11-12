@@ -1,0 +1,462 @@
+{
+  "schema": 1,
+  "scenario": "pool-pressure",
+  "iteration": "context-v4.0-01",
+  "record_type": "real_workflow_observation",
+  "status": "observations_recorded",
+  "workflow_verified": true,
+  "diagnosis_verified": false,
+  "diagnosis_quality": "partial_joint_explanation",
+  "meaning": "Autonomous discovery, an episode-matched real model report, independent cleanup and monitored return were observed. Diagnostic quality did not pass.",
+  "timing": {
+    "on_at": "2026-11-12T12:57:36.297009Z",
+    "first_new_signal_episode_at": "2026-11-12T12:57:53.512823Z",
+    "first_new_signal_observed_by_harness_at": "2026-11-12T12:58:06.427807Z",
+    "current_episode_report_observed_by_harness_at": "2026-11-12T12:59:05.800403Z",
+    "off_at": "2026-11-12T12:59:05.884423Z",
+    "direct_cleanup_observed_at": "2026-11-12T12:59:09.648362Z",
+    "monitor_return_recorded_at": "2026-11-12T13:00:01.802834Z"
+  },
+  "data": {
+    "source": "real selected Zabbix histories",
+    "new_signal_count": 7,
+    "current_episode_report_id": "f7afbabf-9f09-465d-b668-7ae5851419fc",
+    "manual_analysis_submitted": false,
+    "raw_requests_intentionally_omitted": true,
+    "counting_boundary": "Harness-stage new signal IDs, per-request model signals, distinct numeric item IDs and evidence references are separate counts."
+  },
+  "measurement_scope": "Unique fresh source-time samples across the whole switch run. Maxima occur at different instants; these phases are not the model’s frozen subwindow.",
+  "measurements": [
+    {
+      "itemid": "51147",
+      "name": "Request duration p95",
+      "scope": "Unique fresh source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt times or the model frozen subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 1,
+          "min": 1.413255995430518,
+          "max": 1.413255995430518,
+          "first": 1.413255995430518,
+          "last": 1.413255995430518,
+          "first_observed_at": "2026-11-12T12:57:26.506158Z",
+          "last_observed_at": "2026-11-12T12:57:26.506158Z",
+          "unit": "ms",
+          "value_semantics": "gauge"
+        },
+        "on": {
+          "n": 8,
+          "min": 800.1130459961132,
+          "max": 7788.69516600389,
+          "first": 800.1130459961132,
+          "last": 7786.424016994715,
+          "first_observed_at": "2026-11-12T12:57:41.506147Z",
+          "last_observed_at": "2026-11-12T12:58:56.505526Z",
+          "unit": "ms",
+          "value_semantics": "gauge"
+        },
+        "after_off": {
+          "n": 6,
+          "min": 1.517273994977586,
+          "max": 7781.795483999304,
+          "first": 7781.795483999304,
+          "last": 1.543775993923191,
+          "first_observed_at": "2026-11-12T12:59:06.505029Z",
+          "last_observed_at": "2026-11-12T12:59:56.506074Z",
+          "unit": "ms",
+          "value_semantics": "gauge"
+        }
+      }
+    },
+    {
+      "itemid": "51149",
+      "name": "Pool acquisition wait p95",
+      "scope": "Unique fresh source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt times or the model frozen subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 1,
+          "min": 0.009828996553551406,
+          "max": 0.009828996553551406,
+          "first": 0.009828996553551406,
+          "last": 0.009828996553551406,
+          "first_observed_at": "2026-11-12T12:57:26.506158Z",
+          "last_observed_at": "2026-11-12T12:57:26.506158Z",
+          "unit": "ms",
+          "value_semantics": "gauge"
+        },
+        "on": {
+          "n": 8,
+          "min": 600.0,
+          "max": 600.0,
+          "first": 600.0,
+          "last": 600.0,
+          "first_observed_at": "2026-11-12T12:57:41.506147Z",
+          "last_observed_at": "2026-11-12T12:58:56.505526Z",
+          "unit": "ms",
+          "value_semantics": "gauge"
+        },
+        "after_off": {
+          "n": 6,
+          "min": 0.01081600203178823,
+          "max": 600.0,
+          "first": 600.0,
+          "last": 0.011677999282255769,
+          "first_observed_at": "2026-11-12T12:59:06.505029Z",
+          "last_observed_at": "2026-11-12T12:59:56.506074Z",
+          "unit": "ms",
+          "value_semantics": "gauge"
+        }
+      }
+    },
+    {
+      "itemid": "51151",
+      "name": "Request error ratio",
+      "scope": "Unique fresh source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt times or the model frozen subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 1,
+          "min": 0.0,
+          "max": 0.0,
+          "first": 0.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:57:26.506158Z",
+          "last_observed_at": "2026-11-12T12:57:26.506158Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "on": {
+          "n": 8,
+          "min": 0.10434782608695652,
+          "max": 1.0,
+          "first": 0.10434782608695652,
+          "last": 1.0,
+          "first_observed_at": "2026-11-12T12:57:41.506147Z",
+          "last_observed_at": "2026-11-12T12:58:56.505526Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "after_off": {
+          "n": 6,
+          "min": 0.0,
+          "max": 1.0,
+          "first": 1.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:59:06.505029Z",
+          "last_observed_at": "2026-11-12T12:59:56.506074Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        }
+      }
+    },
+    {
+      "itemid": "51152",
+      "name": "Request queue depth",
+      "scope": "Unique fresh source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt times or the model frozen subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 1,
+          "min": 0.0,
+          "max": 0.0,
+          "first": 0.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:57:26.506158Z",
+          "last_observed_at": "2026-11-12T12:57:26.506158Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "on": {
+          "n": 8,
+          "min": 3.0,
+          "max": 24.0,
+          "first": 3.0,
+          "last": 24.0,
+          "first_observed_at": "2026-11-12T12:57:41.506147Z",
+          "last_observed_at": "2026-11-12T12:58:56.505526Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "after_off": {
+          "n": 6,
+          "min": 0.0,
+          "max": 23.0,
+          "first": 23.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:59:06.505029Z",
+          "last_observed_at": "2026-11-12T12:59:56.506074Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        }
+      }
+    },
+    {
+      "itemid": "51153",
+      "name": "Connection pool capacity",
+      "scope": "Unique fresh source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt times or the model frozen subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 1,
+          "min": 6.0,
+          "max": 6.0,
+          "first": 6.0,
+          "last": 6.0,
+          "first_observed_at": "2026-11-12T12:57:26.506158Z",
+          "last_observed_at": "2026-11-12T12:57:26.506158Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "on": {
+          "n": 8,
+          "min": 6.0,
+          "max": 6.0,
+          "first": 6.0,
+          "last": 6.0,
+          "first_observed_at": "2026-11-12T12:57:41.506147Z",
+          "last_observed_at": "2026-11-12T12:58:56.505526Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "after_off": {
+          "n": 6,
+          "min": 6.0,
+          "max": 6.0,
+          "first": 6.0,
+          "last": 6.0,
+          "first_observed_at": "2026-11-12T12:59:06.505029Z",
+          "last_observed_at": "2026-11-12T12:59:56.506074Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        }
+      }
+    },
+    {
+      "itemid": "51154",
+      "name": "Connection pool in use",
+      "scope": "Unique fresh source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt times or the model frozen subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 1,
+          "min": 0.0,
+          "max": 0.0,
+          "first": 0.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:57:26.506158Z",
+          "last_observed_at": "2026-11-12T12:57:26.506158Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "on": {
+          "n": 8,
+          "min": 6.0,
+          "max": 6.0,
+          "first": 6.0,
+          "last": 6.0,
+          "first_observed_at": "2026-11-12T12:57:41.506147Z",
+          "last_observed_at": "2026-11-12T12:58:56.505526Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "after_off": {
+          "n": 6,
+          "min": 0.0,
+          "max": 6.0,
+          "first": 6.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:59:06.505029Z",
+          "last_observed_at": "2026-11-12T12:59:56.506074Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        }
+      }
+    },
+    {
+      "itemid": "51155",
+      "name": "Connection pool waiters",
+      "scope": "Unique fresh source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt times or the model frozen subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 1,
+          "min": 0.0,
+          "max": 0.0,
+          "first": 0.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:57:26.506158Z",
+          "last_observed_at": "2026-11-12T12:57:26.506158Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "on": {
+          "n": 8,
+          "min": 2.0,
+          "max": 2.0,
+          "first": 2.0,
+          "last": 2.0,
+          "first_observed_at": "2026-11-12T12:57:41.506147Z",
+          "last_observed_at": "2026-11-12T12:58:56.505526Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "after_off": {
+          "n": 6,
+          "min": 0.0,
+          "max": 2.0,
+          "first": 2.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:59:06.505029Z",
+          "last_observed_at": "2026-11-12T12:59:56.506074Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        }
+      }
+    },
+    {
+      "itemid": "51165",
+      "name": "Database current connections",
+      "scope": "Unique fresh source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt times or the model frozen subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 1,
+          "min": 9.0,
+          "max": 9.0,
+          "first": 9.0,
+          "last": 9.0,
+          "first_observed_at": "2026-11-12T12:57:28.509894Z",
+          "last_observed_at": "2026-11-12T12:57:28.509894Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "on": {
+          "n": 8,
+          "min": 9.0,
+          "max": 9.0,
+          "first": 9.0,
+          "last": 9.0,
+          "first_observed_at": "2026-11-12T12:57:38.514084Z",
+          "last_observed_at": "2026-11-12T12:58:53.513561Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "after_off": {
+          "n": 6,
+          "min": 9.0,
+          "max": 9.0,
+          "first": 9.0,
+          "last": 9.0,
+          "first_observed_at": "2026-11-12T12:59:08.513433Z",
+          "last_observed_at": "2026-11-12T12:59:58.512992Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        }
+      }
+    },
+    {
+      "itemid": "51166",
+      "name": "Database connection capacity",
+      "scope": "Unique fresh source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt times or the model frozen subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 1,
+          "min": 40.0,
+          "max": 40.0,
+          "first": 40.0,
+          "last": 40.0,
+          "first_observed_at": "2026-11-12T12:57:28.509894Z",
+          "last_observed_at": "2026-11-12T12:57:28.509894Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "on": {
+          "n": 8,
+          "min": 40.0,
+          "max": 40.0,
+          "first": 40.0,
+          "last": 40.0,
+          "first_observed_at": "2026-11-12T12:57:38.514084Z",
+          "last_observed_at": "2026-11-12T12:58:53.513561Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        },
+        "after_off": {
+          "n": 6,
+          "min": 40.0,
+          "max": 40.0,
+          "first": 40.0,
+          "last": 40.0,
+          "first_observed_at": "2026-11-12T12:59:08.513433Z",
+          "last_observed_at": "2026-11-12T12:59:58.512992Z",
+          "unit": "",
+          "value_semantics": "gauge"
+        }
+      }
+    }
+  ],
+  "model_calls": [
+    {
+      "sequence": 1,
+      "model": "deepseek-v4-pro",
+      "prompt_version": "evidence-investigation-v4.0",
+      "input_bound_bytes": 23890,
+      "request_hash_matches": true,
+      "metric_dimension_count": 26,
+      "evidence_reference_count": 27,
+      "numeric_summary_count": 21,
+      "raw_projection_count": 6,
+      "signal_count": 6,
+      "exact_checked_scenario_key_hits": []
+    },
+    {
+      "sequence": 2,
+      "model": "deepseek-v4-pro",
+      "prompt_version": "evidence-investigation-v4.0",
+      "input_bound_bytes": 20146,
+      "request_hash_matches": true,
+      "metric_dimension_count": 9,
+      "evidence_reference_count": 10,
+      "numeric_summary_count": 4,
+      "raw_projection_count": 6,
+      "signal_count": 6,
+      "exact_checked_scenario_key_hits": []
+    }
+  ],
+  "analysis_limitations": [
+    "The actual final request kept all 6 supplied change signals, but only 9 distinct numeric items out of the first round’s 26. Evidence references are 27 then 10 because one item has more than one projection; references are not dimensions.",
+    "The report linked observed request latency, pool-acquisition waiting and queue growth as a supported candidate mechanism, an improvement over the previous generic correlation.",
+    "Pool capacity and the database current/maximum connection pair were absent from the actual final request; manual measurements cannot be attributed to model input.",
+    "A complete joint explanation and targeted action plan did not pass: the report still favored generic SQL and host checks instead of a sufficiently discriminating pool-focused next step."
+  ],
+  "code_provenance": {
+    "ai_candidate_release": "ai-context-v40-01",
+    "ai_prompt_version": "evidence-investigation-v4.0",
+    "source_sha256": {
+      "platform_app/investigations.py": "3f255a0ff8526ab40e3054590273cafac4ed966933f707a7fa741e8ba7793f8c",
+      "platform_app/model_context.py": "38dbcfd5b4179c2575091f197c5d43e28874fa85315e72a686e707e31ce0aada",
+      "platform_app/tools.py": "e4fef4f2095399c2f9ede97c416f44c433f03781cf6a8c66e675254ec8ebe8db",
+      "tests/platform/test_final_context_coverage.py": "4d4fd3d4e7ea6d06349b741024d43e42d53205eeca2125b8c9446e086aeac6d6",
+      "tests/platform/test_reasoning_evidence_contract.py": "fc214e3dd7bb259a372ad522d6008c2b0268c42b6d0b6fdcbdb32b7a0345dca7"
+    },
+    "boundary": "These hashes identify the reviewed AI-only candidate sealed before this run; API/frontend remained the earlier release. Source hashes and workflow completion do not prove diagnosis quality."
+  },
+  "cleanup": {
+    "normal": true,
+    "held_connections": 0,
+    "held_read_view": false
+  },
+  "monitoring_return": {
+    "status": "observed_return_near_pre_switch_values",
+    "distinct_observations": 2,
+    "meaning": "Return of this run signaled dimensions near pre-switch values, not whole-database health."
+  },
+  "zabbix_observation": {
+    "new_trigger_event_count": 0,
+    "configured_enabled_trigger_count": 11,
+    "unsupported_rule_count": 1,
+    "enabled_rule_definitions_unchanged_from_v39": true,
+    "event_query_limit_reached": false,
+    "limitation": "One enabled version-change rule lacked its second sample. No new event means no alert under this actual configuration/window, not a Zabbix capability limit or a health guarantee. This comparison does not separately assert unchanged effective macros."
+  },
+  "reproduce": {
+    "entrypoint": "python -m lab.scenario_validation",
+    "scenario": "pool-pressure",
+    "parameter_boundary": "Per-run CLI timeout/poll settings were not recorded in the scalar source and are not inferred here.",
+    "control": "A conditional bounded switch and allowlisted GETs only. B schedules discovery and real model calls independently."
+  },
+  "errors": []
+}

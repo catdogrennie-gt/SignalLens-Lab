@@ -1,24 +1,25 @@
 # SignalLens Lab
 
-**开启一个真实、可关闭的问题，观察 AI 数据库运维平台如何发现、分析和恢复。**
+**隔离 MySQL 验证环境：复现问题，核对监控数据、平台发现与 AI 解释。**
 
-本项目是 [DB Evidence Platform](https://github.com/catdogrennie-gt/db-evidence-platform) 的独立验证与快速演示环境：用有限的业务请求和隔离 MySQL 复现问题，让平台根据真实 Zabbix 数据自主检查，逐项验证能力与不足。它不把故障名称或预期答案发送给模型，也不代表生产部署效果。
+本项目是 [DB Evidence Platform](https://github.com/catdogrennie-gt/db-evidence-platform) 的独立验证环境：用有限的业务请求和隔离 MySQL 复现问题，让平台根据真实 Zabbix 数据自主检查，逐项验证能力与不足。它不把故障名称或预期答案发送给模型，也不代表生产部署效果。
 
-## 在线体验
+## 当前状态与在线查看
+
+**故障发生器目前仅用于内部验证，暂无公开故障开关。** 在线只保留完整分析平台，供只读查看真实问题、报告、图表和已恢复的历史观测。故障控制代码、部署说明和历次验证记录继续保留；恢复公开故障体验前，需要先完成可用性与分析效果验收。
 
 | 入口 | 用途 | 登录 |
 | --- | --- | --- |
-| **[A · 快速功能演示](https://representatives-remedies-eva-effectively.trycloudflare.com)** | 选择场景、打开/关闭故障，同页看实际观测与分析结果 | 无需登录 |
 | **[B · 完整分析平台](https://screens-sponsor-kijiji-julie.trycloudflare.com)** | 查看监控、问题、冻结报告及安全配置概览 | `demo` / `EvidenceDemo-2026!` |
 
-B 的公开账号可以查看获授权范围内的安全信息，不能修改配置、启动分析或执行数据库操作；原始敏感资料不因公开演示而放开。两个网址是临时隧道，依赖演示电脑在线；公开密码仅属于此部署的只读身份，不是新安装的默认口令。
+B 的公开账号可以查看获授权范围内的安全信息，不能修改配置、启动分析或执行数据库操作；原始敏感资料不因公开展示而放开。该网址是临时隧道，依赖演示电脑在线；公开密码仅属于此部署的只读身份，不是新安装的默认口令。
 
 <details>
-<summary>展开快速演示操作</summary>
+<summary>本机或内网验证操作（需自行部署）</summary>
 
-1. 在 A 选择一个场景，先看业务现象、当时的 Zabbix 告警对照和联合分析线索。
-2. 打开唯一故障开关。所有访客共享一次真实实验，重复开启不会叠加负载；仅浏览其他场景不会改变公共开关。
-3. 同页看实际采样、平台自主检查和新报告，也可进入 B 核对图表与证据。页面每 60 秒刷新，保留展开与阅读位置；“刷新数据”只读刷新，不会创建分析任务。
+1. 按下方部署说明准备隔离目标、Zabbix 和 B，再在本机或内网启动 A。
+2. 由验证人员选择一个场景并打开唯一故障开关，重复开启不会叠加负载；仅浏览其他场景不会改变开关。
+3. 查看实际采样、平台自主检查和新报告，也可进入 B 核对图表与证据。页面默认关闭自动刷新；“刷新数据”只读刷新，不会创建分析任务。
 4. 关闭开关后，分别确认负载已清理、随后监控数据恢复。关闭网页不等于关闭故障；清理成功也不等于新采样已证明恢复。
 
 A 只制造固定、有界的故障并临时借用 B 的较快检查周期，**不直接创建报告或调用模型**。Zabbix 保存实际数据，B 的普通巡检和分析队列决定何时发现与分析。模型失败、缺少资料和旧报告都按实际状态显示，不生成替代结论。
@@ -27,16 +28,18 @@ A 只制造固定、有界的故障并临时借用 B 的较快检查周期，**�
 
 ## 当前验证进度
 
-新环境包含 **4 个 MySQL、3 个业务应用、6 个场景**。下面分别记录工作流与解释质量；有报告不等于根因已经确认。
+多场景底座包含 **4 个 MySQL、3 个业务应用**，另复用既有隔离目标验证基础行锁。下面分别记录发现、恢复和解释质量；有报告不等于根因已经确认。
 
 | 场景 | 当前实际状态 |
 | --- | --- |
+| 基础行锁等待 | 自主发现、基本等待关系解释和恢复已核对；具体 SQL/完整根因未确认，保留锁模式措辞缺口。见 [验收记录](docs/validation/basic-row-lock.md) |
+| 连接容量风险 | 确定性规则识别 34/40、85%、剩余 6 并验证恢复；AI 正文仍弱化超过 80% 水位的风险，引用仍待完善。见 [v4.2 记录](docs/validation/connection-headroom-v42.md) |
 | SQL 效率退化 | 自主发现、新报告与恢复已验证；具体 SQL、执行计划和因果引用仍需完善 |
 | 应用连接池紧张 | 自主发现、池等待/错误关联与恢复已验证；模型输入遗漏池容量及 DB 上限，深层诊断待完善 |
 | 临时表查询代价 | 自主发现、新报告与恢复已验证；本轮 AI 尚未定位临时表机制 |
 | 应用排队反证、长读事务、副本读陈旧 | 固定负载、直接观测与清理已验证；完整平台闭环仍待逐项验证 |
 
-前三项是 **2026-11-12 隔离环境的单次工作流实测**，不是通用准确率或生产收益证明。Zabbix 可以配置更细的规则；本项目对照的是当时真实模板、阈值、持续时间及事件，区分未配置、未触发和已有告警。
+这些是 **2026-11-12 隔离环境的逐轮实测**，不是通用准确率或生产收益证明。Zabbix 可以配置更细的规则；已做告警对照的场景以当时真实模板、阈值、持续时间及事件为准，未核查事件的场景不声称 Zabbix 无法发现。
 
 实际数据与解释缺口见 **[验证记录与分析边界](docs/validation/observed-analysis-boundaries.md)**；平台后续清单见 **[验证与改进](https://github.com/catdogrennie-gt/db-evidence-platform/blob/main/docs/validation-scenarios.md)**。历史测量没有完整记录每个 worker 的构建与提示词版本时，保留该追溯限制，不补写未记录的版本。
 
@@ -44,7 +47,7 @@ A 只制造固定、有界的故障并临时借用 B 的较快检查周期，**�
 
 ```mermaid
 flowchart LR
-    Visitor[访客开关] --> A[A 单一故障控制器]
+    Operator[内部验证操作] --> A[A 本机或内网故障控制器]
     A --> Lab[隔离应用与 MySQL]
     Lab --> Z[Zabbix 实际采集]
     Z --> B[B 定时检查与 AI 分析]
@@ -53,7 +56,7 @@ flowchart LR
     A -.临时提频租约.-> B
 ```
 
-- `compose.evolution.yaml` / `compose.replica.yaml`：四库三应用，限制内存、CPU、连接与测试数据规模；与原公开单场景环境分开。
+- `compose.evolution.yaml` / `compose.replica.yaml`：四库三应用，限制内存、CPU、连接与测试数据规模；与原单场景环境分开。
 - `lab/business_app.py` / `replica_app.py`：有限业务请求、数据库查询和中性采样端点，不输出故障答案。
 - `lab/scenario_engine.py` / `scenario_site.py` / `lab/web-v2`：单一所有者、共享开关、有限租约、只读观测与演示页面。
 - `lab/scenario_validation.py` / `tools/validate-scenario.py`：逐项验证正常、故障、直接清理、监控恢复和本次报告，不把完成状态当作诊断正确。
@@ -78,11 +81,11 @@ node --test tests/web.test.mjs
 <details>
 <summary>历史固定锁等待站、CLI 实验与原始部署说明</summary>
 
-以下保留旧版实验记录，**其中的目标、周期和命令不描述上方当前多场景站**。旧公网入口暂保留在线用于查阅；请从上方新链接体验本轮系统。
+以下保留旧版实验记录，**其中的目标、周期和命令不描述当前多场景环境**。这些是归档代码和内部验证资料，不提供公共故障开关，也不构成在线服务承诺。
 
 ## 历史命令行 Lab 与实测案例
 
-以下是原有独立 CLI 实验及归档测量，保留其当时的采集方式、时长限制、错误与结果。**这些 CLI 的 10–45 秒时长、旧采集周期与旧验收不描述上方当前 A 网站开关。** 当前网站复用隔离实验边界，但业务监控与 AI 结果由 B 普通 Zabbix 巡检拥有。
+以下是原有独立 CLI 实验及归档测量，保留其当时的采集方式、时长限制、错误与结果。**这些 CLI 的 10–45 秒时长、旧采集周期与旧验收不描述本机或内网多场景控制器。** 多场景环境复用隔离实验边界，业务监控与 AI 结果由 B 普通 Zabbix 巡检拥有。
 Independent MySQL fault reproduction and validation environment. The orders dataset is deterministic synthetic business data; all telemetry, fault symptoms and Zabbix events are real measurements (`live_lab`). No production deployment or business improvement is claimed.
 
 MySQL8.4.13 runs on an internal Docker network, separate from Zabbix's control database. Python3.12.10 probe reads MySQL status/lock waits/digests, the VM's read-only `/proc` CPU/disk counters and an authenticated connection plus `SELECT 1` roundtrip. Host CPU is aggregate VM CPU; probe latency includes connection/authentication/SQL, so neither measures a pure MySQL-container CPU or pure network RTT. No network fault is injected or claimed.

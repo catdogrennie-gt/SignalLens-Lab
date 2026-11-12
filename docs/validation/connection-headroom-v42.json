@@ -1,0 +1,182 @@
+{
+  "schema": 1,
+  "scenario": "connection-headroom",
+  "iteration": "v4.2",
+  "record_type": "real_workflow_observation",
+  "status": "discovery_and_recovery_verified_analysis_incomplete",
+  "meaning": "Real connection occupancy crossed an explicitly configured capacity waterline and was detected deterministically; a real model report completed but did not adequately explain that risk. Both discovery and recovery are verified, not complete diagnosis or production benefit.",
+  "timing": {
+    "on_at": "2026-11-12T15:25:58.572189Z",
+    "capacity_episode_started_at": "2026-11-12T15:26:13.514900Z",
+    "report_window_to": "2026-11-12T15:26:16.636998Z",
+    "report_window_after_on_seconds": 18.06,
+    "off_at": "2026-11-12T15:30:43.710796Z",
+    "direct_cleanup_observed_at": "2026-11-12T15:30:50.142739Z",
+    "after_off_connection_samples": [
+      {
+        "observed_at": "2026-11-12T15:30:48.512419Z",
+        "value": 9.0
+      },
+      {
+        "observed_at": "2026-11-12T15:31:03.515869Z",
+        "value": 9.0
+      }
+    ],
+    "ended_at": "2026-11-12T15:31:08.924558Z",
+    "control_on_to_off_acceptance_seconds": 285.14,
+    "control_timing_meaning": "ON and OFF request acceptance times; actual connection release is independently bounded by the post-OFF samples and direct cleanup observation."
+  },
+  "collection": {
+    "source": "Actual selected Zabbix histories through a read-only API",
+    "selected_item_count": 5,
+    "capacity_pair": {
+      "used_key": "db.connections",
+      "limit_key": "db.connections_capacity",
+      "semantics": "gauge",
+      "sample_seconds": 5,
+      "group": "mysql_connections",
+      "used_tag": "sl.capacity.role=used",
+      "limit_tag": "sl.capacity.role=limit",
+      "configured_warning_percent": 80,
+      "warning_is_explicit_configuration_not_official_template_default": true
+    },
+    "collection_seconds": 10,
+    "signal_seconds": 5,
+    "manual_collection_or_model_dispatch": false
+  },
+  "measurements": [
+    {
+      "name": "Database current connections",
+      "unit": "connections",
+      "before": 9,
+      "during": 34,
+      "after": 9
+    },
+    {
+      "name": "Database connection capacity",
+      "unit": "connections",
+      "before": 40,
+      "during": 40,
+      "after": 40
+    },
+    {
+      "name": "Connection utilization",
+      "unit": "%",
+      "before": 22.5,
+      "during": 85,
+      "after": 22.5
+    },
+    {
+      "name": "Remaining connection capacity",
+      "unit": "connections",
+      "before": 31,
+      "during": 6,
+      "after": 31
+    }
+  ],
+  "whole_on_window": {
+    "distinct_used_samples": 18,
+    "used_min": 34.0,
+    "used_max": 34.0,
+    "capacity_values": [
+      40.0
+    ],
+    "scope": "Harness measurements for the whole ON window; distinct from the model frozen subwindow."
+  },
+  "deterministic_result": {
+    "category": "capacity_pressure",
+    "classification": "configured_threshold_risk_not_root_cause",
+    "formula": "100 * used / limit",
+    "consecutive_time_pairs": 3,
+    "used": 34,
+    "limit": 40,
+    "utilization_percent": 85,
+    "remaining": 6,
+    "configured_warning_percent": 80,
+    "event_id": "c9608395-38b9-412d-83d6-4e895d496820",
+    "active_demo_issue_HTTP_status": 200,
+    "active_summary": "用量34/40，占用85%，剩余6；已超过配置的80%关注水位。具体原因待分析。"
+  },
+  "model_report": {
+    "id": "65176fe7-0b1d-48cf-81b4-fae0a8a8f4f8",
+    "status": "completed",
+    "mode": "live_redacted",
+    "prompt_version": "evidence-investigation-v4.2",
+    "model": "deepseek-v4-pro",
+    "succeeded_calls": 1,
+    "headline": "数据库连接利用率85%，连接数由9升至34",
+    "actual_input_included_configured_warning_and_remaining_capacity": true,
+    "full_report_text_intentionally_omitted": true,
+    "previous_failed_report_preserved": "2a226e82-0dc8-45d1-9d70-5041f9c1c052"
+  },
+  "cleanup": {
+    "confirmed": true,
+    "status": "actual_control_clean",
+    "observed_at": "2026-11-12T15:30:50.142739Z",
+    "control": {
+      "normal": true,
+      "held_connections": 0,
+      "held_read_view": false
+    }
+  },
+  "recovery": {
+    "two_distinct_fresh_used_samples_returned_to": 9,
+    "final_capacity": 40,
+    "final_utilization_percent": 22.5,
+    "capacity_observation_state": "recovered",
+    "capacity_observed_at": "2026-11-12T15:31:23.520268Z",
+    "demo_issue_HTTP_status": 200,
+    "demo_presentation_kind": "history",
+    "original_model_report_retained": true,
+    "meaning": "Connection occupancy returned to observed pre-switch values; not proof of overall database health.",
+    "post_run_verification": {
+      "checked_at": "2026-11-12T15:31:43.493338+00:00",
+      "scope": "Separate read-only rule-state query and read-only visitor HTTP request after the harness ended; not part of the raw harness record.",
+      "raw_harness_ended_at": "2026-11-12T15:31:08.924558Z"
+    }
+  },
+  "safety": {
+    "fixed_extra_readonly_connections": 25,
+    "unchanged_mysql_connection_limit": 40,
+    "initial_reserved_slots": 6,
+    "runtime_reserved_slots_floor": 4,
+    "server_enforced_scenario_account_connection_limit": 25,
+    "bounded_A_control_lease_seconds": 300,
+    "arbitrary_target_or_SQL_input": false
+  },
+  "discovery_verified": true,
+  "recovery_verified": true,
+  "model_report_completed": true,
+  "workflow_verified": false,
+  "diagnosis_verified": false,
+  "harness_acceptance": {
+    "status": "incomplete",
+    "required_report_window_after_on_seconds": 20,
+    "actual_report_window_after_on_seconds": 18.06,
+    "temporal_contract_passed": false,
+    "original_guard_was_not_relaxed": true,
+    "explanation": "The report froze 18.06 seconds after ON, below the original 20-second report-window gate. This is separate from the real three synchronized 5-second capacity samples and independent recovery observations."
+  },
+  "analysis_limitations": [
+    "The AI report correctly states 34/40 and 85%, but omits that the explicitly configured 80% waterline was exceeded and weakens the risk to continued observation.",
+    "The real model input already included the active capacity risk, configured 80% waterline, remaining 6, and three synchronized sample pairs; this was not an input omission.",
+    "Some compound conclusion/action statements mention utilization or the limit without also citing the capacity-denominator evidence.",
+    "No connection leak, exact SQL, downtime, or complete root cause was established.",
+    "Availability uses sparse-on-change history; an older successful observation is not immediate proof that all service behavior is normal.",
+    "Zabbix trigger events were not reviewed in this run; no claim is made that Zabbix could not alert."
+  ],
+  "public_demo_label": {
+    "status": "platform_verified",
+    "meaning": "发现与恢复已验证 · 分析待完善",
+    "does_not_mean_complete_diagnosis": true
+  },
+  "evidence_integrity": {
+    "raw_validation_record_sha256": "5201516d352d414a3a7672c9dd853e5db464fb21b09085abff3583c72e200571",
+    "raw_SQL_credentials_logs_and_private_addresses_omitted": true,
+    "post_run_rule_state_sha256": "c08df31b6f0f8647159e11908f07888eae1fe704150eae0e137f2a45b0642705",
+    "post_run_demo_http_sha256": "1868831e1e5660d8a1519c8c84380d28ef307a13371e19f7d61c8b4c8491244c",
+    "actual_model_audit_sha256": "cf5dc38bdbaeebd7969f8728960c132de5981fb5325a053b63cf047a3bcb9261",
+    "hash_scope_note": "The raw record covers the harness measurements; later rule/HTTP readbacks and the actual model audit have separate hashes and must not be attributed to the raw record hash."
+  },
+  "errors": []
+}
