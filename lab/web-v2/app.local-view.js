@@ -5,7 +5,7 @@ const byId=id=>document.getElementById(id);
 const setText=(id,value)=>{const n=typeof id==='string'?byId(id):id;const s=String(value??'');if(n.textContent!==s)n.textContent=s;};
 const time=v=>v?new Date(v).toLocaleTimeString('zh-CN',{hour12:false}):'尚无实际记录';
 const number=v=>typeof v==='number'&&Number.isFinite(v)?Number(v.toPrecision(4)).toLocaleString('zh-CN'):'未知';
-const label=s=>({on:'负载已开启',off:'负载已关闭',stopping:'正在释放负载',unavailable:'暂不可用'}[s]??s);
+const label=s=>({on:'负载已开启',off:'负载已关闭',stopping:'正在释放负载',unavailable:'暂不可用'}[s]??'运行状态待确认');
 // The legacy wire status certifies discovery/recovery workflow only. Diagnosis
 // limits are shown separately; it must not imply confirmed root-cause accuracy.
 const verification=s=>({platform_verified:'发现与恢复已验证 · 分析待完善',direct_verified:'负载已验证 · 平台验证中',implemented_awaiting_verification:'实现待验证',not_implemented:'尚未实现'}[s]??'验证中');
@@ -78,9 +78,11 @@ function renderValidationProof(selected){
 function render(force=false){
  if(!state)return;mount();const scroll={x:window.scrollX,y:window.scrollY},focused=document.activeElement;
  const selected=state.scenarios.find(s=>s.key===viewKey),globalScene=state.scenarios.find(s=>s.key===state.scenario),p=view?.target_key===selected?.target_key?view.platform:null,i=p?.inspection,c=p?.pacing;
- renderScenes();setText('view-name',selected?.name);setText('view-status',state.scenario===viewKey?label(state.actual_state):'只读查看');
- setText('toggle',state.desired_on?'关闭正在运行的问题':'开启所选问题');byId('toggle').disabled=busy;byId('toggle').classList.toggle('on',state.desired_on);
- setText('global-status',`共享开关：${globalScene?.name??''} · ${label(state.actual_state)}。所有访客共用一个开关；目录只切换本页查看，按开关才改变真实负载。`);
+ const viewedRunning=state.scenario===viewKey&&state.actual_state==='on',globalName=globalScene?.name??state.scenario;
+ renderScenes();setText('view-name',selected?.name);setText('view-status',state.scenario!==viewKey||state.actual_state==='off'?'此场景未运行':viewedRunning?'此场景正在运行':label(state.actual_state));
+ setText('toggle',state.desired_on?`关闭正在运行的：${globalName}`:`开启此场景：${selected?.name??viewKey}`);byId('toggle').disabled=busy;byId('toggle').classList.toggle('on',viewedRunning);
+ const globalStatus=state.actual_state==='on'?`当前运行：${globalName}`:state.actual_state==='stopping'?`正在停止：${globalName}`:state.actual_state==='unavailable'?`当前运行状态未知：${globalName}`:state.actual_state==='off'&&!state.desired_on?'当前没有运行中的场景':state.actual_state==='off'&&state.desired_on?`正在开启：${globalName}`:`运行状态待确认：${globalName}`;
+ setText('global-status',`${globalStatus}。一次只运行一个场景；所有访客共用总开关。目录只切换本页查看，关闭按钮会停止当前场景。`);
  byId('control-lease').hidden=!state.control_lease_expires_at;setText('control-lease',`限时验收预计 ${time(state.control_lease_expires_at)} 自动停止；仍可随时关闭。`);byId('error').hidden=!error&&!state.error_code;
  setText('scene-symptom',selected?.business_symptom??selected?.description);setText('scene-comparison',selected?.zabbix_comparison??'待验证：以实际模板、阈值和事件对照为准。');setText('scene-clues-title',selected?.status==='platform_verified'?'平台实际发现与分析边界':'待验证的联合线索');setText('scene-clues',selected?.platform_clues??'尚未完成平台发现与解释验证。');
  setText('collection',`${c?.collection_seconds??'未知'} 秒`);setText('signal',`${c?.signal_seconds??'未知'} 秒`);setText('inspection',({paused:'巡检暂停',running:'正在分析',idle:'等待巡检',completed:'巡检完成',queued:'排队中'}[i?.status])??i?.status??'未连接');setText('inspection-times',`最近检查 ${time(i?.last_checked_at)} · 最近报告 ${time(i?.last_completed_at)}。AI按平台队列执行，不显示虚构进度。`);

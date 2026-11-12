@@ -1,0 +1,417 @@
+{
+  "schema": 1,
+  "scenario": "pool-pressure",
+  "iteration": "context-v3.9-02",
+  "record_type": "real_workflow_observation",
+  "status": "observations_recorded",
+  "workflow_verified": true,
+  "diagnosis_verified": false,
+  "diagnosis_quality": "insufficient_joint_analysis",
+  "meaning": "Autonomous discovery, an episode-matched real model report, cleanup and monitored return were observed. Diagnostic quality did not pass.",
+  "timing": {
+    "on_at": "2026-11-12T12:00:56.972579Z",
+    "first_new_signal_episode_at": "2026-11-12T12:01:16.505894Z",
+    "off_at": "2026-11-12T12:03:36.292331Z",
+    "direct_cleanup_observed_at": "2026-11-12T12:03:39.630631Z",
+    "monitor_return_recorded_at": "2026-11-12T12:04:31.038591Z"
+  },
+  "data": {
+    "source": "real selected Zabbix histories",
+    "new_signal_count": 6,
+    "current_episode_report_id": "6824b0f6-617a-466a-ab08-3fad29d56804",
+    "manual_analysis_submitted": false,
+    "raw_requests_intentionally_omitted": true
+  },
+  "measurement_scope": "Unique fresh source observed_at samples in pre-ON, [ON,OFF), and after-OFF buckets. Maxima occur at different instants; model frozen subwindows are separate.",
+  "measurements": [
+    {
+      "itemid": "51147",
+      "scope": "Unique fresh monitor source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt time or model subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 2,
+          "min": 1.2147540037403814,
+          "max": 1.2509490043157712,
+          "first": 1.2509490043157712,
+          "last": 1.2147540037403814,
+          "first_observed_at": "2026-11-12T12:00:46.505334Z",
+          "last_observed_at": "2026-11-12T12:00:51.506259Z",
+          "unit": "ms"
+        },
+        "on": {
+          "n": 24,
+          "min": 1.3886290034861304,
+          "max": 7787.528072003624,
+          "first": 1.3886290034861304,
+          "last": 7761.796322003647,
+          "first_observed_at": "2026-11-12T12:01:01.507822Z",
+          "last_observed_at": "2026-11-12T12:03:26.506873Z",
+          "unit": "ms"
+        },
+        "after_off": {
+          "n": 4,
+          "min": 1.2785849976353347,
+          "max": 7759.944928999175,
+          "first": 7759.944928999175,
+          "last": 1.4236190036172047,
+          "first_observed_at": "2026-11-12T12:03:36.505288Z",
+          "last_observed_at": "2026-11-12T12:04:26.505670Z",
+          "unit": "ms"
+        }
+      },
+      "name": "Request duration p95"
+    },
+    {
+      "itemid": "51149",
+      "scope": "Unique fresh monitor source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt time or model subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 2,
+          "min": 0.010660995030775666,
+          "max": 0.01190799957839772,
+          "first": 0.010660995030775666,
+          "last": 0.01190799957839772,
+          "first_observed_at": "2026-11-12T12:00:46.505334Z",
+          "last_observed_at": "2026-11-12T12:00:51.506259Z",
+          "unit": "ms"
+        },
+        "on": {
+          "n": 24,
+          "min": 0.010660995030775666,
+          "max": 600.0,
+          "first": 0.010660995030775666,
+          "last": 600.0,
+          "first_observed_at": "2026-11-12T12:01:01.507822Z",
+          "last_observed_at": "2026-11-12T12:03:26.506873Z",
+          "unit": "ms"
+        },
+        "after_off": {
+          "n": 4,
+          "min": 0.010220996045973152,
+          "max": 600.0,
+          "first": 600.0,
+          "last": 0.010372998076491058,
+          "first_observed_at": "2026-11-12T12:03:36.505288Z",
+          "last_observed_at": "2026-11-12T12:04:26.505670Z",
+          "unit": "ms"
+        }
+      },
+      "name": "Pool acquisition wait p95"
+    },
+    {
+      "itemid": "51151",
+      "scope": "Unique fresh monitor source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt time or model subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 2,
+          "min": 0.0,
+          "max": 0.0,
+          "first": 0.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:00:46.505334Z",
+          "last_observed_at": "2026-11-12T12:00:51.506259Z",
+          "unit": ""
+        },
+        "on": {
+          "n": 24,
+          "min": 0.0,
+          "max": 1.0,
+          "first": 0.0,
+          "last": 1.0,
+          "first_observed_at": "2026-11-12T12:01:01.507822Z",
+          "last_observed_at": "2026-11-12T12:03:26.506873Z",
+          "unit": ""
+        },
+        "after_off": {
+          "n": 4,
+          "min": 0.0,
+          "max": 1.0,
+          "first": 1.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:03:36.505288Z",
+          "last_observed_at": "2026-11-12T12:04:26.505670Z",
+          "unit": ""
+        }
+      },
+      "name": "Request error ratio"
+    },
+    {
+      "itemid": "51152",
+      "scope": "Unique fresh monitor source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt time or model subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 2,
+          "min": 0.0,
+          "max": 0.0,
+          "first": 0.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:00:46.505334Z",
+          "last_observed_at": "2026-11-12T12:00:56.506932Z",
+          "unit": ""
+        },
+        "on": {
+          "n": 24,
+          "min": 0.0,
+          "max": 24.0,
+          "first": 0.0,
+          "last": 24.0,
+          "first_observed_at": "2026-11-12T12:01:01.507822Z",
+          "last_observed_at": "2026-11-12T12:03:26.506873Z",
+          "unit": ""
+        },
+        "after_off": {
+          "n": 4,
+          "min": 0.0,
+          "max": 24.0,
+          "first": 24.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:03:36.505288Z",
+          "last_observed_at": "2026-11-12T12:04:26.505670Z",
+          "unit": ""
+        }
+      },
+      "name": "Request queue depth"
+    },
+    {
+      "itemid": "51153",
+      "scope": "Unique fresh monitor source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt time or model subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 2,
+          "min": 6.0,
+          "max": 6.0,
+          "first": 6.0,
+          "last": 6.0,
+          "first_observed_at": "2026-11-12T12:00:46.505334Z",
+          "last_observed_at": "2026-11-12T12:00:56.506932Z",
+          "unit": ""
+        },
+        "on": {
+          "n": 24,
+          "min": 6.0,
+          "max": 6.0,
+          "first": 6.0,
+          "last": 6.0,
+          "first_observed_at": "2026-11-12T12:01:01.507822Z",
+          "last_observed_at": "2026-11-12T12:03:26.506873Z",
+          "unit": ""
+        },
+        "after_off": {
+          "n": 4,
+          "min": 6.0,
+          "max": 6.0,
+          "first": 6.0,
+          "last": 6.0,
+          "first_observed_at": "2026-11-12T12:03:36.505288Z",
+          "last_observed_at": "2026-11-12T12:04:26.505670Z",
+          "unit": ""
+        }
+      },
+      "name": "Connection pool capacity"
+    },
+    {
+      "itemid": "51154",
+      "scope": "Unique fresh monitor source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt time or model subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 2,
+          "min": 0.0,
+          "max": 0.0,
+          "first": 0.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:00:46.505334Z",
+          "last_observed_at": "2026-11-12T12:00:56.506932Z",
+          "unit": ""
+        },
+        "on": {
+          "n": 24,
+          "min": 0.0,
+          "max": 6.0,
+          "first": 0.0,
+          "last": 6.0,
+          "first_observed_at": "2026-11-12T12:01:01.507822Z",
+          "last_observed_at": "2026-11-12T12:03:26.506873Z",
+          "unit": ""
+        },
+        "after_off": {
+          "n": 4,
+          "min": 0.0,
+          "max": 6.0,
+          "first": 6.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:03:36.505288Z",
+          "last_observed_at": "2026-11-12T12:04:26.505670Z",
+          "unit": ""
+        }
+      },
+      "name": "Connection pool in use"
+    },
+    {
+      "itemid": "51155",
+      "scope": "Unique fresh monitor source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt time or model subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 2,
+          "min": 0.0,
+          "max": 0.0,
+          "first": 0.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:00:46.505334Z",
+          "last_observed_at": "2026-11-12T12:00:56.506932Z",
+          "unit": ""
+        },
+        "on": {
+          "n": 24,
+          "min": 0.0,
+          "max": 2.0,
+          "first": 0.0,
+          "last": 2.0,
+          "first_observed_at": "2026-11-12T12:01:01.507822Z",
+          "last_observed_at": "2026-11-12T12:03:26.506873Z",
+          "unit": ""
+        },
+        "after_off": {
+          "n": 4,
+          "min": 0.0,
+          "max": 2.0,
+          "first": 2.0,
+          "last": 0.0,
+          "first_observed_at": "2026-11-12T12:03:36.505288Z",
+          "last_observed_at": "2026-11-12T12:04:26.505670Z",
+          "unit": ""
+        }
+      },
+      "name": "Connection pool waiters"
+    },
+    {
+      "itemid": "51165",
+      "scope": "Unique fresh monitor source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt time or model subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 2,
+          "min": 9.0,
+          "max": 9.0,
+          "first": 9.0,
+          "last": 9.0,
+          "first_observed_at": "2026-11-12T12:00:48.512541Z",
+          "last_observed_at": "2026-11-12T12:00:53.514814Z",
+          "unit": ""
+        },
+        "on": {
+          "n": 24,
+          "min": 9.0,
+          "max": 9.0,
+          "first": 9.0,
+          "last": 9.0,
+          "first_observed_at": "2026-11-12T12:01:03.510273Z",
+          "last_observed_at": "2026-11-12T12:03:33.512420Z",
+          "unit": ""
+        },
+        "after_off": {
+          "n": 4,
+          "min": 9.0,
+          "max": 9.0,
+          "first": 9.0,
+          "last": 9.0,
+          "first_observed_at": "2026-11-12T12:03:38.514412Z",
+          "last_observed_at": "2026-11-12T12:04:23.513025Z",
+          "unit": ""
+        }
+      },
+      "name": "Database current connections"
+    },
+    {
+      "itemid": "51166",
+      "scope": "Unique fresh monitor source observed_at samples in pre-ON / [ON,OFF) / after-OFF buckets, not receipt time or model subwindow.",
+      "periods": {
+        "pre_on": {
+          "n": 2,
+          "min": 40.0,
+          "max": 40.0,
+          "first": 40.0,
+          "last": 40.0,
+          "first_observed_at": "2026-11-12T12:00:48.512541Z",
+          "last_observed_at": "2026-11-12T12:00:53.514814Z",
+          "unit": ""
+        },
+        "on": {
+          "n": 24,
+          "min": 40.0,
+          "max": 40.0,
+          "first": 40.0,
+          "last": 40.0,
+          "first_observed_at": "2026-11-12T12:01:03.510273Z",
+          "last_observed_at": "2026-11-12T12:03:33.512420Z",
+          "unit": ""
+        },
+        "after_off": {
+          "n": 4,
+          "min": 40.0,
+          "max": 40.0,
+          "first": 40.0,
+          "last": 40.0,
+          "first_observed_at": "2026-11-12T12:03:38.514412Z",
+          "last_observed_at": "2026-11-12T12:04:23.513025Z",
+          "unit": ""
+        }
+      },
+      "name": "Database connection capacity"
+    }
+  ],
+  "model_calls": [
+    {
+      "sequence": 1,
+      "model": "deepseek-v4-pro",
+      "prompt_version": "evidence-investigation-v3.9",
+      "input_bound_bytes": 23918,
+      "request_hash_matches": true,
+      "metric_dimension_count": 26,
+      "signal_count": 6,
+      "exact_checked_scenario_key_hits": []
+    },
+    {
+      "sequence": 2,
+      "model": "deepseek-v4-pro",
+      "prompt_version": "evidence-investigation-v3.9",
+      "input_bound_bytes": 20130,
+      "request_hash_matches": true,
+      "metric_dimension_count": 16,
+      "signal_count": 2,
+      "exact_checked_scenario_key_hits": []
+    }
+  ],
+  "analysis_limitations": [
+    "The final request retained 16 dimensions and 2 signals, down from 26 dimensions and 6 signals.",
+    "Connection use, queue, request latency and error-ratio observations were lost in the final context; capacity and database headroom remained available.",
+    "The model described waiting and cumulative errors without explaining the supported candidate bottleneck mechanism.",
+    "An hour-long error-counter increase includes earlier activity and cannot be called the increment of this experiment."
+  ],
+  "cleanup": {
+    "normal": true,
+    "held_connections": 0,
+    "held_read_view": false
+  },
+  "monitoring_return": {
+    "status": "observed_return_near_pre_switch_values",
+    "distinct_observations": 2,
+    "meaning": "Return of this run signaled dimensions near pre-switch values, not whole-database health."
+  },
+  "zabbix_observation": {
+    "new_trigger_event_count": 0,
+    "configured_enabled_trigger_count": 11,
+    "unsupported_rule_count": 1,
+    "definitions_unchanged_since_preflight": true,
+    "thresholds_unchanged_since_preflight": true,
+    "event_query_limit_reached": false,
+    "limitation": "One enabled version-change rule lacked its second sample; relevant performance rules were evaluable. No events means no alert in this configuration and window, not a Zabbix capability limit."
+  },
+  "reproduce": {
+    "entrypoint": "python -m lab.scenario_validation",
+    "scenario": "pool-pressure",
+    "max_wait_seconds": 300,
+    "recovery_wait_seconds": 150,
+    "poll_seconds": 3,
+    "control": "A conditional bounded switch and allowlisted GETs only. B schedules discovery and real model calls independently."
+  },
+  "errors": []
+}
