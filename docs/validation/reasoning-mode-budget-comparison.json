@@ -1,0 +1,97 @@
+{
+  "contract": "reasoning-mode-budget-comparison-v1",
+  "record_type": "actual_single_sample_model_comparison",
+  "same_frozen_evidence_and_messages": true,
+  "model": "deepseek-v4-pro",
+  "calls_per_configuration": 1,
+  "statistical_significance_established": false,
+  "accuracy_improvement_established": false,
+  "autonomous_discovery_verified": false,
+  "diagnosis_verified": false,
+  "production": {
+    "thinking": "disabled",
+    "max_tokens": 4000,
+    "configuration_changed_by_experiments": false
+  },
+  "comparison_changes": [
+    {
+      "from": "nonthinking_4000",
+      "to": "thinking_low_4000",
+      "only_fields_changed": ["thinking.type", "reasoning_effort"]
+    },
+    {
+      "from": "thinking_low_4000",
+      "to": "thinking_low_8192",
+      "only_fields_changed": ["max_tokens"],
+      "classification": "offline_output_budget_allocation_above_production"
+    }
+  ],
+  "runs": [
+    {
+      "id": "nonthinking_4000",
+      "execution_kind": "controlled_historical_reanalysis",
+      "thinking": "disabled",
+      "reasoning_effort": null,
+      "max_tokens": 4000,
+      "actual_usage": {"input_tokens": 5711, "output_tokens": 1569, "total_tokens": 7280, "reasoning_tokens": null},
+      "final_json_complete": true,
+      "semantic_result": "fail",
+      "semantic_failures": ["unsupported_spontaneous_recovery", "numeric_and_snapshot_count_citation_scope_mixed"]
+    },
+    {
+      "id": "thinking_low_4000",
+      "execution_kind": "independent_offline_comparison",
+      "thinking": "enabled",
+      "reasoning_effort": "low",
+      "max_tokens": 4000,
+      "actual_usage": {"input_tokens": 5711, "output_tokens": 4000, "total_tokens": 9711, "reasoning_tokens": 4000},
+      "finish_reason": "length",
+      "final_content_bytes": 0,
+      "final_json_complete": false,
+      "schema_and_exact_reference_result": "not_possible_no_final_json",
+      "semantic_result": "not_assessable_no_final_json",
+      "overall_result": "fail"
+    },
+    {
+      "id": "thinking_low_8192",
+      "execution_kind": "independent_offline_budget_allocation",
+      "thinking": "enabled",
+      "reasoning_effort": "low",
+      "max_tokens": 8192,
+      "actual_usage": {"input_tokens": 5711, "output_tokens": 5105, "total_tokens": 10816, "reasoning_tokens": 3454},
+      "finish_reason": "stop",
+      "final_content_bytes": 5080,
+      "final_json_complete": true,
+      "production_validator_release": "v4.4",
+      "schema_and_exact_reference_result": "pass",
+      "semantic_result": "fail",
+      "semantic_failures": ["unsupported_spontaneous_recovery_and_short_duration", "sample_distribution_inferred_from_min_max"],
+      "correctly_supported_elements": ["numeric_720_distinct_from_retained_lock_snapshots_5", "two_nonempty_snapshot_references", "waiting_and_blocking_roles", "requested_lock_attribute_ownership", "specific_sql_root_cause_unknown"]
+    }
+  ],
+  "offline_budget_accounting": {
+    "request_body_bytes": 23149,
+    "input_overhead_reservation": 512,
+    "input_upper_bound": 23661,
+    "input_cap": 24000,
+    "experimental_output_reservation": 8192,
+    "total_reservation": 31853,
+    "total_cap": 32000,
+    "actual_provider_token_usage_recorded_separately": true,
+    "reasoning_tokens_included_in_output_tokens": true
+  },
+  "safety_and_provenance": {
+    "new_faults_executed": 0,
+    "offline_calls": 2,
+    "offline_retry_or_followup_calls": 0,
+    "offline_tool_calls": 0,
+    "offline_production_tasks_or_reports_created": 0,
+    "original_evidence_reports_and_failed_outputs_preserved": true,
+    "reasoning_text_public": false,
+    "reasoning_text_used_as_fact_evidence": false,
+    "verified_monetary_cost": null
+  },
+  "decision": "stop_reasoning_direction_prepare_simpler_single_case",
+  "further_model_calls_authorized_by_this_record": false,
+  "summary_document": "reasoning-mode-budget-comparison.md"
+}
