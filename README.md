@@ -83,7 +83,7 @@ node --test tests/web.test.mjs
 ## 历史命令行 Lab 与实测案例
 
 以下是原有独立 CLI 实验及归档测量，保留其当时的采集方式、时长限制、错误与结果。**这些 CLI 的 10–45 秒时长、旧采集周期与旧验收不描述上方当前 A 网站开关。** 当前网站复用隔离实验边界，但业务监控与 AI 结果由 B 普通 Zabbix 巡检拥有。
-Independent real MySQL test system for a personal DBA operations portfolio. The orders dataset is deterministic synthetic business data; all telemetry, fault symptoms and Zabbix events are real measurements (`live_lab`). No production deployment or business improvement is claimed.
+Independent MySQL fault reproduction and validation environment. The orders dataset is deterministic synthetic business data; all telemetry, fault symptoms and Zabbix events are real measurements (`live_lab`). No production deployment or business improvement is claimed.
 
 MySQL8.4.13 runs on an internal Docker network, separate from Zabbix's control database. Python3.12.10 probe reads MySQL status/lock waits/digests, the VM's read-only `/proc` CPU/disk counters and an authenticated connection plus `SELECT 1` roundtrip. Host CPU is aggregate VM CPU; probe latency includes connection/authentication/SQL, so neither measures a pure MySQL-container CPU or pure network RTT. No network fault is injected or claimed.
 
