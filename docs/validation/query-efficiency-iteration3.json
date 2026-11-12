@@ -1,0 +1,127 @@
+{
+  "schema": 1,
+  "scenario": "query-efficiency",
+  "iteration": 3,
+  "record_type": "real_workflow_observation",
+  "status": "workflow_verified_with_limitations",
+  "diagnosis_quality": "reviewed_with_limitations",
+  "meaning": "Real A switch -> normal Zabbix collection -> ordinary platform discovery and report -> A OFF -> independent cleanup and monitoring observations. This record does not establish diagnosis accuracy or production benefit.",
+  "timing": {
+    "on_at": "2026-11-12T09:32:35.751506Z",
+    "first_new_signal_episode_at": "2026-11-12T09:32:48.526788Z",
+    "new_completed_current_report_first_observed_at": "2026-11-12T09:34:06.272188Z",
+    "off_at": "2026-11-12T09:34:06.386928Z",
+    "direct_cleanup_observed_at": "2026-11-12T09:34:10.003061Z",
+    "monitoring_return_last_observed_at": "2026-11-12T09:34:58.231037Z",
+    "ended_at": "2026-11-12T09:34:58.246848Z"
+  },
+  "data": {
+    "source": "real Zabbix selected item histories",
+    "new_signal_count": 4,
+    "new_report_matched_this_run_signal_count": 2,
+    "report_id": "d78a316d-42fc-4e81-9a3e-9544edaea574",
+    "report_mode": "live_redacted",
+    "report_status": "completed",
+    "full_report_text_intentionally_omitted": true
+  },
+  "measurements": [
+    {
+      "name": "Rows examined per execution",
+      "unit": "",
+      "before": 20.0,
+      "during_max_observed": 4799.0,
+      "after": 20.0,
+      "after_observed_at": "2026-11-12T09:34:53.514540Z"
+    },
+    {
+      "name": "Statement window average time",
+      "unit": "ms",
+      "before": 0.374452,
+      "during_max_observed": 15.4688285,
+      "after": 0.3532305,
+      "after_observed_at": "2026-11-12T09:34:53.514540Z"
+    },
+    {
+      "name": "Request duration p95",
+      "unit": "ms",
+      "before": 2.3060050007188693,
+      "during_max_observed": 22.58131399867125,
+      "after": 1.346288998320233,
+      "after_observed_at": "2026-11-12T09:34:51.505486Z"
+    },
+    {
+      "name": "Database call duration p95",
+      "unit": "ms",
+      "before": 1.892611999210203,
+      "during_max_observed": 22.338930997648276,
+      "after": 1.189306000014767,
+      "after_observed_at": "2026-11-12T09:34:51.505486Z"
+    }
+  ],
+  "cleanup": {
+    "normal": true,
+    "held_connections": 0,
+    "held_read_view": false
+  },
+  "monitoring_return": {
+    "status": "observed_return_near_pre_switch_values",
+    "distinct_observations": 2,
+    "relative_tolerance": 0.5,
+    "scope": "this run newly signaled metric dimensions",
+    "meaning": "Near pre-switch values, not a database health guarantee.",
+    "final_current_signal_count": 0,
+    "historical_report_not_current": true
+  },
+  "pending_review": [
+    "Further independent diagnosis quality checks; no confirmed root cause claimed.",
+    "Next iteration must improve preserved context/citation scope and rerun the real workflow."
+  ],
+  "reproduce": {
+    "entrypoint": "tools/validate-scenario.py",
+    "scenario": "query-efficiency",
+    "max_wait_seconds": 480,
+    "recovery_wait_seconds": 180,
+    "requests": "A allowlisted GET projections and conditional bounded switch only; no B task or model API request"
+  },
+  "errors": [],
+  "workflow_verified": true,
+  "diagnosis_verified": false,
+  "diagnosis_limitations": [
+    "Only a candidate explanation of changed scan/query behavior; no confirmed SQL or root cause.",
+    "Some compound claims have incomplete citation scope.",
+    "Some causal wording is stronger than the available correlation evidence.",
+    "Peak, range and last-value descriptions require careful differentiation."
+  ],
+  "presentation": {
+    "business_symptom": "本轮同一业务请求变慢：请求p95从约2.31ms升至22.58ms，扫描行数由20升至4799/执行，关闭后分别回到约1.35ms和20。",
+    "zabbix_comparison": "本次SQL窗口没有新增Zabbix触发器事件；官方慢查询速率9个样本均为0，实际规则为5分钟内最小慢查询速率大于3。已有规则未覆盖这次低延迟查询的相对效率下降，不代表Zabbix不能增加相应规则。",
+    "platform_clues": "平台自主发现4个新变化信号，约90.5秒看到关联本轮2个信号的报告，并独立验证关闭后回落。报告给出扫描模式变化的候选解释，未确认具体SQL或根因；存在引用范围不完整、因果措辞偏强、峰值与末值混用等限制。"
+  },
+  "zabbix_observation": {
+    "window": {
+      "on_at": "2026-11-12T09:32:35.751506Z",
+      "off_at": "2026-11-12T09:34:06.386928Z"
+    },
+    "new_trigger_event_count": 0,
+    "configured_enabled_trigger_count": 11,
+    "official_slow_queries_rate_observed_values": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "configured_slow_queries_threshold": 3,
+    "comparison_scope": "Root-reviewed actual configured hosts/window."
+  },
+  "input_audit": {
+    "actual_audit_file_sha256": "87b4cea3ad8ea9d64cf79ba2f645e86b160ef1d99fb774f14b15b7541efa0821",
+    "exact_case_and_control_metadata_terms_checked": 13,
+    "term_hits": [],
+    "meaning": "Listed case/control metadata absent from actual request; not a diagnosis accuracy claim."
+  }
+}

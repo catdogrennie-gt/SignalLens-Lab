@@ -1,0 +1,8 @@
+ARG BUSINESS_BASE=python:3.12.10-slim
+FROM ${BUSINESS_BASE}
+RUN python -c "import pymysql,cryptography" || pip install --no-cache-dir PyMySQL==1.1.2 cryptography==46.0.3
+WORKDIR /work
+COPY lab/business_app.py /work/business_app.py
+COPY lab/replica_app.py /work/replica_app.py
+USER 1000:1000
+CMD ["python", "business_app.py"]

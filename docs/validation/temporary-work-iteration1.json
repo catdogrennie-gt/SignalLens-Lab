@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "scenario": "temporary-work",
+  "iteration": 1,
+  "record_type": "real_workflow_observation",
+  "status": "workflow_verified_with_limitations",
+  "diagnosis_quality": "reviewed_with_limitations",
+  "meaning": "Real A switch -> normal Zabbix collection -> ordinary platform discovery and report -> A OFF -> independent cleanup and monitoring observations. This is not a proof of diagnosis accuracy or missing Zabbix functionality.",
+  "timing": {
+    "on_at": "2026-11-12T09:44:59.020368Z",
+    "first_new_signal_episode_at": "2026-11-12T09:45:12.515952Z",
+    "new_completed_current_report_first_observed_at": "2026-11-12T09:46:58.791675Z",
+    "off_at": "2026-11-12T09:46:58.894781Z",
+    "direct_cleanup_observed_at": "2026-11-12T09:47:02.230410Z",
+    "monitoring_return_last_observed_at": "2026-11-12T09:47:51.354807Z",
+    "ended_at": "2026-11-12T09:47:51.375360Z"
+  },
+  "data": {
+    "source": "real Zabbix selected item histories",
+    "new_signal_count": 8,
+    "new_report_matched_this_run_signal_count": 8,
+    "report_id": "bffef8a3-a4aa-479c-971c-2bc0c40d2a51",
+    "report_mode": "live_redacted",
+    "report_status": "completed",
+    "full_report_text_intentionally_omitted": true
+  },
+  "measurements": [
+    {
+      "name": "Rows sent per execution",
+      "unit": "",
+      "before": 1.0,
+      "during_largest_absolute_difference": 16.666666666666668,
+      "after": 1.0,
+      "after_observed_at": "2026-11-12T09:47:47.510998Z"
+    },
+    {
+      "name": "Statement window average time",
+      "unit": "ms",
+      "before": 0.32425155,
+      "during_largest_absolute_difference": 10.474309066666668,
+      "after": 0.3031244,
+      "after_observed_at": "2026-11-12T09:47:47.510998Z"
+    },
+    {
+      "name": "Rows examined per execution",
+      "unit": "",
+      "before": 20.0,
+      "during_largest_absolute_difference": 1350.0,
+      "after": 20.0,
+      "after_observed_at": "2026-11-12T09:47:47.510998Z"
+    },
+    {
+      "name": "Statement disk temporary tables rate",
+      "unit": "tables/s",
+      "before": 0.0,
+      "during_largest_absolute_difference": 4.008110796973685,
+      "after": 0.0,
+      "after_observed_at": "2026-11-12T09:47:47.510998Z"
+    },
+    {
+      "name": "Database call duration p95",
+      "unit": "ms",
+      "before": 1.2852619984187186,
+      "during_largest_absolute_difference": 44.015317002049414,
+      "after": 0.9555870019539724,
+      "after_observed_at": "2026-11-12T09:47:45.504344Z"
+    },
+    {
+      "name": "Request duration p95",
+      "unit": "ms",
+      "before": 1.4789269989705645,
+      "during_largest_absolute_difference": 44.189689000631915,
+      "after": 1.1978369984717574,
+      "after_observed_at": "2026-11-12T09:47:45.504344Z"
+    },
+    {
+      "name": "Queries per second",
+      "unit": "",
+      "before": 6.300393617721307,
+      "during_largest_absolute_difference": 22.40075511153421,
+      "after": 6.300033415377235,
+      "after_observed_at": "2026-11-12T09:47:44.507040Z"
+    },
+    {
+      "name": "Created tmp tables on disk per second",
+      "unit": "",
+      "before": 0.0,
+      "during_largest_absolute_difference": 4.000484238614663,
+      "after": 0.0,
+      "after_observed_at": "2026-11-12T09:47:44.507040Z"
+    }
+  ],
+  "counterevidence": {
+    "request_error_ratio_observed_range": [
+      0.0,
+      0.0
+    ],
+    "scope_note": "Request and database latency increased without observed request failures. A fixed bounded report query and actual session settings generate measured temporary table work; this does not establish a production query or configuration root cause."
+  },
+  "cleanup": {
+    "normal": true,
+    "held_connections": 0,
+    "held_read_view": false
+  },
+  "monitoring_return": {
+    "status": "observed_return_near_pre_switch_values",
+    "distinct_observations": 2,
+    "relative_tolerance": 0.5,
+    "scope": "this run newly signaled metric dimensions",
+    "meaning": "Near pre-switch values, not a database health guarantee.",
+    "final_current_signal_count": 0,
+    "historical_report_not_current": true
+  },
+  "pending_review": [
+    "Further independent diagnosis quality checks; no confirmed root cause claimed.",
+    "Next iteration must improve preserved context/citation scope and rerun the real workflow."
+  ],
+  "reproduce": {
+    "entrypoint": "tools/validate-scenario.py",
+    "scenario": "temporary-work",
+    "max_wait_seconds": 480,
+    "recovery_wait_seconds": 180,
+    "requests": "A allowlisted GET projections and conditional bounded switch only; no B task or model API request"
+  },
+  "errors": [],
+  "workflow_verified": true,
+  "diagnosis_verified": false,
+  "diagnosis_limitations": [
+    "Model input retained three latest signals and one numeric row, omitting 25 numeric rows.",
+    "Earlier disk-temporary-table, statement-time and rows-examined signals were absent from the selected input signals.",
+    "The one numeric row did contain actual official disk temporary table rate near 4/s, but the model did not use it in its explanation.",
+    "The report offers latency/QPS correlation and generic lock checks; it does not identify the temporary-table mechanism.",
+    "No observed request errors; this run must not be described as an outage.",
+    "The user-facing read-only actions expose the internal identifier nonempty_lock_snapshot and overemphasize lock checks without supporting lock evidence."
+  ],
+  "presentation": {
+    "business_symptom": "本轮报表请求p95由约1.48ms升至44.19ms，DB调用p95由约1.29ms升至44.02ms，磁盘临时表由0升至约4.01个/秒；错误比例始终为0，表现为查询代价和延迟上升。",
+    "zabbix_comparison": "本次ON至恢复窗口没有新增Zabbix触发器事件。现有官方规则是磁盘临时表每秒速率连续5分钟的最小值大于10；本轮约4个/秒且ON约120秒，未达到该配置。官方模板已有此类告警，不是Zabbix缺少能力。",
+    "platform_clues": "平台自主发现8个新变化信号，约119.8秒看到关联本轮信号的新报告，关闭后直接清理与监控回落均已验证。但模型只解释请求/DB延迟与查询速率相关，未利用已输入的一条磁盘临时表摘要定位机制，临时表原因分析尚未通过。建议偏向缺少依据的查锁，并暴露内部字段名，仍需改进。"
+  },
+  "input_audit": {
+    "actual_audit_file_sha256": "80efc1d0963f35fab29d139edb680dc6452b2cae1a76a32a66d0b8b73b677fa3",
+    "exact_case_and_control_metadata_terms_checked": 13,
+    "term_hits": [],
+    "retained_signal_count": 3,
+    "retained_numeric_rows": 1,
+    "omitted_numeric_rows": 25,
+    "meaning": "Listed case/control metadata absent from actual request; not a diagnosis accuracy claim."
+  },
+  "zabbix_observation": {
+    "window": {
+      "on_at": "2026-11-12T09:44:59.020368Z",
+      "off_at": "2026-11-12T09:46:58.894781Z",
+      "ended_at": "2026-11-12T09:47:51.375360Z"
+    },
+    "new_trigger_event_count": 0,
+    "configured_enabled_trigger_count": 11,
+    "comparison_scope": "Only the configured hosts and this measured window."
+  }
+}

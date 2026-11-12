@@ -1,0 +1,28 @@
+# Optional extension. Source db-c must be configured by an operator first.
+services:
+  db-d:
+    image: mysql:8.4.13
+    container_name: evolution-db-d
+    command: [--server-id=14, --relay-log=relay-bin, --relay-log-space-limit=64M, --max-relay-log-size=8M, --innodb-lock-wait-timeout=86400, --innodb-buffer-pool-size=96M, --innodb-redo-log-capacity=64M, --max-connections=40, --table-open-cache=256, --table-definition-cache=400, --performance-schema=ON, --binlog-expire-logs-seconds=3600, --max-binlog-size=8M]
+    mem_limit: 600m
+    cpus: 0.7
+    restart: unless-stopped
+    networks: [business]
+    labels: {evolution.owner: evolution_lab, evolution.role: business-database}
+    environment: {MYSQL_ROOT_PASSWORD_FILE: /run/secrets/root}
+    volumes: [db-d:/var/lib/mysql, ./.runtime/private/d-init.sql:/docker-entrypoint-initdb.d/01.sql:ro, ./.runtime/private/d-root:/run/secrets/root:ro]
+  svc-c:
+    image: evolution-lab-business:1
+    container_name: evolution-svc-c
+    mem_limit: 160m
+    cpus: 0.3
+    restart: unless-stopped
+    read_only: true
+    tmpfs: [/tmp:size=16m]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    networks: [business, monitoring]
+    labels: {evolution.owner: evolution_lab, evolution.role: business-application}
+    ports: ["18233:8080"]
+    volumes: [./.runtime/private/c-app.json:/run/secrets/business.json:ro]
+volumes: {db-d: {}}

@@ -1,0 +1,51 @@
+name: evolution_lab
+x-db: &db
+  image: mysql:8.4.13
+  command: [--innodb-buffer-pool-size=96M, --innodb-redo-log-capacity=64M, --max-connections=40, --table-open-cache=256, --table-definition-cache=400, --performance-schema=ON]
+  mem_limit: 600m
+  cpus: 0.7
+  restart: unless-stopped
+  networks: [business]
+  labels: {evolution.owner: evolution_lab, evolution.role: business-database}
+x-app: &app
+  image: evolution-lab-business:1
+  build: {context: ., dockerfile: Dockerfile.business}
+  mem_limit: 160m
+  cpus: 0.3
+  restart: unless-stopped
+  read_only: true
+  tmpfs: [/tmp:size=16m]
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  networks: [business, monitoring]
+  labels: {evolution.owner: evolution_lab, evolution.role: business-application}
+services:
+  db-a:
+    <<: *db
+    container_name: evolution-db-a
+    environment: {MYSQL_ROOT_PASSWORD_FILE: /run/secrets/root}
+    volumes: [db-a:/var/lib/mysql, ./.runtime/private/a-init.sql:/docker-entrypoint-initdb.d/01.sql:ro, ./.runtime/private/a-root:/run/secrets/root:ro]
+  db-b:
+    <<: *db
+    container_name: evolution-db-b
+    environment: {MYSQL_ROOT_PASSWORD_FILE: /run/secrets/root}
+    volumes: [db-b:/var/lib/mysql, ./.runtime/private/b-init.sql:/docker-entrypoint-initdb.d/01.sql:ro, ./.runtime/private/b-root:/run/secrets/root:ro]
+  db-c:
+    <<: *db
+    container_name: evolution-db-c
+    environment: {MYSQL_ROOT_PASSWORD_FILE: /run/secrets/root}
+    volumes: [db-c:/var/lib/mysql, ./.runtime/private/c-init.sql:/docker-entrypoint-initdb.d/01.sql:ro, ./.runtime/private/c-root:/run/secrets/root:ro]
+  svc-a:
+    <<: *app
+    container_name: evolution-svc-a
+    ports: ["18231:8080"]
+    volumes: [./.runtime/private/a-app.json:/run/secrets/business.json:ro]
+  svc-b:
+    <<: *app
+    container_name: evolution-svc-b
+    ports: ["18232:8080"]
+    volumes: [./.runtime/private/b-app.json:/run/secrets/business.json:ro]
+volumes: {db-a: {}, db-b: {}, db-c: {}}
+networks:
+  business: {internal: true}
+  monitoring: {external: true, name: signallens-internal}

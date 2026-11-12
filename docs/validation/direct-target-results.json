@@ -1,0 +1,2555 @@
+{
+  "measurement_type": "live_isolated_local_environment",
+  "platform_ai_acceptance": false,
+  "meaning": "These are actual bounded workload and OFF cleanup checks. They do not prove autonomous discovery or a correct AI diagnosis.",
+  "cases": [
+    {
+      "scenario": "query-efficiency",
+      "scope": "direct_target_and_cleanup_only",
+      "started_at": "2026-11-12T07:45:22.308275+00:00",
+      "off_at": "2026-11-12T07:45:43.892501+00:00",
+      "ended_at": "2026-11-12T07:46:21.888124+00:00",
+      "baseline": {
+        "sampled_at": "2026-11-12T07:45:22.347548+00:00",
+        "application": {
+          "request_p95_ms": 8.254042000771733,
+          "database_p95_ms": 6.919038998603355,
+          "pool_wait_p95_ms": 0.04283700036467053,
+          "error_ratio": 0.0,
+          "queue_depth": 0
+        },
+        "database": {
+          "connections": 8,
+          "connections_capacity": 40,
+          "oldest_transaction_seconds": 0,
+          "history_list_length": 0,
+          "rows_examined_per_execution": 20.0,
+          "temporary_disk_tables_rate": 0.0
+        }
+      },
+      "during": [
+        {
+          "sampled_at": "2026-11-12T07:45:22.408615+00:00",
+          "application": {
+            "request_p95_ms": 8.254042000771733,
+            "database_p95_ms": 6.919038998603355,
+            "pool_wait_p95_ms": 0.04283700036467053,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:45:25.484777+00:00",
+          "application": {
+            "request_p95_ms": 16.373785998439416,
+            "database_p95_ms": 16.10273200276424,
+            "pool_wait_p95_ms": 0.04283700036467053,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": null,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:45:28.540217+00:00",
+          "application": {
+            "request_p95_ms": 19.465676999971038,
+            "database_p95_ms": 19.199104001017986,
+            "pool_wait_p95_ms": 0.04250900019542314,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 4799.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:45:31.580791+00:00",
+          "application": {
+            "request_p95_ms": 20.162448003247846,
+            "database_p95_ms": 19.769803999224678,
+            "pool_wait_p95_ms": 0.04059600178152323,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 4799.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:45:34.686761+00:00",
+          "application": {
+            "request_p95_ms": 21.06391799679841,
+            "database_p95_ms": 20.46672899814439,
+            "pool_wait_p95_ms": 0.035889002901967615,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 4799.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:45:37.721400+00:00",
+          "application": {
+            "request_p95_ms": 21.71440799793345,
+            "database_p95_ms": 20.75554899784038,
+            "pool_wait_p95_ms": 0.03493899930617772,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 4799.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:45:40.752300+00:00",
+          "application": {
+            "request_p95_ms": 21.71440799793345,
+            "database_p95_ms": 20.75554899784038,
+            "pool_wait_p95_ms": 0.04250900019542314,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 4799.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        }
+      ],
+      "after": [
+        {
+          "sampled_at": "2026-11-12T07:45:48.927196+00:00",
+          "application": {
+            "request_p95_ms": 21.71440799793345,
+            "database_p95_ms": 20.75554899784038,
+            "pool_wait_p95_ms": 0.03660899892565794,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 2068.1428571428573,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:45:53.970132+00:00",
+          "application": {
+            "request_p95_ms": 21.06391799679841,
+            "database_p95_ms": 19.769803999224678,
+            "pool_wait_p95_ms": 0.03698799991980195,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:45:58.985314+00:00",
+          "application": {
+            "request_p95_ms": 19.452574000752065,
+            "database_p95_ms": 18.51305599848274,
+            "pool_wait_p95_ms": 0.03698799991980195,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:46:04.042458+00:00",
+          "application": {
+            "request_p95_ms": 17.675612998573342,
+            "database_p95_ms": 17.2751390018675,
+            "pool_wait_p95_ms": 0.03698799991980195,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:46:09.055541+00:00",
+          "application": {
+            "request_p95_ms": 15.337775999796577,
+            "database_p95_ms": 14.954726000723895,
+            "pool_wait_p95_ms": 0.044021999201504514,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:46:14.084958+00:00",
+          "application": {
+            "request_p95_ms": 7.185872000263771,
+            "database_p95_ms": 5.9453020003275014,
+            "pool_wait_p95_ms": 0.04068799898959696,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:46:19.095120+00:00",
+          "application": {
+            "request_p95_ms": 7.4396499985596165,
+            "database_p95_ms": 6.408043002011254,
+            "pool_wait_p95_ms": 0.04018800245830789,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        }
+      ],
+      "cleanup": {
+        "normal": true,
+        "held_connections": 0,
+        "held_read_view": false
+      },
+      "result": "direct_verified"
+    },
+    {
+      "scenario": "pool-pressure",
+      "scope": "direct_target_and_cleanup_only",
+      "started_at": "2026-11-12T07:46:22.027693+00:00",
+      "off_at": "2026-11-12T07:46:43.694418+00:00",
+      "ended_at": "2026-11-12T07:47:22.758848+00:00",
+      "baseline": {
+        "sampled_at": "2026-11-12T07:46:22.090815+00:00",
+        "application": {
+          "request_p95_ms": 7.185872000263771,
+          "database_p95_ms": 5.791175000922522,
+          "pool_wait_p95_ms": 0.04018800245830789,
+          "error_ratio": 0.0,
+          "queue_depth": 0
+        },
+        "database": {
+          "connections": 8,
+          "connections_capacity": 40,
+          "oldest_transaction_seconds": 0,
+          "history_list_length": 0,
+          "rows_examined_per_execution": 20.0,
+          "temporary_disk_tables_rate": 0.0
+        }
+      },
+      "during": [
+        {
+          "sampled_at": "2026-11-12T07:46:22.125226+00:00",
+          "application": {
+            "request_p95_ms": 7.185872000263771,
+            "database_p95_ms": 5.791175000922522,
+            "pool_wait_p95_ms": 0.04018800245830789,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:46:25.191596+00:00",
+          "application": {
+            "request_p95_ms": 600.2541879970522,
+            "database_p95_ms": 5.599159001576481,
+            "pool_wait_p95_ms": 600,
+            "error_ratio": 0.0603448275862069,
+            "queue_depth": 2
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:46:28.268533+00:00",
+          "application": {
+            "request_p95_ms": 1098.6395489999268,
+            "database_p95_ms": 5.324085999745876,
+            "pool_wait_p95_ms": 600,
+            "error_ratio": 0.1565217391304348,
+            "queue_depth": 3
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 1.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:46:31.354812+00:00",
+          "application": {
+            "request_p95_ms": 1595.1611599994067,
+            "database_p95_ms": 5.209087998082396,
+            "pool_wait_p95_ms": 600,
+            "error_ratio": 0.25,
+            "queue_depth": 6
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 1.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:46:34.418505+00:00",
+          "application": {
+            "request_p95_ms": 2095.802686002571,
+            "database_p95_ms": 5.324085999745876,
+            "pool_wait_p95_ms": 600,
+            "error_ratio": 0.34545454545454546,
+            "queue_depth": 8
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 1.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:46:37.495449+00:00",
+          "application": {
+            "request_p95_ms": 2595.593688001827,
+            "database_p95_ms": 5.324085999745876,
+            "pool_wait_p95_ms": 600,
+            "error_ratio": 0.4444444444444444,
+            "queue_depth": 10
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 1.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:46:40.566660+00:00",
+          "application": {
+            "request_p95_ms": 3093.2106010004645,
+            "database_p95_ms": 5.324085999745876,
+            "pool_wait_p95_ms": 600,
+            "error_ratio": 0.5523809523809524,
+            "queue_depth": 12
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 1.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        }
+      ],
+      "after": [
+        {
+          "sampled_at": "2026-11-12T07:46:49.247716+00:00",
+          "application": {
+            "request_p95_ms": 3788.2676610024646,
+            "database_p95_ms": 5.528879999474157,
+            "pool_wait_p95_ms": 600,
+            "error_ratio": 0.5833333333333334,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 9.791044776119403,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:46:54.291923+00:00",
+          "application": {
+            "request_p95_ms": 3742.0363540004473,
+            "database_p95_ms": 5.074168999271933,
+            "pool_wait_p95_ms": 600,
+            "error_ratio": 0.5365853658536586,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:46:59.334954+00:00",
+          "application": {
+            "request_p95_ms": 3742.0363540004473,
+            "database_p95_ms": 5.074168999271933,
+            "pool_wait_p95_ms": 600,
+            "error_ratio": 0.3888888888888889,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:47:04.365719+00:00",
+          "application": {
+            "request_p95_ms": 3742.0363540004473,
+            "database_p95_ms": 5.314730999089079,
+            "pool_wait_p95_ms": 600,
+            "error_ratio": 0.24806201550387597,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:47:09.405109+00:00",
+          "application": {
+            "request_p95_ms": 3742.0363540004473,
+            "database_p95_ms": 5.528879999474157,
+            "pool_wait_p95_ms": 600,
+            "error_ratio": 0.11363636363636363,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:47:14.427514+00:00",
+          "application": {
+            "request_p95_ms": 6.7108330003975425,
+            "database_p95_ms": 5.855365998286288,
+            "pool_wait_p95_ms": 0.03541100159054622,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:47:19.442990+00:00",
+          "application": {
+            "request_p95_ms": 6.788552997022634,
+            "database_p95_ms": 5.855365998286288,
+            "pool_wait_p95_ms": 0.03813800140051171,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        }
+      ],
+      "cleanup": {
+        "normal": true,
+        "held_connections": 0,
+        "held_read_view": false
+      },
+      "result": "direct_verified"
+    },
+    {
+      "scenario": "temporary-work",
+      "scope": "direct_target_and_cleanup_only",
+      "started_at": "2026-11-12T07:55:52.857168+00:00",
+      "off_at": "2026-11-12T07:56:14.594032+00:00",
+      "ended_at": "2026-11-12T07:56:54.166458+00:00",
+      "baseline": {
+        "sampled_at": "2026-11-12T07:55:52.908410+00:00",
+        "application": {
+          "request_p95_ms": 19.957921998866368,
+          "database_p95_ms": 14.427643000090029,
+          "pool_wait_p95_ms": 0.1661569986026734,
+          "error_ratio": 0.0,
+          "queue_depth": 0
+        },
+        "database": {
+          "connections": 8,
+          "connections_capacity": 40,
+          "oldest_transaction_seconds": 0,
+          "history_list_length": 0,
+          "rows_examined_per_execution": 20.0,
+          "temporary_disk_tables_rate": 0.0
+        }
+      },
+      "during": [
+        {
+          "sampled_at": "2026-11-12T07:55:52.951737+00:00",
+          "application": {
+            "request_p95_ms": 19.957921998866368,
+            "database_p95_ms": 14.427643000090029,
+            "pool_wait_p95_ms": 0.1661569986026734,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:55:56.042319+00:00",
+          "application": {
+            "request_p95_ms": 157.28305200173054,
+            "database_p95_ms": 155.67216500130598,
+            "pool_wait_p95_ms": 0.10109399954671971,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:55:59.118154+00:00",
+          "application": {
+            "request_p95_ms": 157.28305200173054,
+            "database_p95_ms": 155.67216500130598,
+            "pool_wait_p95_ms": 0.10100399958901107,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 4050.0,
+            "temporary_disk_tables_rate": 4.218913969055289
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:56:02.180376+00:00",
+          "application": {
+            "request_p95_ms": 157.28305200173054,
+            "database_p95_ms": 155.67216500130598,
+            "pool_wait_p95_ms": 0.10100399958901107,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 2025.0,
+            "temporary_disk_tables_rate": 3.91931896270125
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:56:05.257331+00:00",
+          "application": {
+            "request_p95_ms": 158.55081399786286,
+            "database_p95_ms": 156.44677800082718,
+            "pool_wait_p95_ms": 0.10100399958901107,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 2025.0,
+            "temporary_disk_tables_rate": 3.9019383631904887
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:56:08.386309+00:00",
+          "application": {
+            "request_p95_ms": 171.49566800071625,
+            "database_p95_ms": 171.1503980004636,
+            "pool_wait_p95_ms": 0.1355479980702512,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 1278.9473684210527,
+            "temporary_disk_tables_rate": 3.834683902237429
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:56:11.458419+00:00",
+          "application": {
+            "request_p95_ms": 174.06104700057767,
+            "database_p95_ms": 173.4504480009491,
+            "pool_wait_p95_ms": 0.08600499859312549,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 1422.972972972973,
+            "temporary_disk_tables_rate": 4.232778132570248
+          }
+        }
+      ],
+      "after": [
+        {
+          "sampled_at": "2026-11-12T07:56:19.631198+00:00",
+          "application": {
+            "request_p95_ms": 174.06104700057767,
+            "database_p95_ms": 173.4504480009491,
+            "pool_wait_p95_ms": 0.10100399958901107,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 1123.6170212765958,
+            "temporary_disk_tables_rate": 2.398864379226177
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:56:24.680874+00:00",
+          "application": {
+            "request_p95_ms": 152.3722430029011,
+            "database_p95_ms": 152.0582800003467,
+            "pool_wait_p95_ms": 0.04521399750956334,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:56:29.715586+00:00",
+          "application": {
+            "request_p95_ms": 137.48869899791316,
+            "database_p95_ms": 137.26267800302594,
+            "pool_wait_p95_ms": 0.039528000343125314,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:56:34.730006+00:00",
+          "application": {
+            "request_p95_ms": 123.51699600185384,
+            "database_p95_ms": 123.1471370010695,
+            "pool_wait_p95_ms": 0.043821000872412696,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:56:39.784851+00:00",
+          "application": {
+            "request_p95_ms": 90.41313700072351,
+            "database_p95_ms": 90.1630029984517,
+            "pool_wait_p95_ms": 0.043821000872412696,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:56:44.819987+00:00",
+          "application": {
+            "request_p95_ms": 24.358557999221375,
+            "database_p95_ms": 15.018410002085147,
+            "pool_wait_p95_ms": 0.06591300189029425,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:56:49.854413+00:00",
+          "application": {
+            "request_p95_ms": 17.877663998660864,
+            "database_p95_ms": 14.653097998234443,
+            "pool_wait_p95_ms": 0.043821000872412696,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        }
+      ],
+      "cleanup": {
+        "normal": true,
+        "held_connections": 0,
+        "held_read_view": false
+      },
+      "result": "direct_verified"
+    },
+    {
+      "scenario": "application-queue",
+      "scope": "direct_target_and_cleanup_only",
+      "started_at": "2026-11-12T07:48:26.188732+00:00",
+      "off_at": "2026-11-12T07:48:47.916812+00:00",
+      "ended_at": "2026-11-12T07:49:26.322506+00:00",
+      "baseline": {
+        "sampled_at": "2026-11-12T07:48:26.216750+00:00",
+        "application": {
+          "request_p95_ms": 6.579761000466533,
+          "database_p95_ms": 5.354904002160765,
+          "pool_wait_p95_ms": 0.04283499947632663,
+          "error_ratio": 0.0,
+          "queue_depth": 0
+        },
+        "database": {
+          "connections": 8,
+          "connections_capacity": 40,
+          "oldest_transaction_seconds": 0,
+          "history_list_length": 0,
+          "rows_examined_per_execution": 20.0,
+          "temporary_disk_tables_rate": 0.0
+        }
+      },
+      "during": [
+        {
+          "sampled_at": "2026-11-12T07:48:26.272012+00:00",
+          "application": {
+            "request_p95_ms": 6.579761000466533,
+            "database_p95_ms": 5.354904002160765,
+            "pool_wait_p95_ms": 0.04283499947632663,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:48:29.345276+00:00",
+          "application": {
+            "request_p95_ms": 7.344850000663428,
+            "database_p95_ms": 5.2762759987672325,
+            "pool_wait_p95_ms": 0.03941399700124748,
+            "error_ratio": 0.0,
+            "queue_depth": 4
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:48:32.451131+00:00",
+          "application": {
+            "request_p95_ms": 1713.9179120022163,
+            "database_p95_ms": 5.2762759987672325,
+            "pool_wait_p95_ms": 0.03676399865071289,
+            "error_ratio": 0.0,
+            "queue_depth": 9
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:48:35.527058+00:00",
+          "application": {
+            "request_p95_ms": 2916.576817002351,
+            "database_p95_ms": 5.032984001445584,
+            "pool_wait_p95_ms": 0.0352120005118195,
+            "error_ratio": 0.0,
+            "queue_depth": 13
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:48:38.623427+00:00",
+          "application": {
+            "request_p95_ms": 4122.881177001545,
+            "database_p95_ms": 5.032984001445584,
+            "pool_wait_p95_ms": 0.03448799907346256,
+            "error_ratio": 0.0,
+            "queue_depth": 18
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:48:41.688893+00:00",
+          "application": {
+            "request_p95_ms": 5333.5677399991255,
+            "database_p95_ms": 4.630928997357842,
+            "pool_wait_p95_ms": 0.03313100023660809,
+            "error_ratio": 0.0,
+            "queue_depth": 23
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:48:44.766834+00:00",
+          "application": {
+            "request_p95_ms": 6525.866514999507,
+            "database_p95_ms": 4.232023002259666,
+            "pool_wait_p95_ms": 0.02506600139895454,
+            "error_ratio": 0.0,
+            "queue_depth": 24
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        }
+      ],
+      "after": [
+        {
+          "sampled_at": "2026-11-12T07:48:52.959113+00:00",
+          "application": {
+            "request_p95_ms": 8036.430044001463,
+            "database_p95_ms": 4.8073910002131015,
+            "pool_wait_p95_ms": 0.030072002118686214,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:48:57.981330+00:00",
+          "application": {
+            "request_p95_ms": 8036.430044001463,
+            "database_p95_ms": 4.583754998748191,
+            "pool_wait_p95_ms": 0.0439690011262428,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:49:03.018522+00:00",
+          "application": {
+            "request_p95_ms": 7899.010252000153,
+            "database_p95_ms": 4.5030829969618935,
+            "pool_wait_p95_ms": 0.03403599839657545,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:49:08.069926+00:00",
+          "application": {
+            "request_p95_ms": 7899.010252000153,
+            "database_p95_ms": 4.54666299992823,
+            "pool_wait_p95_ms": 0.0439690011262428,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:49:13.084831+00:00",
+          "application": {
+            "request_p95_ms": 7899.010252000153,
+            "database_p95_ms": 4.912451000564033,
+            "pool_wait_p95_ms": 0.04609800089383498,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:49:18.120010+00:00",
+          "application": {
+            "request_p95_ms": 6.252904997381847,
+            "database_p95_ms": 5.264939998596674,
+            "pool_wait_p95_ms": 0.05493500066222623,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:49:23.151775+00:00",
+          "application": {
+            "request_p95_ms": 5.988805998640601,
+            "database_p95_ms": 5.081679002614692,
+            "pool_wait_p95_ms": 0.045884000428486615,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        }
+      ],
+      "cleanup": {
+        "normal": true,
+        "held_connections": 0,
+        "held_read_view": false
+      },
+      "result": "direct_verified"
+    },
+    {
+      "scenario": "retained-view",
+      "scope": "direct_target_and_cleanup_only",
+      "started_at": "2026-11-12T07:49:26.526838+00:00",
+      "off_at": "2026-11-12T07:49:48.175022+00:00",
+      "ended_at": "2026-11-12T07:50:27.605054+00:00",
+      "baseline": {
+        "sampled_at": "2026-11-12T07:49:26.589617+00:00",
+        "application": {
+          "request_p95_ms": 7.06578800236457,
+          "database_p95_ms": 6.408658999134786,
+          "pool_wait_p95_ms": 0.04118400102015585,
+          "error_ratio": 0.0,
+          "queue_depth": 0
+        },
+        "database": {
+          "connections": 8,
+          "connections_capacity": 40,
+          "oldest_transaction_seconds": 0,
+          "history_list_length": 0,
+          "rows_examined_per_execution": 20.0,
+          "temporary_disk_tables_rate": 0.0
+        }
+      },
+      "during": [
+        {
+          "sampled_at": "2026-11-12T07:49:26.644844+00:00",
+          "application": {
+            "request_p95_ms": 7.06578800236457,
+            "database_p95_ms": 6.408658999134786,
+            "pool_wait_p95_ms": 0.04118400102015585,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:49:29.712546+00:00",
+          "application": {
+            "request_p95_ms": 7.740861001366284,
+            "database_p95_ms": 6.820367001637351,
+            "pool_wait_p95_ms": 0.04903200169792399,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 10,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 3,
+            "history_list_length": 7,
+            "rows_examined_per_execution": 13.333333333333334,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:49:32.752102+00:00",
+          "application": {
+            "request_p95_ms": 7.891336001193849,
+            "database_p95_ms": 6.820367001637351,
+            "pool_wait_p95_ms": 0.05792200317955576,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 10,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 6,
+            "history_list_length": 13,
+            "rows_examined_per_execution": 10.88,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:49:35.849080+00:00",
+          "application": {
+            "request_p95_ms": 7.891336001193849,
+            "database_p95_ms": 6.820367001637351,
+            "pool_wait_p95_ms": 0.05792200317955576,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 10,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 9,
+            "history_list_length": 19,
+            "rows_examined_per_execution": 10.5,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:49:38.930772+00:00",
+          "application": {
+            "request_p95_ms": 7.891336001193849,
+            "database_p95_ms": 6.544322000991087,
+            "pool_wait_p95_ms": 0.053923002269584686,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 10,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 12,
+            "history_list_length": 26,
+            "rows_examined_per_execution": 10.5,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:49:41.984551+00:00",
+          "application": {
+            "request_p95_ms": 8.425746000284562,
+            "database_p95_ms": 6.820367001637351,
+            "pool_wait_p95_ms": 0.053923002269584686,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 10,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 15,
+            "history_list_length": 33,
+            "rows_examined_per_execution": 10.148148148148149,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:49:45.052047+00:00",
+          "application": {
+            "request_p95_ms": 8.43149899810669,
+            "database_p95_ms": 6.544322000991087,
+            "pool_wait_p95_ms": 0.053923002269584686,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 10,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 18,
+            "history_list_length": 39,
+            "rows_examined_per_execution": 10.5,
+            "temporary_disk_tables_rate": 0.0
+          }
+        }
+      ],
+      "after": [
+        {
+          "sampled_at": "2026-11-12T07:49:53.752156+00:00",
+          "application": {
+            "request_p95_ms": 8.425746000284562,
+            "database_p95_ms": 6.455761002143845,
+            "pool_wait_p95_ms": 0.04608199742506258,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 46,
+            "rows_examined_per_execution": 14.153846153846153,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:49:58.806688+00:00",
+          "application": {
+            "request_p95_ms": 7.054009998682886,
+            "database_p95_ms": 5.610962998616742,
+            "pool_wait_p95_ms": 0.0449030012532603,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 46,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:50:03.842275+00:00",
+          "application": {
+            "request_p95_ms": 7.054009998682886,
+            "database_p95_ms": 5.960403999779373,
+            "pool_wait_p95_ms": 0.04134800110477954,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 46,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:50:08.871780+00:00",
+          "application": {
+            "request_p95_ms": 7.4348439993627835,
+            "database_p95_ms": 6.232599000213668,
+            "pool_wait_p95_ms": 0.04246499884175137,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 46,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:50:13.907358+00:00",
+          "application": {
+            "request_p95_ms": 6.687664001219673,
+            "database_p95_ms": 6.215067998709856,
+            "pool_wait_p95_ms": 0.04426600207807496,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 46,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:50:18.927062+00:00",
+          "application": {
+            "request_p95_ms": 6.635644000198226,
+            "database_p95_ms": 5.960403999779373,
+            "pool_wait_p95_ms": 0.04426600207807496,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 46,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T07:50:23.974720+00:00",
+          "application": {
+            "request_p95_ms": 6.687664001219673,
+            "database_p95_ms": 5.960403999779373,
+            "pool_wait_p95_ms": 0.04426600207807496,
+            "error_ratio": 0.0,
+            "queue_depth": 0
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 46,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0
+          }
+        }
+      ],
+      "cleanup": {
+        "normal": true,
+        "held_connections": 0,
+        "held_read_view": false
+      },
+      "result": "direct_verified"
+    },
+    {
+      "scenario": "stale-replica",
+      "scope": "direct_target_and_cleanup_only",
+      "started_at": "2026-11-12T08:18:21.813744+00:00",
+      "off_at": "2026-11-12T08:19:23.423068+00:00",
+      "ended_at": "2026-11-12T08:19:55.857040+00:00",
+      "baseline": {
+        "sampled_at": "2026-11-12T08:18:21.846484+00:00",
+        "application": {
+          "request_p95_ms": 5.086645000119461,
+          "database_p95_ms": 4.6650549993501045,
+          "pool_wait_p95_ms": 0.039444999856641516,
+          "error_ratio": 0.0,
+          "queue_depth": 0,
+          "read_version_gap": 0,
+          "read_freshness_age_seconds": 0
+        },
+        "database": {
+          "connections": 7,
+          "connections_capacity": 40,
+          "oldest_transaction_seconds": 0,
+          "history_list_length": 31,
+          "rows_examined_per_execution": 13.333333333333334,
+          "temporary_disk_tables_rate": 0.0,
+          "replica_io_running": 1,
+          "replica_sql_running": 1,
+          "replica_lag_seconds": 0
+        }
+      },
+      "during": [
+        {
+          "sampled_at": "2026-11-12T08:18:21.945110+00:00",
+          "application": {
+            "request_p95_ms": 5.086645000119461,
+            "database_p95_ms": 4.6650549993501045,
+            "pool_wait_p95_ms": 0.039444999856641516,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 31,
+            "rows_examined_per_execution": 13.333333333333334,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:18:25.053504+00:00",
+          "application": {
+            "request_p95_ms": 5.268639000860276,
+            "database_p95_ms": 4.854857997997897,
+            "pool_wait_p95_ms": 0.04049299968755804,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 6,
+            "read_freshness_age_seconds": 3.156459
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 3,
+            "history_list_length": 33,
+            "rows_examined_per_execution": 15.294117647058824,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 3
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:18:28.136755+00:00",
+          "application": {
+            "request_p95_ms": 5.46124900210998,
+            "database_p95_ms": 4.989402001228882,
+            "pool_wait_p95_ms": 0.039444999856641516,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 12,
+            "read_freshness_age_seconds": 6.217614
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 6,
+            "history_list_length": 33,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 6
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:18:31.417878+00:00",
+          "application": {
+            "request_p95_ms": 6.784023000363959,
+            "database_p95_ms": 6.101333998230984,
+            "pool_wait_p95_ms": 0.04407099913805723,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 18,
+            "read_freshness_age_seconds": 9.326381
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 10,
+            "history_list_length": 33,
+            "rows_examined_per_execution": 14.0,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 10
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:18:34.487077+00:00",
+          "application": {
+            "request_p95_ms": 6.784023000363959,
+            "database_p95_ms": 6.101333998230984,
+            "pool_wait_p95_ms": 0.04049299968755804,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 24,
+            "read_freshness_age_seconds": 12.496217
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 13,
+            "history_list_length": 33,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 13
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:18:37.525237+00:00",
+          "application": {
+            "request_p95_ms": 6.9252310022420716,
+            "database_p95_ms": 6.246763001399813,
+            "pool_wait_p95_ms": 0.04878899926552549,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 30,
+            "read_freshness_age_seconds": 15.592698
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 16,
+            "history_list_length": 33,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 16
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:18:40.587985+00:00",
+          "application": {
+            "request_p95_ms": 6.9252310022420716,
+            "database_p95_ms": 6.101333998230984,
+            "pool_wait_p95_ms": 0.04049299968755804,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 36,
+            "read_freshness_age_seconds": 18.662498
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 19,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 14.0,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 19
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:18:43.685816+00:00",
+          "application": {
+            "request_p95_ms": 6.9252310022420716,
+            "database_p95_ms": 6.101333998230984,
+            "pool_wait_p95_ms": 0.04878899926552549,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 42,
+            "read_freshness_age_seconds": 21.728027
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 22,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 22
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:18:46.752144+00:00",
+          "application": {
+            "request_p95_ms": 6.9252310022420716,
+            "database_p95_ms": 6.101333998230984,
+            "pool_wait_p95_ms": 0.04878899926552549,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 48,
+            "read_freshness_age_seconds": 24.805398
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 25,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 25
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:18:49.819416+00:00",
+          "application": {
+            "request_p95_ms": 6.067651000194019,
+            "database_p95_ms": 5.815680000523571,
+            "pool_wait_p95_ms": 0.04878899926552549,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 54,
+            "read_freshness_age_seconds": 27.88446
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 28,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 28
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:18:52.874910+00:00",
+          "application": {
+            "request_p95_ms": 6.067651000194019,
+            "database_p95_ms": 5.815680000523571,
+            "pool_wait_p95_ms": 0.05900999894947745,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 60,
+            "read_freshness_age_seconds": 30.955128
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 31,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 14.0,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 31
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:18:55.961272+00:00",
+          "application": {
+            "request_p95_ms": 6.117969998740591,
+            "database_p95_ms": 5.982028000289574,
+            "pool_wait_p95_ms": 0.06322999979602173,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 66,
+            "read_freshness_age_seconds": 34.024216
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 34,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 34
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:18:59.016792+00:00",
+          "application": {
+            "request_p95_ms": 6.067651000194019,
+            "database_p95_ms": 5.815680000523571,
+            "pool_wait_p95_ms": 0.05900999894947745,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 72,
+            "read_freshness_age_seconds": 37.09136
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 37,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 37
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:02.089699+00:00",
+          "application": {
+            "request_p95_ms": 6.048579001799226,
+            "database_p95_ms": 5.563036000239663,
+            "pool_wait_p95_ms": 0.049632999434834346,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 78,
+            "read_freshness_age_seconds": 40.162431
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 40,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 40
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:05.152288+00:00",
+          "application": {
+            "request_p95_ms": 6.048579001799226,
+            "database_p95_ms": 5.5121109980973415,
+            "pool_wait_p95_ms": 0.04471400097827427,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 84,
+            "read_freshness_age_seconds": 43.23115
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 43,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 14.0,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 43
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:08.209009+00:00",
+          "application": {
+            "request_p95_ms": 5.619651998131303,
+            "database_p95_ms": 4.659688001993345,
+            "pool_wait_p95_ms": 0.05900999894947745,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 90,
+            "read_freshness_age_seconds": 46.298189
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 46,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 46
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:11.254500+00:00",
+          "application": {
+            "request_p95_ms": 5.70499500099686,
+            "database_p95_ms": 4.667250999773387,
+            "pool_wait_p95_ms": 0.05900999894947745,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 96,
+            "read_freshness_age_seconds": 49.362269
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 49,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 49
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:14.319505+00:00",
+          "application": {
+            "request_p95_ms": 5.743448000430362,
+            "database_p95_ms": 4.842133999773068,
+            "pool_wait_p95_ms": 0.05891500040888786,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 102,
+            "read_freshness_age_seconds": 52.445943
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 53,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 53
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:17.371736+00:00",
+          "application": {
+            "request_p95_ms": 5.743448000430362,
+            "database_p95_ms": 4.842133999773068,
+            "pool_wait_p95_ms": 0.05891500040888786,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 108,
+            "read_freshness_age_seconds": 55.529108
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 56,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 13.666666666666666,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 56
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:20.419797+00:00",
+          "application": {
+            "request_p95_ms": 5.70499500099686,
+            "database_p95_ms": 5.238189001829596,
+            "pool_wait_p95_ms": 0.04471400097827427,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 114,
+            "read_freshness_age_seconds": 58.601301
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 59,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 14.0,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 59
+          }
+        }
+      ],
+      "after": [
+        {
+          "sampled_at": "2026-11-12T08:19:27.461554+00:00",
+          "application": {
+            "request_p95_ms": 5.70499500099686,
+            "database_p95_ms": 5.31790899913176,
+            "pool_wait_p95_ms": 0.037984998925821856,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 3,
+            "rows_examined_per_execution": 3.2435897435897436,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:31.519060+00:00",
+          "application": {
+            "request_p95_ms": 5.70499500099686,
+            "database_p95_ms": 5.31790899913176,
+            "pool_wait_p95_ms": 0.03890000152750872,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 22,
+            "rows_examined_per_execution": 13.10344827586207,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:35.618968+00:00",
+          "application": {
+            "request_p95_ms": 5.6760299994493835,
+            "database_p95_ms": 5.31790899913176,
+            "pool_wait_p95_ms": 0.03890000152750872,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 13.91304347826087,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:39.689551+00:00",
+          "application": {
+            "request_p95_ms": 5.6760299994493835,
+            "database_p95_ms": 5.31790899913176,
+            "pool_wait_p95_ms": 0.04537499989964999,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 16,
+            "rows_examined_per_execution": 13.6,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:43.723091+00:00",
+          "application": {
+            "request_p95_ms": 5.992364000121597,
+            "database_p95_ms": 5.635240999254165,
+            "pool_wait_p95_ms": 0.055880998843349516,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 32,
+            "rows_examined_per_execution": 13.333333333333334,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:47.781277+00:00",
+          "application": {
+            "request_p95_ms": 5.80725799954962,
+            "database_p95_ms": 5.5709839980409015,
+            "pool_wait_p95_ms": 0.04088700006832369,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 6,
+            "rows_examined_per_execution": 13.333333333333334,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:51.815768+00:00",
+          "application": {
+            "request_p95_ms": 5.498550999618601,
+            "database_p95_ms": 4.94856799923582,
+            "pool_wait_p95_ms": 0.04088700006832369,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 25,
+            "rows_examined_per_execution": 13.333333333333334,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:19:55.854307+00:00",
+          "application": {
+            "request_p95_ms": 5.80725799954962,
+            "database_p95_ms": 5.5709839980409015,
+            "pool_wait_p95_ms": 0.04088700006832369,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 3,
+            "rows_examined_per_execution": 13.333333333333334,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        }
+      ],
+      "cleanup": {
+        "normal": true,
+        "held_connections": 0,
+        "held_read_view": false
+      },
+      "result": "direct_verified"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "scenario": "temporary-work",
+      "at": "2026-11-12T07:47:22.883543+00:00",
+      "result": "intended_effect_not_observed",
+      "observed": "Permission error 1227 while setting a restricted session variable; no elevated grant was added.",
+      "fix": "Removed the restricted SET, retained small per-session temporary-table limits, and reran the actual workload.",
+      "retry": "2026-11-12T07:55:52.857168+00:00"
+    },
+    {
+      "scenario": "stale-replica",
+      "at": "2026-11-12T08:07:26.326328+00:00",
+      "result": "sustained_ON_not_maintained",
+      "observed": "The real version distance returned from36 to0 at21seconds before OFF.",
+      "fix": "Kept the owned lock transaction alive, bounded source backlog at600versions and limited relay logs; real60second ON retest reached114versions, then OFF recovered to0.",
+      "retry": "2026-11-12T08:18:21.813744+00:00"
+    }
+  ],
+  "earlier_trials": [
+    {
+      "scenario": "stale-replica",
+      "scope": "direct_target_and_cleanup_only",
+      "started_at": "2026-11-12T08:07:26.326328+00:00",
+      "off_at": "2026-11-12T08:07:50.915759+00:00",
+      "ended_at": "2026-11-12T08:08:23.401178+00:00",
+      "baseline": {
+        "sampled_at": "2026-11-12T08:07:26.369798+00:00",
+        "application": {
+          "request_p95_ms": 2.1397889977379236,
+          "database_p95_ms": 1.8836859999282751,
+          "pool_wait_p95_ms": 0.014920999092282727,
+          "error_ratio": 0.0,
+          "queue_depth": 0,
+          "read_version_gap": 0,
+          "read_freshness_age_seconds": 0
+        },
+        "database": {
+          "connections": 7,
+          "connections_capacity": 40,
+          "oldest_transaction_seconds": 0,
+          "history_list_length": 38,
+          "rows_examined_per_execution": 20.0,
+          "temporary_disk_tables_rate": 0.0,
+          "replica_io_running": 1,
+          "replica_sql_running": 1,
+          "replica_lag_seconds": 0
+        }
+      },
+      "during": [
+        {
+          "sampled_at": "2026-11-12T08:07:26.426484+00:00",
+          "application": {
+            "request_p95_ms": 2.1397889977379236,
+            "database_p95_ms": 1.8836859999282751,
+            "pool_wait_p95_ms": 0.014920999092282727,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 38,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:07:29.494412+00:00",
+          "application": {
+            "request_p95_ms": 2.1397889977379236,
+            "database_p95_ms": 1.8836859999282751,
+            "pool_wait_p95_ms": 0.014920999092282727,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 6,
+            "read_freshness_age_seconds": 3.161732
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 3,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 18.571428571428573,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 3
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:07:32.551924+00:00",
+          "application": {
+            "request_p95_ms": 2.009356001508422,
+            "database_p95_ms": 1.7207130003953353,
+            "pool_wait_p95_ms": 0.014209999790182337,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 12,
+            "read_freshness_age_seconds": 6.192959
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 6,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 6
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:07:35.620931+00:00",
+          "application": {
+            "request_p95_ms": 1.9874680001521483,
+            "database_p95_ms": 1.624938999157166,
+            "pool_wait_p95_ms": 0.012051998055540025,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 18,
+            "read_freshness_age_seconds": 9.2316
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 9,
+            "history_list_length": 0,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 9
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:07:38.684845+00:00",
+          "application": {
+            "request_p95_ms": 2.1397889977379236,
+            "database_p95_ms": 1.8836859999282751,
+            "pool_wait_p95_ms": 0.02200800008722581,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 24,
+            "read_freshness_age_seconds": 12.277145
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 12,
+            "history_list_length": 1,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 12
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:07:41.748385+00:00",
+          "application": {
+            "request_p95_ms": 2.476426998327952,
+            "database_p95_ms": 2.0946740005456377,
+            "pool_wait_p95_ms": 0.0293160010187421,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 30,
+            "read_freshness_age_seconds": 15.343042
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 15,
+            "history_list_length": 1,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 15
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:07:44.864611+00:00",
+          "application": {
+            "request_p95_ms": 3.1654890008212533,
+            "database_p95_ms": 2.725368001847528,
+            "pool_wait_p95_ms": 0.03127200034214184,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 36,
+            "read_freshness_age_seconds": 18.408026
+          },
+          "database": {
+            "connections": 8,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 18,
+            "history_list_length": 1,
+            "rows_examined_per_execution": 20.0,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 18
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:07:47.901795+00:00",
+          "application": {
+            "request_p95_ms": 4.021754000859801,
+            "database_p95_ms": 3.3764580002753064,
+            "pool_wait_p95_ms": 0.03127200034214184,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 48,
+            "rows_examined_per_execution": 4.528301886792453,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        }
+      ],
+      "after": [
+        {
+          "sampled_at": "2026-11-12T08:07:54.976466+00:00",
+          "application": {
+            "request_p95_ms": 6.682264000119176,
+            "database_p95_ms": 6.003917998896213,
+            "pool_wait_p95_ms": 0.03143600042676553,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 7,
+            "rows_examined_per_execution": 13.333333333333334,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:07:59.033227+00:00",
+          "application": {
+            "request_p95_ms": 6.682264000119176,
+            "database_p95_ms": 6.003917998896213,
+            "pool_wait_p95_ms": 0.03127200034214184,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 24,
+            "rows_examined_per_execution": 13.333333333333334,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:08:03.084909+00:00",
+          "application": {
+            "request_p95_ms": 7.159732998843538,
+            "database_p95_ms": 6.572602000233019,
+            "pool_wait_p95_ms": 0.03143600042676553,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 2,
+            "rows_examined_per_execution": 13.6,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:08:07.192836+00:00",
+          "application": {
+            "request_p95_ms": 7.159732998843538,
+            "database_p95_ms": 6.572602000233019,
+            "pool_wait_p95_ms": 0.03223200110369362,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 17,
+            "rows_examined_per_execution": 13.91304347826087,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:08:11.256946+00:00",
+          "application": {
+            "request_p95_ms": 7.2860990003391635,
+            "database_p95_ms": 6.728848999046022,
+            "pool_wait_p95_ms": 0.03127200034214184,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 34,
+            "rows_examined_per_execution": 13.333333333333334,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:08:15.315339+00:00",
+          "application": {
+            "request_p95_ms": 7.201333999546478,
+            "database_p95_ms": 6.581851997907506,
+            "pool_wait_p95_ms": 0.031113999284571037,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 1,
+            "read_freshness_age_seconds": 0.504984
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 11,
+            "rows_examined_per_execution": 13.333333333333334,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:08:19.351051+00:00",
+          "application": {
+            "request_p95_ms": 7.2860990003391635,
+            "database_p95_ms": 6.581851997907506,
+            "pool_wait_p95_ms": 0.031113999284571037,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 28,
+            "rows_examined_per_execution": 13.6,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 0
+          }
+        },
+        {
+          "sampled_at": "2026-11-12T08:08:23.380038+00:00",
+          "application": {
+            "request_p95_ms": 6.226025998330442,
+            "database_p95_ms": 5.769154999143211,
+            "pool_wait_p95_ms": 0.02959800258395262,
+            "error_ratio": 0.0,
+            "queue_depth": 0,
+            "read_version_gap": 0,
+            "read_freshness_age_seconds": 0
+          },
+          "database": {
+            "connections": 7,
+            "connections_capacity": 40,
+            "oldest_transaction_seconds": 0,
+            "history_list_length": 4,
+            "rows_examined_per_execution": 13.333333333333334,
+            "temporary_disk_tables_rate": 0.0,
+            "replica_io_running": 1,
+            "replica_sql_running": 1,
+            "replica_lag_seconds": 1
+          }
+        }
+      ],
+      "cleanup": {
+        "normal": true,
+        "held_connections": 0,
+        "held_read_view": false
+      },
+      "result": "short_trial_revealed_durability_gap",
+      "limitation": "While desired ON, version distance fell from36 to0 after21s: the idle held transaction reached wait_timeout. This trial did not prove sustained fault control."
+    }
+  ]
+}

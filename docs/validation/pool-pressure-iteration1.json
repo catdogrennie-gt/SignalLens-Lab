@@ -1,0 +1,173 @@
+{
+  "schema": 1,
+  "scenario": "pool-pressure",
+  "iteration": 1,
+  "record_type": "real_workflow_observation",
+  "status": "workflow_verified_with_limitations",
+  "diagnosis_quality": "reviewed_with_limitations",
+  "meaning": "Real A switch -> normal Zabbix collection -> ordinary platform discovery and report -> A OFF -> independent cleanup and monitoring observations. Workflow completion is not diagnosis accuracy.",
+  "timing": {
+    "on_at": "2026-11-12T09:39:30.307925Z",
+    "first_new_signal_episode_at": "2026-11-12T09:39:46.507030Z",
+    "new_completed_current_report_first_observed_at": "2026-11-12T09:40:53.815021Z",
+    "off_at": "2026-11-12T09:40:53.925478Z",
+    "direct_cleanup_observed_at": "2026-11-12T09:40:57.492064Z",
+    "monitoring_return_last_observed_at": "2026-11-12T09:41:47.640540Z",
+    "ended_at": "2026-11-12T09:41:47.666167Z"
+  },
+  "data": {
+    "source": "real Zabbix selected item histories",
+    "new_signal_count": 8,
+    "new_report_matched_this_run_signal_count": 8,
+    "report_id": "4e1c337e-eb55-40f1-8e54-5d854c9a7539",
+    "report_mode": "live_redacted",
+    "report_status": "completed",
+    "full_report_text_intentionally_omitted": true
+  },
+  "measurements": [
+    {
+      "name": "Rows examined per execution",
+      "unit": "",
+      "before": 20.0,
+      "during_largest_absolute_difference": 1.0,
+      "after": 20.0,
+      "after_observed_at": "2026-11-12T09:41:43.513809Z"
+    },
+    {
+      "name": "Statement window average time",
+      "unit": "ms",
+      "before": 0.31785535,
+      "during_largest_absolute_difference": 0.0745121,
+      "after": 0.44879535,
+      "after_observed_at": "2026-11-12T09:41:43.513809Z"
+    },
+    {
+      "name": "Request error ratio",
+      "unit": "",
+      "before": 0.0,
+      "during_largest_absolute_difference": 1.0,
+      "after": 0.0,
+      "after_observed_at": "2026-11-12T09:41:41.507186Z"
+    },
+    {
+      "name": "Connection pool in use",
+      "unit": "",
+      "before": 0.0,
+      "during_largest_absolute_difference": 6.0,
+      "after": 0.0,
+      "after_observed_at": "2026-11-12T09:41:41.507186Z"
+    },
+    {
+      "name": "Request queue depth",
+      "unit": "",
+      "before": 0.0,
+      "during_largest_absolute_difference": 24.0,
+      "after": 0.0,
+      "after_observed_at": "2026-11-12T09:41:41.507186Z"
+    },
+    {
+      "name": "Pool acquisition wait p95",
+      "unit": "ms",
+      "before": 0.010825002391356977,
+      "during_largest_absolute_difference": 600.0,
+      "after": 0.01112700192607008,
+      "after_observed_at": "2026-11-12T09:41:41.507186Z"
+    },
+    {
+      "name": "Connection pool waiters",
+      "unit": "",
+      "before": 0.0,
+      "during_largest_absolute_difference": 2.0,
+      "after": 0.0,
+      "after_observed_at": "2026-11-12T09:41:41.507186Z"
+    },
+    {
+      "name": "Request duration p95",
+      "unit": "ms",
+      "before": 1.3847160007571802,
+      "during_largest_absolute_difference": 7786.671090998425,
+      "after": 1.6214219976973254,
+      "after_observed_at": "2026-11-12T09:41:41.507186Z"
+    },
+    {
+      "name": "Queries per second",
+      "unit": "",
+      "before": 6.298589292359011,
+      "during_largest_absolute_difference": 14.402902127167016,
+      "after": 6.300225359061094,
+      "after_observed_at": "2026-11-12T09:41:42.507951Z"
+    }
+  ],
+  "counterevidence": {
+    "database_connection_count_observed_range": [
+      9.0,
+      9.0
+    ],
+    "database_connection_capacity_observed_range": [
+      40.0,
+      40.0
+    ],
+    "scope_note": "Schema-level SQL digest aggregates include real keepalive statements; reduced rows/execution does not demonstrate a slower SQL plan. Requests failing before a database call have no invented DB-duration value."
+  },
+  "cleanup": {
+    "normal": true,
+    "held_connections": 0,
+    "held_read_view": false
+  },
+  "monitoring_return": {
+    "status": "observed_return_near_pre_switch_values",
+    "distinct_observations": 2,
+    "relative_tolerance": 0.5,
+    "scope": "this run newly signaled metric dimensions",
+    "meaning": "Near pre-switch values, not a database health guarantee.",
+    "final_current_signal_count": 0,
+    "historical_report_not_current": true
+  },
+  "pending_review": [
+    "Further independent diagnosis quality checks; no confirmed root cause claimed.",
+    "Next iteration must improve preserved context/citation scope and rerun the real workflow."
+  ],
+  "reproduce": {
+    "entrypoint": "tools/validate-scenario.py",
+    "scenario": "pool-pressure",
+    "max_wait_seconds": 480,
+    "recovery_wait_seconds": 180,
+    "requests": "A allowlisted GET projections and conditional bounded switch only; no B task or model API request"
+  },
+  "errors": [],
+  "workflow_verified": true,
+  "diagnosis_verified": false,
+  "diagnosis_limitations": [
+    "Model input retained only three signals and one numeric row, omitting 25 numeric rows.",
+    "Pool capacity was collected but omitted from model context, limiting any exhaustion/capacity assertion.",
+    "Database threads-connected observations are counterevidence, not proof of general database health.",
+    "Reduced rows per execution includes keepalive/query-mix effects and does not establish SQL plan regression.",
+    "The report calls omitted middle projection points an eight-minute upstream sampling gap; retained projection omission is not proof of missing source samples.",
+    "Threads-connected summary sample_count was 138 with 149 original points; the report incorrectly treated max=11 as only 11 samples.",
+    "The model did not receive max_connections, so it cannot establish nonsaturation solely from a connected-count range. Separate direct observations of 9/40 are not retrospectively part of the model input."
+  ],
+  "presentation": {
+    "business_symptom": "应用池6个连接全部占用，获取等待升至600ms、队列24、错误比例1，请求p95最高约7.79秒；数据库全局连接仍保持9/40。关闭后负载释放、等待与错误回落。",
+    "zabbix_comparison": "本次ON至恢复窗口没有新增Zabbix触发器事件。MySQL官方拒绝连接规则检查数据库达到连接上限后的拒绝，而本次阻塞发生在应用池，数据库仍有余量；当前应用HTTP扩展未配置相应触发器，Zabbix本身可补充应用规则。",
+    "platform_clues": "平台自主发现8个新变化信号，约83.5秒看到关联本轮信号的新报告，提示应用连接获取瓶颈并保留根因未知。实际模型输入只保留3个信号和1个数值摘要，遗漏已采集的池容量与部分业务指标，不能把候选解释当根因确认。报告还误把投影省略当上游缺采、把连接数最大值11当样本数，分析质量待修正。"
+  },
+  "input_audit": {
+    "actual_audit_file_sha256": "631840b4af325a6ed2e9c4265534316b823efb92f408a87b2cd3b04e7078b5f0",
+    "exact_case_and_control_metadata_terms_checked": 13,
+    "term_hits": [],
+    "retained_signal_count": 3,
+    "retained_numeric_rows": 1,
+    "omitted_numeric_rows": 25,
+    "meaning": "Listed case/control metadata absent from actual request; not a diagnosis accuracy claim."
+  },
+  "zabbix_observation": {
+    "window": {
+      "on_at": "2026-11-12T09:39:30.307925Z",
+      "off_at": "2026-11-12T09:40:53.925478Z",
+      "ended_at": "2026-11-12T09:41:47.666167Z"
+    },
+    "new_trigger_event_count": 0,
+    "configured_enabled_trigger_count": 11,
+    "comparison_scope": "Only the configured hosts and this measured window."
+  }
+}

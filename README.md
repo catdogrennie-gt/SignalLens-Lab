@@ -1,47 +1,84 @@
 # SignalLens Lab
 
-**免登录开启一个真实问题，看完整运维平台自己发现与解释。**
+**开启一个真实、可关闭的问题，观察 AI 数据库运维平台如何发现、分析和恢复。**
 
-| 入口 | 直接访问 | 账号 |
+本项目是 [DB Evidence Platform](https://github.com/catdogrennie-gt/db-evidence-platform) 的独立验证与快速演示环境：用有限的业务请求和隔离 MySQL 复现问题，让平台根据真实 Zabbix 数据自主检查，逐项验证能力与不足。它不把故障名称或预期答案发送给模型，也不代表生产部署效果。
+
+## 在线体验
+
+| 入口 | 用途 | 登录 |
 | --- | --- | --- |
-| **A · 快速功能演示（本仓库）** | **[打开固定锁等待演示](https://premium-prozac-barbara-develop.trycloudflare.com)** | **无需登录** |
-| **B · 完整运维平台** | **[打开完整只读平台](https://genesis-bomb-lessons-compiler.trycloudflare.com)** | **`demo` / `EvidenceDemo-2026!`** |
+| **[A · 快速功能演示](https://representatives-remedies-eva-effectively.trycloudflare.com)** | 选择场景、打开/关闭故障，同页看实际观测与分析结果 | 无需登录 |
+| **[B · 完整分析平台](https://screens-sponsor-kijiji-julie.trycloudflare.com)** | 查看监控、问题、冻结报告及安全配置概览 | `demo` / `EvidenceDemo-2026!` |
 
-A 是一个轻量独立网站：固定锁等待开关、真实故障状态，以及 B 的实际采样、信号检查、AI 任务、报告三问摘要和最多三条冻结曲线。B 的源码见 [DB Evidence Platform](https://github.com/catdogrennie-gt/db-evidence-platform)，保留原有完整系统；公开账号只有固定对象的 `data.read`、`event.read`、`knowledge.read` 权限。
+B 的公开账号可以查看获授权范围内的安全信息，不能修改配置、启动分析或执行数据库操作；原始敏感资料不因公开演示而放开。两个网址是临时隧道，依赖演示电脑在线；公开密码仅属于此部署的只读身份，不是新安装的默认口令。
 
-![一个开关，实际观测、AI 任务、报告和曲线同页展示](docs/quick-showcase.png)
+<details>
+<summary>展开快速演示操作</summary>
 
-上图是本轮真实实验截图：B 普通巡检自行发现并生成报告，A 展示其结果；未向图表插入模拟点。正常关闭和控制进程异常退出后的清理与周期恢复均已实际核验；另一次模型非法 JSON 失败记录也保留，详见[完整验收记录](https://github.com/catdogrennie-gt/db-evidence-platform/blob/main/docs/acceptance-quick-showcase.md)。两个地址均为临时隧道，依赖演示电脑与服务在线，可能变化。公开密码仅用于此部署的只读演示身份，不是新安装的默认密码。
+1. 在 A 选择一个场景，先看业务现象、当时的 Zabbix 告警对照和联合分析线索。
+2. 打开唯一故障开关。所有访客共享一次真实实验，重复开启不会叠加负载；仅浏览其他场景不会改变公共开关。
+3. 同页看实际采样、平台自主检查和新报告，也可进入 B 核对图表与证据。页面每 60 秒刷新，保留展开与阅读位置；“刷新数据”只读刷新，不会创建分析任务。
+4. 关闭开关后，分别确认负载已清理、随后监控数据恢复。关闭网页不等于关闭故障；清理成功也不等于新采样已证明恢复。
 
-![快速演示 A 与完整平台 B 的职责和数据路径](docs/quick-showcase.svg)
+A 只制造固定、有界的故障并临时借用 B 的较快检查周期，**不直接创建报告或调用模型**。Zabbix 保存实际数据，B 的普通巡检和分析队列决定何时发现与分析。模型失败、缺少资料和旧报告都按实际状态显示，不生成替代结论。
 
-## 试用方法
+</details>
 
-1. 打开 A，无需登录。所有访客共享同一个固定隔离 MySQL 实验开关。
-2. 开启开关，持续制造测试行的锁等待。没有次数、冷却、固定运行时长或等待 Zabbix 恢复才能再开的门槛；重复开启不应累加故障连接。
-3. 看 B 的实际观测、发现和 AI 任务阶段，再读“发生了什么、为什么、现在怎么做”。A 不创建调查、不调用模型，只展示 B 受限接口中的真实结果；旧报告明确标为历史。
-4. 关闭开关，请求回滚并恢复正常周期。关闭网页不等于关闭实验；控制服务失联后依赖短租约回滚保护，清理结果仍需实际核验。
-5. 进入 B 根地址，用只读账号查看完整对象、数据、证据与历史报告；B 没有故障开关。
+## 当前验证进度
 
-A 开启时租用 B 的临时周期：实际读取 Zabbix 数据 **10 秒**、信号检查 **5 秒**，关闭或 **45 秒租约**失效后恢复当前演示基线 **60 / 300 秒**。AI 仍由 B 普通巡检、异常发现和队列自主决定；提频不等于每 5 秒调用模型。官方模板各 item 采样频率不同，本轮仅扩展锁诊断快照设为 5 秒，不声称全部监控指标都是 5 秒。
+新环境包含 **4 个 MySQL、3 个业务应用、6 个场景**。下面分别记录工作流与解释质量；有报告不等于根因已经确认。
 
-实际观测、采集时间、任务阶段与冻结报告分别显示。缺失不补零、旧值不代表当前健康；结构快照与数值曲线可能来自不同监控项和时刻，数值曲线没有故障点不否定结构快照中的锁等待。失败、证据不足与预算不足不生成替代结论。
+| 场景 | 当前实际状态 |
+| --- | --- |
+| SQL 效率退化 | 自主发现、新报告与恢复已验证；具体 SQL、执行计划和因果引用仍需完善 |
+| 应用连接池紧张 | 自主发现、池等待/错误关联与恢复已验证；模型输入遗漏池容量及 DB 上限，深层诊断待完善 |
+| 临时表查询代价 | 自主发现、新报告与恢复已验证；本轮 AI 尚未定位临时表机制 |
+| 应用排队反证、长读事务、副本读陈旧 | 固定负载、直接观测与清理已验证；完整平台闭环仍待逐项验证 |
 
-操作、周期、接口与失败语义见 **[快速演示指南](docs/quick-showcase.md)**。浏览器只调用 A 同源状态 / 开关接口；B 私密服务 token 和固定目标配置始终留在服务端与公开源码外，不向浏览器提供任意目标、SQL、命令或提示词。
+前三项是 **2026-11-12 隔离环境的单次工作流实测**，不是通用准确率或生产收益证明。Zabbix 可以配置更细的规则；本项目对照的是当时真实模板、阈值、持续时间及事件，区分未配置、未触发和已有告警。
 
-## 当前网站源码与验证
+实际数据与解释缺口见 **[验证记录与分析边界](docs/validation/observed-analysis-boundaries.md)**；平台后续清单见 **[验证与改进](https://github.com/catdogrennie-gt/db-evidence-platform/blob/main/docs/validation-scenarios.md)**。历史测量没有完整记录每个 worker 的构建与提示词版本时，保留该追溯限制，不补写未记录的版本。
 
-- `lab/web/`：原生 HTML / CSS / JavaScript 页面与实际有限样本 SVG 图，不需要第三套分析系统或前端构建依赖。
-- `lab/toggle_web.py`、`lab/toggle_controller.py`、`lab/toggle_target.py`：固定开关 API、串行 controller、受守卫的事务负载与 B 只读投影 / 临时提频桥接。
-- `tests/web.test.mjs`：页面契约、真实点与缺口、过期快照、历史报告和安全转义测试。
+## 如何组成
 
-```sh
-node --test tests/web.test.mjs
-node --check lab/web/app.js
-python -m unittest discover -s tests -v
+```mermaid
+flowchart LR
+    Visitor[访客开关] --> A[A 单一故障控制器]
+    A --> Lab[隔离应用与 MySQL]
+    Lab --> Z[Zabbix 实际采集]
+    Z --> B[B 定时检查与 AI 分析]
+    B --> View[报告与图表]
+    B -->|受限只读投影| A
+    A -.临时提频租约.-> B
 ```
 
-启动依赖仓库外显式私密目标、身份守卫与 B 服务接口配置；公开仓库不提供可直接运行到任意数据库的默认凭据。
+- `compose.evolution.yaml` / `compose.replica.yaml`：四库三应用，限制内存、CPU、连接与测试数据规模；与原公开单场景环境分开。
+- `lab/business_app.py` / `replica_app.py`：有限业务请求、数据库查询和中性采样端点，不输出故障答案。
+- `lab/scenario_engine.py` / `scenario_site.py` / `lab/web-v2`：单一所有者、共享开关、有限租约、只读观测与演示页面。
+- `lab/scenario_validation.py` / `tools/validate-scenario.py`：逐项验证正常、故障、直接清理、监控恢复和本次报告，不把完成状态当作诊断正确。
+
+A 调用 B 的受限接口，B 独立拥有采集、检查与分析。网页不接收任意数据库地址、SQL、命令或模型提示词；私密配置和服务凭据保留在源码外。
+
+## 如何部署与验证
+
+需要 Linux Docker / Compose、独立 Zabbix、已经启动的 B，以及仓库外显式私密配置。**不要直接对现有业务数据库或原演示容器运行初始化步骤。**
+
+按 **[多场景环境与重建指南](docs/evolution-lab.md)** 准备隔离目标、官方 MySQL 模板和扩展采集，再启动新 A。该指南包含资源上限、连接权限、采样周期、复制重建、验收 CLI 和恢复语义；平台接入与日常操作见 **[B 操作手册](https://github.com/catdogrennie-gt/db-evidence-platform/blob/main/docs/operator-manual.md)**。
+
+本轮官方状态主项实验频率为 10 秒、扩展项为 5 秒，仍需核对实际样本时间；生产环境应重新评估采集成本。A 是单控制器，不能对同一目标并行启动蓝、绿两个 owner。B 可独立准备新 API 并切换固定网关；A 控制器升级需在明确释放负载后进行。
+
+仓库内自动测试使用固定数据与替身，不等于真实全链路效果；实际结果以验证记录为准。
+
+```sh
+python -m unittest discover -s tests -v
+node --test tests/web.test.mjs
+```
+
+<details>
+<summary>历史固定锁等待站、CLI 实验与原始部署说明</summary>
+
+以下保留旧版实验记录，**其中的目标、周期和命令不描述上方当前多场景站**。旧公网入口暂保留在线用于查阅；请从上方新链接体验本轮系统。
 
 ## 历史命令行 Lab 与实测案例
 
@@ -143,3 +180,5 @@ Stop preserves the dataset volume. Do not remove volumes during an evidence run.
 The archived first runs used row count, amount sum and CRC32 XOR dataset checks. Current runs additionally compare SHA256 of canonical rows ordered by primary key. Historical artifacts retain their original check fields.
 
 This project does not include AI credentials or a model executor. SignalLens reads Zabbix using its separate read-only integration and owns the evidence/rule/model analysis acceptance.
+
+</details>
