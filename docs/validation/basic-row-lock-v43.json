@@ -1,0 +1,167 @@
+{
+  "schema": 1,
+  "case_id": "LOCK-01",
+  "scenario": "basic-row-lock",
+  "iteration": "v4.3",
+  "record_type": "real_retest_and_prerequisite_review",
+  "status": "lock_role_contract_verified_with_remaining_limits",
+  "workflow_verified": true,
+  "lock_relationship_verified": true,
+  "requested_lock_role_verified": true,
+  "overall_diagnosis_verified": false,
+  "diagnosis_verified": false,
+  "scope": "A real, bounded two-session InnoDB row-lock wait in an isolated target; no assertion of exact SQL, holding duration, transaction intent, or complete root cause.",
+  "evolution": [
+    {
+      "stage": "previous_v4.1",
+      "report_id": "f182cb84-b852-41e5-8fe1-01727615a461",
+      "observed_gap": "One hypothesis attributed the requesting lock mode to the blocking transaction."
+    },
+    {
+      "stage": "generic_projection_fix",
+      "change": "Only verified current v2 lock snapshots rename the joined requesting attributes to requested_lock_mode/type/status; unknown producers keep unassigned legacy fields. Original evidence remains unchanged."
+    },
+    {
+      "stage": "actual_v4.3_retest",
+      "report_id": "f3d90efa-fe32-4ebd-9d89-8ecabc37f389",
+      "result": "The actual request retains requested attributes and the report assigns the relationship and requesting mode correctly. A separate unsupported connection-health statement remains."
+    },
+    {
+      "stage": "v4.3_second_run_preflight",
+      "ON_executed": false,
+      "result": "Selection was narrowed to the lock snapshot and count. Natural revised samples were available, but offline flow review found old removed-item evidence could still be selected by the instance/window freeze. The deadline elapsed and the proposed run was skipped."
+    }
+  ],
+  "timing": {
+    "timezone": "UTC",
+    "on_at": "2026-11-12T16:41:40.596040Z",
+    "frozen_nonzero_observed_at": "2026-11-12T16:41:52.597089Z",
+    "off_at": "2026-11-12T16:42:32.358381Z",
+    "control_acceptance_interval_seconds": 51.76,
+    "interval_is_not_proven_continuous_lock_duration": true,
+    "fresh_complete_zero_after_off": [
+      "2026-11-12T16:42:37.606795Z",
+      "2026-11-12T16:42:52.601063Z"
+    ]
+  },
+  "data": {
+    "event_id": "5d52a1d9-8b3e-4c66-9776-c8f7d95d5314",
+    "report_id": "f3d90efa-fe32-4ebd-9d89-8ecabc37f389",
+    "report_status": "completed",
+    "model": "deepseek-v4-pro",
+    "prompt_version": "evidence-investigation-v4.3",
+    "succeeded_model_calls": 2,
+    "original_report_rewritten": false,
+    "manual_collection_or_AI_dispatch": false
+  },
+  "measurements": {
+    "complete_lock_snapshot_rows": {
+      "before": 0,
+      "during_observed": 1,
+      "after": 0
+    },
+    "actual_waiting_transaction": 3830,
+    "actual_blocking_transaction": 3824,
+    "requested_lock_mode": "X,REC_NOT_GAP",
+    "requested_lock_type": "RECORD",
+    "blocking_lock_mode": "not_provided",
+    "exact_SQL": "not_provided"
+  },
+  "input_contract": {
+    "producer_contract": "db-evidence-lock-snapshot-v2",
+    "current_snapshot_complete": true,
+    "snapshot_count_matches_rows": true,
+    "history_truncated": true,
+    "history_gap_is_not_current_snapshot_truncation": true,
+    "requested_attributes_retained_in_actual_rounds": [
+      1,
+      2
+    ],
+    "raw_evidence_reference_time_aliases_and_payload_hash_unchanged_in_offline_reprojection": true
+  },
+  "collection": {
+    "retested_selected_item_count": 3,
+    "retested_items": [
+      "dbops.mysql.lock_snapshot",
+      "dbops.mysql.lock_waits",
+      "mysql.threads_running"
+    ],
+    "lock_extension_sampling_seconds": 5,
+    "platform_collection_seconds": 10,
+    "signal_check_seconds": 5,
+    "final_selected_item_count": 2,
+    "final_selected_items": [
+      "dbops.mysql.lock_snapshot",
+      "dbops.mysql.lock_waits"
+    ],
+    "final_mapping_version": 2,
+    "final_config_revision": 2,
+    "source_template_frequency_policy_budget_changes": false
+  },
+  "actual_request_bounds": [
+    {
+      "round": 1,
+      "input_bound": 23251,
+      "max_output": 4000,
+      "prior_actual_usage": 0,
+      "reservation_total_bound": 27251,
+      "per_round_limit": 24000,
+      "total_limit": 32000,
+      "fits": true
+    },
+    {
+      "round": 2,
+      "input_bound": 21510,
+      "max_output": 4000,
+      "prior_actual_usage": 6424,
+      "reservation_total_bound": 31934,
+      "per_round_limit": 24000,
+      "total_limit": 32000,
+      "fits": true
+    }
+  ],
+  "cleanup": {
+    "independent_hard_OFF_guard_seconds": 290,
+    "single_existing_SQL_owner": true,
+    "maximum_scenario_sessions": 2,
+    "fixed_row_rollback_only": true,
+    "distinct_fresh_complete_zero_snapshots": 2,
+    "platform_observation_state": "recovered",
+    "read_only_issue_HTTP_status": 200,
+    "read_only_report_HTTP_status": 200,
+    "chart_count": 2,
+    "chart_point_counts": [
+      60,
+      720
+    ],
+    "faults_left_ON": false,
+    "public_fault_switch_available": false
+  },
+  "remaining_limits": [
+    "The report extends Threads running=2 to an unsupported connection-health conclusion. Active threads are not connected sessions or configured capacity; the whole report is not marked semantically correct.",
+    "No exact SQL, blocker holding duration, transaction intent, or complete root cause is established.",
+    "Zabbix trigger events were not reviewed for this basic case; no alert-gap claim is made.",
+    "The retained historical report uses the original three-item scope. The final two-item configuration does not rewrite that report."
+  ],
+  "blocked_followup": {
+    "planned_run": "v43-02",
+    "ON_executed": false,
+    "new_AI_task_dispatched": false,
+    "selection_change": "Formal version-checked save removed mysql.threads_running only; mapping/config versions naturally advanced from 1 to 2.",
+    "natural_revised_zero_and_count_ready_at": "2026-11-12T17:03:52.507497Z",
+    "cutoff": "2026-11-12T17:04:55Z",
+    "old_removed_item_observed_at": "2026-11-12T17:02:06.511202Z",
+    "old_removed_item_mapping_version": 1,
+    "old_removed_item_config_revision": 1,
+    "actual_prior_autonomous_lookback_seconds": 3600,
+    "flow_gap": "The freeze selection uses instance, live source mode and time window without the current selected-item/version boundary; offline selector review can still include old removed-item history. This is a prerequisite gap, not an actual second model-run failure.",
+    "no_new_frozen_request_or_model_output_claimed": true,
+    "offline_selector_reproduced_removed_history": true,
+    "selected_history_evidence_record_count": 181,
+    "record_count_is_not_independent_upstream_sample_count": true
+  },
+  "evidence_integrity": {
+    "private_raw_record_sha256": "646f91f2996745fd0030be4b3a5686d3ce0823e344ba5cfc98b58f55f4075c70",
+    "credentials_private_addresses_SQL_text_and_raw_audit_omitted": true
+  }
+}
