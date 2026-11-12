@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "scenario": "connection-headroom",
+  "iteration": "CAPACITY-03",
+  "record_type": "real_workflow_observation",
+  "status": "discovery_and_recovery_verified_model_report_failed",
+  "scope": "Current connection occupancy risk only; no downtime, leak, SQL cause or overall health conclusion.",
+  "timing": {
+    "date": "2026-11-12",
+    "timezone": "UTC",
+    "on_at": "2026-11-12T19:55:26.211134Z",
+    "off_at": "2026-11-12T19:56:05.740205Z",
+    "control_acceptance_interval_seconds": 39.529071,
+    "control_interval_is_not_exact_connection_hold_duration": true,
+    "autonomous_frozen_window_end_after_on_seconds": 22.904658,
+    "required_frozen_window_end_after_on_seconds": 20,
+    "two_distinct_fresh_recovery_observations": [
+      "2026-11-12T19:56:28.513205Z",
+      "2026-11-12T19:56:43.510870Z"
+    ],
+    "cleanup_and_restored_cadence_checked_at": "2026-11-12T19:56:51Z"
+  },
+  "measurements": {
+    "before": {"used": 8, "limit": 40, "utilization_percent": 20, "remaining": 32},
+    "during": {"used": 33, "limit": 40, "utilization_percent": 82.5, "remaining": 7},
+    "after": {"used": 8, "limit": 40, "utilization_percent": 20, "remaining": 32},
+    "configured_warning_percent": 80,
+    "classification": "configured_threshold_risk_not_root_cause",
+    "warning_is_explicit_configuration_not_official_template_default": true,
+    "capacity_pair_semantics": "gauge",
+    "capacity_sample_seconds": 5,
+    "consecutive_synchronized_pairs": 3,
+    "meaning": "Measured samples, not a claim that every instant of the ON interval had these values."
+  },
+  "frozen_input": {
+    "selected_item_count": 5,
+    "selected_item_categories": ["availability", "official_connected", "official_running", "capacity_used", "capacity_limit"],
+    "selection_scope_matches_task": true,
+    "manifest_item_count": 947,
+    "raw_evidence_records": 941,
+    "numeric_time_windows": 5,
+    "coverage_records": 1,
+    "aggregate_frames": 0,
+    "manual_collection_or_model_dispatch": false
+  },
+  "model_execution": {
+    "prompt_version": "evidence-investigation-v4.4",
+    "provider_requests": 2,
+    "calls": [
+      {"sequence": 1, "prompt_tokens": 5096, "completion_tokens": 136, "total_tokens": 5232, "finish_reason": "tool_calls"},
+      {"sequence": 2, "prompt_tokens": 5771, "completion_tokens": 110, "total_tokens": 5881, "finish_reason": "tool_calls"}
+    ],
+    "usage_sum": {"prompt_tokens": 10867, "completion_tokens": 246, "total_tokens": 11113},
+    "final_json_available": false,
+    "error_code": "model_token_budget_exhausted",
+    "third_provider_request_sent": false,
+    "budgets_increased": false,
+    "actual_monetary_cost": "unknown_no_verified_price_computed",
+    "fix_and_retest_status": "minimal_fix_and_offline_replay_verified_live_failed_path_not_reexercised"
+  },
+  "subsequent_budget_repair": {
+    "change": "Remove unused columns and empty dictionaries only when the numeric table has no rows.",
+    "verification_kind": "offline_replay_of_actual_input_not_provider_call",
+    "remaining_final_input_allowance": 16887,
+    "old_final_input_bound": 17074,
+    "old_excess": 187,
+    "new_final_input_bound": 16683,
+    "new_total_reservation": 31796,
+    "unchanged_total_cap": 32000,
+    "trigger_references_signals_and_capacity_pairs_unchanged": true,
+    "full_platform_tests_passed": 1099,
+    "full_platform_tests_skipped": 10,
+    "original_failed_report_unchanged": true,
+    "later_capacity04_final_report_completed": true,
+    "later_capacity04_provider_calls": 1,
+    "later_capacity04_exercised_old_two_tool_then_final_branch": false,
+    "later_capacity04_diagnosis_verified": false
+  },
+  "prerequisites": {
+    "initial_stale_pair_blocked_on": true,
+    "natural_fresh_pair_later_confirmed": true,
+    "upstream_and_platform_latest_times_matched": true,
+    "capacity_items_share_master": true,
+    "capacity_preprocessing": "JSONPath only; no discard-unchanged or heartbeat preprocessing",
+    "cadence_rehearsal_identified_missing_ai_acceleration": true,
+    "temporary_lease_seconds": 45,
+    "temporary_ai_seconds": 30,
+    "long_term_ai_seconds": 3600,
+    "original_config_file_changed": false,
+    "long_term_policy_version_changed": false,
+    "daily_analysis_budget_changed": false
+  },
+  "cleanup": {
+    "fault_on_requests": 1,
+    "fixed_extra_readonly_connection_limit": 25,
+    "mysql_connection_limit_unchanged": 40,
+    "preflight_reserved_slots": 6,
+    "runtime_reserved_slots_floor": 4,
+    "bounded_control_lease_seconds": 180,
+    "independent_off_guard_seconds": 170,
+    "held_connections_after_off": 0,
+    "two_distinct_fresh_paired_low_water_observations": true,
+    "effective_ai_seconds_restored_to": 3600,
+    "pacing_lease_active_after_cleanup": false,
+    "independent_guard_later_found_no_owned_active_case": true
+  },
+  "checker_limitation": {
+    "private_checker_metadata_path_error": true,
+    "error_triggered_finally_off": true,
+    "raw_checker_failure_preserved": true,
+    "independent_readonly_scope_and_window_verification": true,
+    "separate_from_product_failure": "The model failed to produce a final report within the unchanged total budget."
+  },
+  "prior_v42_result": {
+    "report_window_after_on_seconds": 18.06,
+    "required_seconds": 20,
+    "original_temporal_contract_failed_and_preserved": true
+  },
+  "discovery_verified": true,
+  "recovery_verified": true,
+  "input_scope_and_window_verified": true,
+  "harness_complete": false,
+  "model_report_completed": false,
+  "diagnosis_verified": false,
+  "overall_pass": false,
+  "zabbix_alert_contrast_reviewed": false,
+  "claim_zabbix_cannot_alert": false,
+  "public_fault_entry_reopened": false,
+  "private_identifiers_addresses_credentials_and_audits_omitted": true
+}
