@@ -35,7 +35,7 @@ A 只制造固定、有界的故障并临时借用 B 的较快检查周期，**�
 
 | 场景 | 当前实际状态 |
 | --- | --- |
-| 基础行锁等待 | 自主发现、基本等待关系解释和恢复已核对；具体 SQL/完整根因未确认，保留锁模式措辞缺口。见 [验收记录](docs/validation/basic-row-lock.md) |
+| 基础行锁等待 | LOCK-03 瞬时等待关系通过：请求侧记录锁属性、等待→阻塞关系、独立恢复及 B 只读图表已验；具体 SQL/持续时长未知，后续空快照的持续时长解释仍未通过。见 [本轮记录](docs/validation/basic-row-lock-lock03.md)，[早期记录](docs/validation/basic-row-lock.md)保留 |
 | 连接容量风险 | CAPACITY-07 基础闭环通过：33/40、82.5% 超过配置 80% 水位，自主报告明确风险，图表及恢复已验；根因未知。已开放此项，[本次范围](docs/validation/capacity07-public-entrance.md)与[旧 v4.2 失败](docs/validation/connection-headroom-v42.md)分别保留 |
 | SQL 效率退化 | 自主发现、新报告与恢复已验证；具体 SQL、执行计划和因果引用仍需完善 |
 | 应用连接池紧张 | 自主发现、池等待/错误关联与恢复已验证；模型输入遗漏池容量及 DB 上限，深层诊断待完善 |
