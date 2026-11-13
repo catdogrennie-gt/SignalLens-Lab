@@ -16,6 +16,10 @@ import threading
 import time
 
 import pymysql
+try:
+    from .application_event_log import ApplicationEventLog
+except ImportError:
+    from application_event_log import ApplicationEventLog
 
 MODES = {'normal', 'query', 'pool', 'temporary', 'queue', 'view'}
 
@@ -40,6 +44,7 @@ class Workload:
         self.last_diagnostics, self.diagnostics_at = {}, 0
         self.epoch = None
         self.previous = {}
+        self.event_log = ApplicationEventLog()
 
     def connect(self, monitor=False):
         cfg = self.config
@@ -101,6 +106,7 @@ class Workload:
             try: started = self.pending.get(timeout=.3)
             except queue.Empty: continue
             acquired, db_ms, failed, connection, query_started, waiting = 0, None, False, None, None, True
+            error_code = None
             with self.lock: self.waiters += 1
             wait_started = time.monotonic()
             try:
@@ -113,7 +119,9 @@ class Workload:
                 with connection.cursor() as cur:
                     self.execute_query(cur,mode)
                 db_ms = (time.monotonic()-query_started)*1000
-            except (queue.Empty, pymysql.MySQLError, OSError): failed = True
+            except (queue.Empty, pymysql.MySQLError, OSError) as exc:
+                failed = True
+                if isinstance(exc,pymysql.MySQLError) and exc.args and type(exc.args[0])is int:error_code=exc.args[0]
             finally:
                 if query_started is not None and db_ms is None:db_ms=(time.monotonic()-query_started)*1000
                 with self.lock:
@@ -126,6 +134,8 @@ class Workload:
                     self.samples.append({'at':time.monotonic(), 'request_ms':(time.monotonic()-started)*1000,
                         'db_ms':db_ms, 'pool_wait_ms':acquired if connection else 600, 'failed':failed})
                 self.pending.task_done()
+                self.event_log.record(request_ms=(time.monotonic()-started)*1000,db_ms=db_ms,
+                    pool_wait_ms=acquired if connection else 600,failed=failed,error_code=error_code)
 
     def release_special(self):
         for c in self.held:
@@ -267,6 +277,7 @@ def main():
                         return self.send(200,{'normal':work.current_mode()=='normal','held_connections':len(work.held),'held_read_view':work.view is not None})
                 if self.path=='/metrics': return self.send(200,work.metrics())
                 if self.path=='/database': return self.send(200,work.diagnostics())
+                if self.path=='/events': return self.send(200,work.event_log.snapshot())
                 if self.path=='/health': return self.send(200,{'ready':True})
                 self.send(404,{'error':'not_found'})
             except Exception: self.send(503,{'error':'measurement_unavailable'})

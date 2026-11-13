@@ -4,5 +4,6 @@ RUN python -c "import pymysql,cryptography" || pip install --no-cache-dir PyMySQ
 WORKDIR /work
 COPY lab/business_app.py /work/business_app.py
 COPY lab/replica_app.py /work/replica_app.py
+COPY lab/application_event_log.py /work/application_event_log.py
 USER 1000:1000
 CMD ["python", "business_app.py"]
