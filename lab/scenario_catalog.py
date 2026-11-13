@@ -16,6 +16,8 @@ SCENARIOS = [
      'status':'implemented_awaiting_verification','description':'持有一致性读并有界提交测试写入，观察长事务与历史积压。'},
     {'key':'stale-replica','name':'副本业务读陈旧','service':'svc-c','mode':'replica','target_key':'svc-c',
      'status':'implemented_awaiting_verification','description':'真实源库持续提交，副本应用受阻；联合核对复制线程、版本距离与业务数据时间。'},
+    {'key':'connection-headroom','name':'数据库连接余量减少','service':'connections-a','mode':'connections','target_key':'db-a-headroom',
+     'status':'implemented_awaiting_verification','description':'固定增加只读连接，保留监控余量，观察连接额度与风险分析。'},
 ]
 
 # Demonstration context, not model input or a diagnosis. Until acceptance records
@@ -27,6 +29,7 @@ PRESENTATION = {
     'application-queue':('端到端请求变慢、队列积压，但数据库调用可能保持原速。','待验证假设：数据库指标本身正常，不应期待DB模板替代应用端到端监控；需核对应用是否已有告警。','待平台验证：用请求排队与耗时、正常DB调用和扫描代价作反证，避免把所有慢请求归因于数据库。'),
     'retained-view':('持续读事务占用旧版本，有提交写入时历史列表增长，未必已有明显锁等待。','待验证假设：短时事务/历史增长不一定触发当前模板阈值；需要区分现有告警与潜在健康风险。','待平台验证：联合事务年龄、历史列表、提交活动及业务耗时；证据不足时只报告待核验风险。'),
     'stale-replica':('应用读到落后版本，源库仍有提交，复制线程显示运行也不等于业务数据新鲜。','待验证假设：复制可能尚未达到当前延迟持续阈值；若已有复制告警，只能算补充业务影响解释。','待平台验证：关联真实两端版本/数据时间距离、复制线程与延迟、应用读耗时，不靠场景名称判断。'),
+    'connection-headroom':('数据库连接使用量升高，可用连接余量减少。','复用已采集的连接数、上限和可用性；是否告警以实际启用规则和事件为准。','待平台验证：结合实际连接占用、容量和趋势说明风险与建议，不将高占用等同服务中断。'),
 }
 
 
