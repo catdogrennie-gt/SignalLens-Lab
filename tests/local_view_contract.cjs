@@ -1,6 +1,6 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 (async()=>{
- const calls=[],elements=new Map(),intervals=[];let mountWrites=0,metricValue=10,ruleFindings=[];
+ const calls=[],elements=new Map(),intervals=[];let mountWrites=0,metricValue=10,ruleFindings=[],report=null;
  const window={scrollX:0,scrollY:620,scrollTo(x,y){this.scrollX=x;this.scrollY=y;}};
  const document={activeElement:null,getElementById:id=>elements.get(id),getSelection:()=>null,createElement:tag=>new Element(tag)};
  class Element{
@@ -20,7 +20,7 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
   fetch:async(url,options={})=>{
    calls.push({url,method:options.method??'GET',body:options.body?JSON.parse(options.body):null});
    if(url==='/api/switch'){const b=JSON.parse(options.body);state.scenario=b.scenario;state.desired_on=b.on;state.actual_state=b.on?'on':'off';state.revision++;}
-   const value=url.includes('/snapshot')?{target_key:url.split('/')[3],platform:{target:{key:url.split('/')[3]},live_charts:[],rule_findings:ruleFindings,observation:{metrics:[{hostid:'1',itemid:'2',name:'Request duration',value:metricValue,status:'fresh',unit:'ms'}]}}}:structuredClone(state);
+   const value=url.includes('/snapshot')?{target_key:url.split('/')[3],platform:{target:{key:url.split('/')[3]},report,live_charts:[],rule_findings:ruleFindings,observation:{metrics:[{hostid:'1',itemid:'2',name:'Request duration',value:metricValue,status:'fresh',unit:'ms'}]}}}:structuredClone(state);
    return {ok:true,json:async()=>structuredClone(value)};
   }};
  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../lab/web-v2/app.local-view.js'),'utf8'),context);
@@ -29,6 +29,25 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
  assert.equal(elements.get('scene-list').children[0].children.at(-1).textContent,'发现与恢复已验证 · 分析待完善');
  assert.equal(elements.get('scene-clues-title').textContent,'平台实际发现与分析边界');
  assert.equal(elements.get('scene-clues').textContent,'Observed workflow; diagnosis remains limited.');
+ report={status:'completed',mode:'live_redacted',executive_summary:{headline:'自行解除了一次短暂等待',conclusion:{status:'observed',statement:'自行解除'},report_presentation:{version:'report-presentation-v1',origin:'rules'}}};
+ await elements.get('refresh').onclick();await flush();
+ assert.equal(elements.get('report-headline').textContent,'历史分析记录','Raw model headline is not the factual heading');
+ assert.equal(elements.get('report-raw-headline').textContent,'自行解除了一次短暂等待');
+ assert.match(elements.get('report-interpretation-label').textContent,/未核实/);
+ assert.match(elements.get('claim-status-conclusion').textContent,/模型表述/,'Model observed is not server verification');
+ report.report_presentation={version:'report-presentation-v1',origin:'model',primary_basis:'analysis_record',primary_headline:'历史分析记录'};
+ await elements.get('refresh').onclick();await flush();
+ assert.match(elements.get('report-interpretation-label').textContent,/AI.*未核实/);
+ report.report_presentation={version:'future-v2',origin:'rules',primary_basis:'rule_result'};
+ await elements.get('refresh').onclick();await flush();
+ assert.equal(elements.get('report-headline').textContent,'历史分析记录','Unknown envelope is not rule authority');
+ report.report_presentation={version:'report-presentation-v1',origin:'rules',primary_basis:'rule_result'};
+ await elements.get('refresh').onclick();await flush();
+ assert.equal(elements.get('report-headline').textContent,'规则巡检结果');
+ assert.equal(elements.get('report-interpretation-label').textContent,'规则巡检结果');
+ report.status='failed';await elements.get('refresh').onclick();await flush();
+ assert.equal(elements.get('report-content').hidden,true,'Failed report prose must not look like a completed result');
+ report=null;await elements.get('refresh').onclick();await flush();
  const buttons=elements.get('scene-list').children,details=elements.get('all-metrics');
  await buttons[1].onclick();await flush();assert.equal(state.scenario,'query-efficiency');assert.equal(state.revision,0);assert(calls.every(c=>c.method==='GET'));
  assert.equal(elements.get('view-status').textContent,'此场景未运行');

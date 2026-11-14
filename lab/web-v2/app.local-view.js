@@ -19,7 +19,7 @@ function mount(){
  <div class="panel"><h2>这个场景验证什么</h2><h3>业务现象</h3><p id="scene-symptom"></p><h3>为什么要对照现有告警</h3><p id="scene-comparison"></p><h3 id="scene-clues-title">待验证的联合线索</h3><p id="scene-clues"></p><div id="scene-proof" hidden><h3>上次人工核对的实测 · 非当前实时值</h3><small id="scene-proof-meta"></small><p><a id="scene-report-link" target="_blank" rel="noopener noreferrer" hidden>查看对应完整报告 →</a></p><div class="table-scroll"><table><thead><tr><th>实测项</th><th>之前</th><th>问题时</th><th>关闭后</th></tr></thead><tbody>${[0,1,2,3,4,5].map(n=>`<tr id="proof-row-${n}" hidden><td id="proof-name-${n}"></td><td id="proof-before-${n}"></td><td id="proof-during-${n}"></td><td id="proof-after-${n}"></td></tr>`).join('')}</tbody></table></div></div></div>
  <div class="panel"><h2>平台正在做什么</h2><div class="facts"><div class="fact"><strong id="collection"></strong><small>实际平台取数周期</small></div><div class="fact"><strong id="signal"></strong><small>实际检查周期</small></div><div class="fact"><strong id="inspection"></strong><small>普通巡检状态</small></div></div><p class="muted" id="inspection-times"></p></div>
  <div class="panel" id="observed-rules" hidden><h2>平台检测到的问题</h2><p class="muted">根据已配置的关注水位和实际采样判断，与下方 AI 解释分开显示。</p>${[0,1,2,3,4,5].map(n=>`<div class="claim" id="rule-${n}" hidden><h3 id="rule-title-${n}"></h3><p id="rule-summary-${n}"></p><small id="rule-time-${n}"></small></div>`).join('')}</div>
- <div class="panel" id="report-panel"><h2>发现与分析</h2><p class="empty" id="report-empty">暂未取得可展示的报告。没有报告不等于没有问题。</p><div id="report-content" hidden><p class="status" id="report-status"></p><h3 id="report-headline"></h3><p class="muted" id="report-window"></p>
+ <div class="panel" id="report-panel"><h2>报告与解释</h2><p class="empty" id="report-empty">暂未取得已完成的报告。没有报告不等于没有问题。</p><div id="report-content" hidden><p class="status" id="report-status"></p><h3 id="report-headline"></h3><p class="muted" id="report-window"></p><p class="muted" id="report-interpretation-label"></p><h4 id="report-raw-headline"></h4>
  ${['conclusion','phenomenon','surface0','surface1','surface2','joint'].map(k=>`<div class="claim" id="claim-${k}"><h3><span id="claim-title-${k}"></span> <small id="claim-status-${k}"></small></h3><p id="claim-text-${k}"></p></div>`).join('')}
  <h3 id="actions-title">建议怎么做</h3><ul>${[0,1,2,3].map(n=>`<li id="action-${n}" hidden><span id="action-text-${n}"></span> <small id="action-type-${n}"></small></li>`).join('')}</ul><p class="muted">模型只提供建议，不会执行数据库变更。报告属于其证据时间窗；恢复请看之后的新采样。</p></div></div>
  <div class="panel"><h2>当前观测</h2><p class="muted" id="observation-status"></p><div class="metric-grid">${[0,1,2,3,4,5].map(n=>`<div class="metric" id="metric-${n}" hidden><small id="metric-name-${n}"></small><strong id="metric-value-${n}"></strong><small id="metric-time-${n}"></small></div>`).join('')}</div><details id="all-metrics"><summary id="metric-summary">查看全部观测</summary><div class="table-scroll"><table><thead><tr><th>资源 / 指标</th><th>值</th><th>采样</th></tr></thead><tbody id="metric-rows"></tbody></table></div></details></div>
@@ -44,9 +44,9 @@ function renderScenes(){
   setText(nodes.status,verification(scene.status)+(scene.available?'':' · 暂未开放'));
  }
 }
-function renderClaim(key,title,value){
+function renderClaim(key,title,value,ruleResult=false){
  byId('claim-'+key).hidden=!value;if(!value)return;
- setText('claim-title-'+key,title);setText('claim-status-'+key,claimStatus(value.status));setText('claim-text-'+key,value.statement);
+ setText('claim-title-'+key,title);setText('claim-status-'+key,(ruleResult?'':'模型表述 · ')+claimStatus(value.status));setText('claim-text-'+key,value.statement);
 }
 function renderRules(p){
  const rules=(Array.isArray(p?.rule_findings)?p.rule_findings:[]).filter(r=>r.status==='active'&&typeof r.title==='string'&&typeof r.summary==='string').slice(0,6);
@@ -58,11 +58,16 @@ function renderReport(p,force){
  if(fingerprint===reportFingerprint)return;
  const selection=document.getSelection?.();
  if(!force&&selection?.toString()&&byId('report-panel').contains(selection.anchorNode))return;
- reportFingerprint=fingerprint;byId('report-empty').hidden=!!s;byId('report-content').hidden=!s;if(!s)return;
+ const complete=['completed','partial','succeeded'].includes(r?.status),show=!!s&&complete;
+ reportFingerprint=fingerprint;byId('report-empty').hidden=show;byId('report-content').hidden=!show;if(!show)return;
  const historic=!p.report_matches_current_observation;
  setText('report-status',historic?'历史报告 · 尚未与当前观测关联':'已关联当前问题');byId('report-status').classList.toggle('warning',historic);
- setText('report-headline',s.headline);setText('report-window',`${r.mode==='live_redacted'?'模型分析':r.mode??'模式未知'} · 证据时间窗 ${time(r.from)} — ${time(r.to)}`);
- renderClaim('phenomenon','发生了什么',s.phenomenon);for(let n=0;n<3;n++)renderClaim('surface'+n,'直接原因 '+(n+1),s.surface_causes?.[n]);renderClaim('joint','联合原因',s.joint_root_cause);renderClaim('conclusion','问题结论',s.conclusion);
+ const presentation=r.report_presentation?.version==='report-presentation-v1'?r.report_presentation:null;
+ const ruleResult=presentation?.origin==='rules'&&presentation.primary_basis==='rule_result';
+ setText('report-headline',ruleResult?'规则巡检结果':'历史分析记录');
+ setText('report-interpretation-label',ruleResult?'规则巡检结果':presentation?.origin==='model'||(!presentation&&r.mode==='live_redacted')?'AI 未核实解释 · 原文保留；完整证据请到分析平台查看。':'原始报告（来源未核实）· 原文保留；完整证据请到分析平台查看。');
+ setText('report-raw-headline',s.headline);setText('report-window',`${r.mode==='live_redacted'?'模型分析':r.mode??'模式未知'} · 证据时间窗 ${time(r.from)} — ${time(r.to)}`);
+ renderClaim('phenomenon','发生了什么',s.phenomenon,ruleResult);for(let n=0;n<3;n++)renderClaim('surface'+n,'直接原因 '+(n+1),s.surface_causes?.[n],ruleResult);renderClaim('joint','联合原因',s.joint_root_cause,ruleResult);renderClaim('conclusion','问题结论',s.conclusion,ruleResult);
  byId('actions-title').hidden=!(s.recommended_actions?.length);for(let n=0;n<4;n++){const a=s.recommended_actions?.[n];byId('action-'+n).hidden=!a;if(a){setText('action-text-'+n,a.description);setText('action-type-'+n,a.kind==='manual_change'?'需人工确认后操作':'检查与观察');}}
 }
 function renderMetrics(o){
