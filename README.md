@@ -10,8 +10,8 @@
 
 | 入口 | 用途 | 登录 |
 | --- | --- | --- |
-| **[A · 连接余量快速演示](https://representatives-remedies-eva-effectively.trycloudflare.com)** | 开关固定负载，同时查看当前观测与历史已验报告 | 免登录 |
-| **[B · 完整分析平台](https://screens-sponsor-kijiji-julie.trycloudflare.com)** | 查看监控、问题、冻结报告及安全配置概览 | `demo` / `EvidenceDemo-2026!` |
+| **[A · 连接余量快速演示](https://designed-where-clouds-strings.trycloudflare.com)** | 开关固定负载，同时查看当前观测与历史已验报告 | 免登录 |
+| **[B · 完整分析平台](https://vacuum-mystery-ruby-lip.trycloudflare.com)** | 查看监控、问题、冻结报告及安全配置概览 | `demo` / `EvidenceDemo-2026!` |
 
 B 的公开账号可以查看获授权范围内的安全信息，不能修改配置、启动分析或执行数据库操作；原始敏感资料不因公开展示而放开。该网址是临时隧道，依赖演示电脑在线；公开密码仅属于此部署的只读身份，不是新安装的默认口令。
 
