@@ -6,7 +6,7 @@
 
 ## 在线查看
 
-**[打开完整分析平台](https://vacuum-mystery-ruby-lip.trycloudflare.com)**
+**[打开完整分析平台](https://wood-significance-rolled-chargers.trycloudflare.com)**
 
 只读账号：demo / EvidenceDemo-2026!。可查看获授权范围内的监控、问题、报告和图表，不能修改配置、启动分析或执行数据库操作。
 
